@@ -1,5 +1,3 @@
-[coverals & semaphore badges will go here]
-
 # Project Title
 
 ## **GLOCAL News**
@@ -19,9 +17,9 @@ This application consists of a back-end API and a front-end Client.
 
 The GitHub repository for the API is [here](https://github.com/CraftAcademy/Glocal_news-API) and the one for the Client is [here](https://github.com/CraftAcademy/Glocal_news-Client).
 
-The API is deployed using Heroku on [this address]().
+The API is deployed using Heroku on [this address](https://glocal-news.herokuapp.com/).
 
-The client, which is where everything happens, is deployed via Netlify [here]().
+The client, which is where everything happens, is deployed via Netlify [here](https://glocal-news.netlify.com/).
 
 # Tests, Test Coverage & CI
 
