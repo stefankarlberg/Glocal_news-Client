@@ -1,28 +1,25 @@
-
 {
-  "status": 200,
-  "headers": {},
-  "articles": [
+  "entries": [
     {
-      "data": {
-        "id": 1,
-        "title": "A Day in Stockholm",
-        "ingress": "How to spend 24 hours in Stockholm"
-      }
+      "id": 1,
+      "title": "A Day in Stockholm",
+      "ingress": "How to spend 24 hours in Stockholm",
+      "body": "body 1",
+      "image": "https://www.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_3737945.htm"
     },
     {
-      "data": {
-        "id": 2,
-        "title": "A Day in Paris",
-        "ingress": "How to spend 24 hours in Paris"
-      }
+      "id": 2,
+      "title": "A Day in Paris",
+      "ingress": "How to spend 24 hours in Paris",
+      "body": "body 2",
+      "image": "https://www.freepik.com/free-photo/paris-city-view-from-high_946217.htm"
     },
     {
-      "data": {
         "id": 3,
         "title": "A Day in Rome",
-        "ingress": "How to spend 24 hours in Rome"
-      }
+        "ingress": "How to spend 24 hours in Rome",
+        "body": "body 3",
+        "image": "https://www.freepik.com/free-photo/roman-coliseum-seen-from-afar_954297.htm"
     }
   ]
 }
