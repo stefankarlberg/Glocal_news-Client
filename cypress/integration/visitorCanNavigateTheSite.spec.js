@@ -10,9 +10,11 @@ describe('Visitor can navigate the website', () => {
     cy
   })
 
-  it ("by seeing 'Login' and 'Sign Up' when not logged in", () => {
+  it ("by seeing 'Login', 'Sign Up', 'Logout' and 'Welcome Member' when not logged in", () => {
     cy.contains('Sign Up');
     cy.contains('Login');
+    cy.contains('Log out');
+    cy.contains('Welcome Member');
   })
 
   it ('by seeing a second selection with categories in the navbar', () => {
@@ -30,9 +32,5 @@ describe('Visitor can navigate the website', () => {
     cy.contains('Tech');
     cy.contains('Travel');
   })
-  
-  // it ("by seeing 'Logout' and 'Welcome Member' when logged in", () => {
-
-  // })
   
 })
