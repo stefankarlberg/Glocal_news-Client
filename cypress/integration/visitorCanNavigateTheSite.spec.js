@@ -3,7 +3,7 @@ describe('Visitor can navigate the website', () => {
     cy.visit('http://localhost:3001');
   })
 
-  it ("by seeing a navbar with logo, 'write an article' and 'review articles'", () => {
+  it ("by seeing a navbar with Glocval News, write an article' and 'review articles'", () => {
     cy.contains('Glocal News');
     cy.contains('WRITE AN ARTICLE');
     cy.contains('REVIEW ARTICLES');
@@ -31,6 +31,11 @@ describe('Visitor can navigate the website', () => {
     cy.contains('Style');
     cy.contains('Tech');
     cy.contains('Travel');
+  })
+
+  it ("by seeing drop-downs for country and city", () => {
+    cy.get("#country");
+    cy.get('#city');
   })
   
 })
