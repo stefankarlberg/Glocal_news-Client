@@ -1,19 +1,31 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react'
+import { Menu, MenuHeader } from 'semantic-ui-react'
 
+const signedOut = ['Sign Up', 'Login']
+const signedIn = ['Welcome Member', 'Log Out']
 const categories = ['News', 'Arts', 'Books', 'Business', 'Food', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Style', 'Tech', 'Travel']
 
 const NavBar = () => {
   return (
     <>
     <div>
+      <div>
         <h1>Glocal News</h1>
-        <h2>Welcome Member</h2>
-        <h2>WRITE AN ARTICLE</h2>
-        <h2>REVIEW ARTICLES</h2>
-        <h2>Sign Up</h2>
-        <h2>Login</h2>
-        <h2>Log out</h2>
+      </div>
+
+      <Menu pointing primary>
+        <Menu.Item name='WRITE AN ARTICLE' />
+        <Menu.Item name='REVIEW ARTICLES' />
+
+        <Menu.Menu position='right'>
+          {signedOut.map (c => (
+            <Menu.Item 
+            key={c}
+            name={c}
+            />
+            ))}
+        </Menu.Menu>
+      </Menu>
     </div>
 
     <div>
