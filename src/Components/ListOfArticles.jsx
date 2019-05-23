@@ -20,7 +20,7 @@ class ListOfArticles extends Component {
     let articleList
     let componentArticlesState = this.state.articles.length
 
-    if (componentArticlesState !== 0) {
+    if (componentArticlesState > 0) {
       articleList = (
         <div>
           {this.state.articles.map(article => {
@@ -29,6 +29,7 @@ class ListOfArticles extends Component {
                 <img alt="article logo" id="photo" src={article.image} width="200" height="100" />
                 <h1 id="title">{article.title}</h1>
                 <h3 id="ingress">{article.ingress}</h3>
+                <br />
               </div>
             )
           })}
@@ -36,7 +37,7 @@ class ListOfArticles extends Component {
       )
     } else {
       articleList = (
-        <h2>There are no articles at the moment. You can be the first to host his/her article!</h2>
+        <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
       )
     }
 
