@@ -1,0 +1,28 @@
+
+{
+  "status": 200,
+  "headers": {},
+  "articles": [
+    {
+      "data": {
+        "id": 1,
+        "title": "A Day in Stockholm",
+        "ingress": "How to spend 24 hours in Stockholm"
+      }
+    },
+    {
+      "data": {
+        "id": 2,
+        "title": "A Day in Paris",
+        "ingress": "How to spend 24 hours in Paris"
+      }
+    },
+    {
+      "data": {
+        "id": 3,
+        "title": "A Day in Rome",
+        "ingress": "How to spend 24 hours in Rome"
+      }
+    }
+  ]
+}
