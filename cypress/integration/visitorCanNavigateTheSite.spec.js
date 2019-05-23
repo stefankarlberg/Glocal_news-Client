@@ -35,6 +35,4 @@ describe('Visitor can navigate the website', () => {
 
   // })
   
-
-
 })
