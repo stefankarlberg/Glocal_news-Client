@@ -3,40 +3,40 @@ describe('Visitor can navigate the website', () => {
     cy.visit('http://localhost:3001');
   })
 
-  it ("by seeing a navbar with Glocval News, write an article' and 'review articles'", () => {
-    cy.contains('Glocal News');
-    cy.contains('Write An Article');
-    cy.contains('Review Articles');
-    cy
+  it ("by seeing a navbar with site title, article -and review actions", () => {
+    let mainLabels = ["Glocal News", "Write An Article", "Review Articles"]
+  
+    mainLabels.forEach(function(label){
+    cy.contains(label)
+    })
   })
 
-  it ("by seeing 'Login', 'Sign Up', 'Logout' and 'Welcome Member' when not logged in", () => {
-    cy.contains('Sign Up');
-    cy.contains('Log In');
-    cy.contains('Log Out');
-    cy.contains('Welcome Member');
+  it ("by seeing login and logout information", () => {  
+    let loggedOutLabels = ['Sign Up', 'Log In']
+    let loggedInLabels = ['Welcome Member', 'Log Out'] 
+    
+    loggedInLabels.forEach(function(label){
+      cy.contains(label)
+    })
+
+    loggedOutLabels.forEach(function(label){
+      cy.contains(label)
+    })
   })
 
   it ('by seeing a second selection with categories in the navbar', () => {
-    cy.contains('News');
-    cy.contains('Arts');
-    cy.contains('Books');
-    cy.contains('Business');
-    cy.contains('Food');
-    cy.contains('Opinion');
-    cy.contains('Politics');
-    cy.contains('Real Estate');
-    cy.contains('Science');
-    cy.contains('Sports');
-    cy.contains('Style');
-    cy.contains('Tech');
-    cy.contains('Travel');
+    let categories = ["News", "Arts", "Books", "Business", "Food", "Opinion",
+                      "Politics", "Real Estate", "Science", "Sports", "Style",
+                      "Tech", "Travel"]
+
+    categories.forEach(function(category){
+      cy.contains(category)
+    })
   })
 
   it ("by seeing correct selection options in dropdown", () => {
     cy.get('div[id="country"]').click().get('div[role="option"]').contains('Sweden');
     cy.get('div[id="city"]').click().get('div[role="option"]').contains('Stockholm')
-
   })
   
 })
