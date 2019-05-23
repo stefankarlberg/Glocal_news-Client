@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Grid, Container } from 'semantic-ui-react'
 
 class ListOfArticles extends Component {
   constructor(props) {
@@ -41,7 +42,19 @@ class ListOfArticles extends Component {
 
     return (
       <>
-        {articleList}
+        <Container>
+          <Grid centered columns={3}>
+            <Grid.Column width={7}>
+              {articleList}
+            </Grid.Column>
+
+            <Grid.Column width={4}>
+            </Grid.Column>
+
+            <Grid.Column width={3}>
+            </Grid.Column>
+          </Grid>
+        </Container>
       </>
     )
   }
