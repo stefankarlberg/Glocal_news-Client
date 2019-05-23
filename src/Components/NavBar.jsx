@@ -1,5 +1,7 @@
 import React from 'react';
+import { Menu } from 'semantic-ui-react'
 
+const categories = ['News', 'Arts', 'Books', 'Business', 'Food', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Style', 'Tech', 'Travel']
 
 const NavBar = () => {
   return (
@@ -15,19 +17,17 @@ const NavBar = () => {
     </div>
 
     <div>
-      <h3>News</h3>
-      <h3>Arts</h3>      
-      <h3>Books</h3>      
-      <h3>Business</h3>      
-      <h3>Food</h3>  
-      <h3>Opinion</h3>
-      <h3>Politics</h3> 
-      <h3>Real Estate</h3>
-      <h3>Science</h3>
-      <h3>Sports</h3>       
-      <h3>Style</h3>      
-      <h3>Tech</h3>        
-      <h3>Travel</h3>
+
+      <Menu pointing secondary>
+        {categories.map (c => (
+          <Menu.Item
+          key={c}
+          name={c}
+          />
+        ))}
+      </Menu>
+
+
     </div> 
   </>
   )
