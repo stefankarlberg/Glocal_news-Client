@@ -1,10 +1,27 @@
 import React from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Dropdown } from 'semantic-ui-react'
+import { Menu, Header, Select } from 'semantic-ui-react'
 
-const mainLabels = ['WRITE AN ARTICLE', 'REVIEW ARTICLES']
+const countryOptions = [
+  {
+    key: "Sweden",
+    text: "Sweden",
+    value: "Sweden",
+  },
+]
+
+const cityOptions = [
+  {
+    key: "Stockholm",
+    text: "Stockholm",
+    value: "Stockholm",
+  },
+]
+
+const mainLabels = ['Write An Article', 'Review Articles']
 const loggedOutLabels = ['Sign Up', 'Log In']
 const loggedInLabels = ['Welcome Member', 'Log Out']
+
 
 const HeaderMain = () => {
   return (
@@ -15,14 +32,19 @@ const HeaderMain = () => {
   
       <Menu pointing primary>
     
-        <Dropdown 
+        <Select
           placeholder="Select country"
-          selection
+          selection 
+          id="country"
+          options={countryOptions}
         />
-        <Dropdown 
+        <Select
           placeholder="Select city"
           selection
+          id="city"
+          options={cityOptions}
         />
+
 
         {mainLabels.map (m => (
           <Menu.Item

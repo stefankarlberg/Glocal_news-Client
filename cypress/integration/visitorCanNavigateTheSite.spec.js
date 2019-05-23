@@ -5,8 +5,8 @@ describe('Visitor can navigate the website', () => {
 
   it ("by seeing a navbar with Glocval News, write an article' and 'review articles'", () => {
     cy.contains('Glocal News');
-    cy.contains('WRITE AN ARTICLE');
-    cy.contains('REVIEW ARTICLES');
+    cy.contains('Write An Article');
+    cy.contains('Review Articles');
     cy
   })
 
@@ -33,9 +33,10 @@ describe('Visitor can navigate the website', () => {
     cy.contains('Travel');
   })
 
-  it ("by seeing drop-downs for country and city", () => {
-    cy.get("#country");
-    cy.get('#city');
+  it ("by seeing correct selection options in dropdown", () => {
+    cy.get('div[id="country"]').click().get('div[role="option"]').contains('Sweden');
+    cy.get('div[id="city"]').click().get('div[role="option"]').contains('Stockholm')
+
   })
   
 })
