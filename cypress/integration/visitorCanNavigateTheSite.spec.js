@@ -12,8 +12,8 @@ describe('Visitor can navigate the website', () => {
 
   it ("by seeing 'Login', 'Sign Up', 'Logout' and 'Welcome Member' when not logged in", () => {
     cy.contains('Sign Up');
-    cy.contains('Login');
-    cy.contains('Log out');
+    cy.contains('Log In');
+    cy.contains('Log Out');
     cy.contains('Welcome Member');
   })
 

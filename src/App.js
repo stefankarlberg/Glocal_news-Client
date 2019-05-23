@@ -1,11 +1,11 @@
 import React from 'react';
-import NavBar from './Components/NavBar.jsx'
+import HeaderMain from './Components/HeaderMain.jsx'
 
 const App = () => {
   return (
     <>
       <div>
-        <NavBar/>
+        <HeaderMain/>
       </div>
     </>
   );
