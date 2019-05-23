@@ -15,36 +15,34 @@ class ListOfArticles extends Component {
     });
   }
 
-
   render() {
     let articleList
+    let componentArticlesState = this.state.articles.length
 
-    if (this.state.articles != null) {
+    if (componentArticlesState !== 0) {
       articleList = (
         <div>
           {this.state.articles.map(article => {
             return (
-              <div id= {`id_${article.id}`}>
+              <div id={`id_${article.id}`} key={article.id}>
+                <img alt="article logo" id="photo" src={article.image} width="200" height="100" />
                 <h1 id="title">{article.title}</h1>
-                <p id="ingress">{article.ingress}</p>
+                <h3 id="ingress">{article.ingress}</h3>
               </div>
             )
           })}
         </div>
       )
+    } else {
+      articleList = (
+        <h2>There are no articles at the moment. You can be the first to host his/her article!</h2>
+      )
     }
 
-    // let articleLanding = article.title + article.ingress
-
     return (
-
-
       <>
-        <h1>hello</h1>
         {articleList}
-
       </>
-
     )
   }
 }

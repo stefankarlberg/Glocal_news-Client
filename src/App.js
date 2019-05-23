@@ -4,9 +4,7 @@ import ListOfArticles from './Components/ListOfArticles';
 function App() {
   return (
     <>
-    
-    < ListOfArticles/>
-
+      < ListOfArticles />
     </>
   );
 }

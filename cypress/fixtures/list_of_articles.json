@@ -5,21 +5,21 @@
       "title": "A Day in Stockholm",
       "ingress": "How to spend 24 hours in Stockholm",
       "body": "body 1",
-      "image": "https://www.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_3737945.htm"
+      "image": "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"
     },
     {
       "id": 2,
       "title": "A Day in Paris",
       "ingress": "How to spend 24 hours in Paris",
       "body": "body 2",
-      "image": "https://www.freepik.com/free-photo/paris-city-view-from-high_946217.htm"
+      "image": "https://image.freepik.com/free-photo/paris-city-view-from-high_1160-763.jpg"
     },
     {
-        "id": 3,
-        "title": "A Day in Rome",
-        "ingress": "How to spend 24 hours in Rome",
-        "body": "body 3",
-        "image": "https://www.freepik.com/free-photo/roman-coliseum-seen-from-afar_954297.htm"
+      "id": 3,
+      "title": "A Day in Rome",
+      "ingress": "How to spend 24 hours in Rome",
+      "body": "body 3",
+      "image": "https://image.freepik.com/free-photo/roman-coliseum-seen-from-afar_1219-15.jpg"
     }
   ]
 }
