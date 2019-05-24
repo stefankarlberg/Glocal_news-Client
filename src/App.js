@@ -1,9 +1,12 @@
 import React from 'react';
+import HeaderMain from './Components/HeaderMain.jsx'
 
-function App() {
+const App = () => {
   return (
     <>
-
+      <div>
+        <HeaderMain/>
+      </div>
     </>
   );
 }
