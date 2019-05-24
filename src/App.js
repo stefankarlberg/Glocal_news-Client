@@ -1,9 +1,11 @@
 import React from 'react';
 import ListOfArticles from './Components/ListOfArticles';
+import HeaderMain from './Components/HeaderMain.jsx'
 
-function App() {
+const App = () => {
   return (
     <>
+      < HeaderMain />
       < ListOfArticles />
     </>
   );
