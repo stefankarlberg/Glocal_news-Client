@@ -2,10 +2,10 @@ describe('Visitor can write an article', () => {
   it ('successfully', () => {
     cy.visit('http://localhost:3001')
     cy.get('#write_article').click()
-    cy.get('#written_by').type('Boa Matule')
     cy.get('#title').type('Rainy day')
     cy.get('#ingress').type('Today it rained.')
     cy.get('#body').type('Rain is good for flowers.')
+    cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
     cy.get('#create').click()
     cy.route({
