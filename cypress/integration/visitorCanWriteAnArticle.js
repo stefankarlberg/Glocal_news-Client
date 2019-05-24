@@ -8,6 +8,7 @@ describe('Visitor can write an article', () => {
     cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
     cy.get('#create').click()
+    cy.server();
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
