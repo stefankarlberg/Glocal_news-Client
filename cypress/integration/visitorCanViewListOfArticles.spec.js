@@ -1,6 +1,6 @@
-describe('Visitor can view a list of articles on the landing page', () => {
+describe('Visitor can view on the landing page', () => {
 
-  it('successfully', () => {
+  it('a list of articles successfully', () => {
     cy.server();
     cy.route({
       method: 'GET',
@@ -37,4 +37,17 @@ describe('Visitor can view a list of articles on the landing page', () => {
       cy.get('#photo').should('have.attr', 'src')
     })
   })
+
+  it('a relevant message if there are no articles in the API database', () => {
+    cy.server();
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/articles',
+      response: 'fixture:no_list_of_articles.json',
+      status: 200
+    })
+    cy.visit('http://localhost:3001')
+    cy.contains('There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!')
+  })
+
 })
