@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderCategory from './HeaderCategory'
 import { Menu, Header, Select } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const countryOptions = [
   {
@@ -21,7 +22,8 @@ const cityOptions = [
 const mainLabels = [
   {
     name: 'Write An Article', 
-    link: '/writeArticle'
+    link: '/writeArticle',
+    id: 'write_article'
   }, {
     name: 'Review Articles', 
     link: ''
@@ -58,8 +60,9 @@ const HeaderMain = () => {
           <Menu.Item
           key={m.name}
           name={m.name}
-          as={link}
+          as={Link}
           to={m.link}
+          id={m.id}
           />
         ))}
         <Menu.Menu position='right'>
