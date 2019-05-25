@@ -22,7 +22,7 @@ const cityOptions = [
 const mainLabels = [
   {
     name: 'Write An Article', 
-    link: '/writeArticle',
+    link: '/write-article',
     id: 'write_article'
   }, {
     name: 'Review Articles', 

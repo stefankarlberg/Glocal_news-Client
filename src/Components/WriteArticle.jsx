@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Container, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import ArticleCreated from './ArticleCreated'
 import axios from 'axios'
 
 class WriteArticle extends Component {
@@ -8,8 +10,11 @@ class WriteArticle extends Component {
     ingress: '',
     body: '',
     image: '',
-    written_by: ''
+    written_by: '',
+    redirect: ''
   }
+
+  
 
   onChangeHandler = (e) => {
     this.setState({
@@ -24,12 +29,19 @@ class WriteArticle extends Component {
     axios.post(path, payload)
       .then(response => {
         console.log(response)
+        // if(response.status === 200) {
+        //   this.setState({redirect: '/article-created'})
+        // } 
+        // else {
+        // }
       })
   }
   
 
 
   render () {
+   
+
     return (
       <>
         <Container>
