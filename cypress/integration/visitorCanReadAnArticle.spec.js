@@ -11,10 +11,10 @@ describe('Visitor can read an article', () => {
     cy.visit('http://localhost:3001')
 
     let article = [
-      ["#id_1", "#title_1", "#ingress_1", "#photo_1", "#written_by_1", "#created_at_1"],
+      ["#1", "#title_1", "#ingress_1", "#photo_1", "#written_by_1", "#created_at_1"],
     ]
 
-    cy.get('#article.id').click()
+    cy.get(article[0]).click()
     cy.get(article[0]).within(() => {
       cy.get(article[1]), (article[2])
       cy.get(article[3]).should('have.attr', 'src')

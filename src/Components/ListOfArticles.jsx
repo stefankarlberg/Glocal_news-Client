@@ -3,21 +3,22 @@ import axios from 'axios';
 import { Grid, Container } from 'semantic-ui-react'
 
 class ListOfArticles extends Component {
-  state = {
-    articles: [],
-    id: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: [],
+      id: ''
+    }
   }
 
   componentDidMount() {
-    axios.get('https://glocal-news.herokuapp.com/api/v1/articles').then(response => {
+    axios.get('http://localhost:3000/api/v1/articles').then(response => {
       this.setState({ articles: response.data.data });
     });
   }
 
-  handleClick = (e) => {
-    console.log(e.currentTarget.id)
-    this.setState({ id: e.currentTarget.id })
-    debugger
+  handleClick(e) {
+    this.state.id = e.currentTarget.id
   }
 
   render() {
@@ -25,7 +26,7 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <div id={`id_${article.id}`} key={article.id} onClick={this.handleClick}>
+            <div id={article.id} key={article.id} onClick={this.handleClick.bind(this)}>
               <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
               <h1 id={`title_${article.id}`}>{article.title}</h1>
               <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
