@@ -1,11 +1,16 @@
-import React from 'react'
+import Component from 'react'
 
 
-const ArticleCreated = () => {
+class ArticleCreated extends Component {
+ 
+  constructor(props) {
+    super(props)
+  }
+
   return (
-    <> 
-    <p>Yay</p>
-    </>
+  
+    {this.props.title();}
+
   )
 }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Container, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import ArticleCreated from './ArticleCreated'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class WriteArticle extends Component {
@@ -11,7 +10,7 @@ class WriteArticle extends Component {
     body: '',
     image: '',
     written_by: '',
-    redirect: ''
+    redirect: false
   }
 
   
@@ -29,18 +28,18 @@ class WriteArticle extends Component {
     axios.post(path, payload)
       .then(response => {
         console.log(response)
-        // if(response.status === 200) {
-        //   this.setState({redirect: '/article-created'})
-        // } 
-        // else {
-        // }
+        this.setState({ redirect: true })
       })
   }
   
 
-
   render () {
-   
+    if (this.state.redirect === true) {
+      return <Redirect to={{
+        pathname: '/article-created',
+        state: { title: this.state.title }
+      }} />
+    }
 
     return (
       <>
