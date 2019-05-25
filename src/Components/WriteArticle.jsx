@@ -10,7 +10,7 @@ class WriteArticle extends Component {
     body: '',
     image: '',
     written_by: '',
-    redirect: false
+    redirect: ''
   }
 
   
@@ -21,19 +21,23 @@ class WriteArticle extends Component {
     })
   }
 
-  onSubmit = (e) => {
+  async onCreate(e) {
     e.preventDefault();
     const path = '/api/v1/articles'
     const payload = {...this.state}
-    axios.post(path, payload)
-      .then(response => {
-        console.log(response)
-        this.setState({ redirect: true })
-      })
+    try {
+      let response = axios.post(path, payload)
+      await response
+      return this.setState({ redirect: true })
+    } catch (error) {
+      return this.setState({ redirect: false })
+    }
   }
   
 
   render () {
+    let message
+
     if (this.state.redirect === true) {
       return <Redirect to={{
         pathname: '/article-created',
@@ -45,6 +49,10 @@ class WriteArticle extends Component {
           written_by: this.state.written_by    
         }
       }} />
+    } else if (this.state.redirect === false) {
+      return (
+        message = "Your article could not be created because of following error(s):"
+      )
     }
 
     return (
@@ -86,8 +94,9 @@ class WriteArticle extends Component {
               onChange={this.onChangeHandler}
               placeholder="https://image.com"
             />
-            <Button id="create">Create Article</Button>
+            <Button onClick={this.onCreate.bind(this)} id="create">Create Article</Button>
           </Form>
+          <p>{message}</p>
         </Container>
       </>
     )
