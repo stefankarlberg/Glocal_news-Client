@@ -1,18 +1,27 @@
-import Component from 'react'
+import React, { Component } from 'react'
 
 
 class ArticleCreated extends Component {
- 
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      title: ''
+    };
   }
 
-  return (
+  componentDidMount() {
+    this.setState({title: this.props.location.state.title})
+  }
   
-    {this.props.title();}
+  render () {
+    return (
+      <>
+        <p>{this.state.title}</p>
+      </>
 
-  )
-}
+      )
+    }
+  }
 
 export default ArticleCreated
 
