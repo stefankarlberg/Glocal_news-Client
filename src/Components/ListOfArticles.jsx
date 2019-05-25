@@ -4,13 +4,20 @@ import { Grid, Container } from 'semantic-ui-react'
 
 class ListOfArticles extends Component {
   state = {
-      articles: []
-    }
+    articles: [],
+    id: ''
+  }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/v1/articles').then(response => {
-      this.setState({ articles: response.data.entries });
+    axios.get('https://glocal-news.herokuapp.com/api/v1/articles').then(response => {
+      this.setState({ articles: response.data.data });
     });
+  }
+
+  handleClick = (e) => {
+    console.log(e.currentTarget.id)
+    this.setState({ id: e.currentTarget.id })
+    debugger
   }
 
   render() {
@@ -18,7 +25,7 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <div id={`id_${article.id}`} key={article.id}>
+            <div id={`id_${article.id}`} key={article.id} onClick={this.handleClick}>
               <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
               <h1 id={`title_${article.id}`}>{article.title}</h1>
               <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
@@ -28,10 +35,10 @@ class ListOfArticles extends Component {
         })}
       </div>
     ) : (
-      <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
-    )
+        <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
+      )
 
-    
+
     return (
       <>
         <Container>
