@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Container, Button } from 'semantic-ui-react'
+import { Form, Container, Button, Divider, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
@@ -54,12 +54,15 @@ class WriteArticle extends Component {
     } else if (this.state.redirect === false) {
       message = (
         <>
-          <p>Your article could not be created because of following error(s):</p>
-          <ul>
-          {this.state.errors.map(error => (
-            <li key={error}>{error}</li>
-          ))}
-          </ul>
+          <Divider hidden/>
+          <Message color="red">
+            <p>Your article could not be created because of following error(s):</p>
+            <ul>
+            {this.state.errors.map(error => (
+              <li key={error}>{error}</li>
+            ))}
+            </ul>
+          </Message>
         </>
       
       )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Divider, Segment, Header, Grid, Image, Container } from 'semantic-ui-react';
+import { Divider, Segment, Header, Message, Image, Container } from 'semantic-ui-react';
 
 
 class ArticleCreated extends Component {
@@ -28,29 +28,28 @@ class ArticleCreated extends Component {
   
   render () {
     return (
-      <>
-        <Header as="h3">
+      <Container>
+        <Message color="green">
           Thank you for sharing your story! Your article is awaiting reviews.
-        </Header>
+        </Message>
 
-      <Segment padded>
-        <Header as="h1">{this.state.title}</Header>
-          <Divider></Divider>
+        <Segment padded>
+          <Header as="h1">{this.state.title}</Header>
+          
+          <Divider/>
 
-            <Image src={this.state.image} size="small" floated="left"></Image>
-             <p>
-                {this.state.ingress}
-            </p>
-            <p>
-              {this.state.body}
-            </p>
-            <Divider></Divider>
-            <p>Written by:
-            <h3>{this.state.written_by}</h3>
-            </p>
-          </Segment>
+          <Image src={this.state.image} size="large" floated="left"></Image>
+
+          <p style={{fontSize: "1.2em"}}>{this.state.ingress}</p>
+          <p>{this.state.body}</p>
+
+          <Divider/>
+
+          <strong>Written by: {this.state.written_by}</strong>
+
+        </Segment>
             
-      </>
+      </Container>
       )
     }
   }
