@@ -34,6 +34,7 @@ describe('Visitor can', () => {
       response: "Body can't be blank",
       status: 422
     })
-    cy.contains("Your article could not be created because of following error(s): Body can't be blank")
+    cy.contains("Your article could not be created because of following error(s):")
+    cy.contains("Body can't be blank")
   })
 })
