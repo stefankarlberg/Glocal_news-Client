@@ -9,7 +9,7 @@ class ListOfArticles extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3000/api/v1/articles').then(response => {
-      this.setState({ articles: response.data.entries });
+      this.setState({ articles: response.data.data });
     });
   }
 
