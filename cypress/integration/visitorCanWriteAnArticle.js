@@ -15,6 +15,6 @@ describe('Visitor can write an article', () => {
       response: 'Successfully created',
       status: 200
     })
-    cy.contains('Your article is under review process.')
+    cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
 })

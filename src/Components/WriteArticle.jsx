@@ -37,7 +37,13 @@ class WriteArticle extends Component {
     if (this.state.redirect === true) {
       return <Redirect to={{
         pathname: '/article-created',
-        state: { title: this.state.title }
+        state: { 
+          title: this.state.title, 
+          ingress: this.state.ingress,
+          body: this.state.body,
+          image: this.state.image,
+          written_by: this.state.written_by    
+        }
       }} />
     }
 
