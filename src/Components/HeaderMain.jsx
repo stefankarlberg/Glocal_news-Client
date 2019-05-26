@@ -30,7 +30,7 @@ const HeaderMain = () => {
         Glocal News
       </Header>
   
-      <Menu pointing primary>
+      <Menu pointing>
     
         <Select
           placeholder="Select country"
