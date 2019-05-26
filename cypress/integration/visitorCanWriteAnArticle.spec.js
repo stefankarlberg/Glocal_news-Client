@@ -1,5 +1,12 @@
 describe('Visitor can', () => {
   beforeEach(function() {
+    cy.server();
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/articles',
+      response: 'fixture:list_of_articles.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
     cy.get('#write_article').click()
   })
@@ -15,8 +22,8 @@ describe('Visitor can', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
-      response: 'Successfully created',
-      status: 200
+      response: 'fixture:create_article_success.json',
+//      status: 200
     })
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
@@ -31,7 +38,7 @@ describe('Visitor can', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
-      response: "Body can't be blank",
+      response: 'fixture:create_article_no_success.json',
       status: 422
     })
     cy.contains("Your article could not be created because of following error(s):")
