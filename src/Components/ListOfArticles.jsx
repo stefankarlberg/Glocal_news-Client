@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Grid, Container } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 class ListOfArticles extends Component {
   constructor(props) {
@@ -17,11 +18,25 @@ class ListOfArticles extends Component {
     });
   }
 
-  handleClick(e) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      return <Redirect to={{
+        pathname: '/full-article',
+        state: {
+          id: this.state.id
+        }
+      }} /> 
+        }
+  }
+
+  handleClick = (e) => {
     this.state.id = e.currentTarget.id
   }
 
   render() {
+   
+
+
     let articleList = this.state.articles.length ? (
       <div>
         {this.state.articles.map(article => {
@@ -39,6 +54,7 @@ class ListOfArticles extends Component {
         <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
       )
 
+     
 
     return (
       <>
