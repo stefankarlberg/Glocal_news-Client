@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Divider, Segment, Header, Image, Container } from 'semantic-ui-react'
 
 class FullArticle extends Component {
   constructor(props) {
@@ -10,34 +11,50 @@ class FullArticle extends Component {
       body: '',
       image: '',
       written_by: '',
-      created_at: '',
-      id: ''
+      created_at: ''
     };
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        id: this.props.location.state.id
-      }
-    )
-  }
-
-  componentDidMount() {
-    let mainPath = 'https://glocal-news.herokuapp.com/api/v1/articles/'
-    let articlePath = this.state.id
-    axios.get(`'${mainPath}${articlePath}'`).then(response => {
+    let mainPath = '/api/v1/articles/'
+    let articlePath = (this.props.location.state.id)
+    axios.get(mainPath+articlePath).then(response => {
       this.setState({
-        title: response.data.title
+        title: response.data.title,
+        ingress: response.data.ingress,
+        body: response.data.body,
+        image: response.data.image,
+        written_by: response.data.written_by,
+        created_at: response.data.created_at
       });
     });
   }
 
+
   render() {
     return (
       <>
-        <p>yay!</p>
-        <p>{this.state.id}</p>
+        <Container>
+
+          <Segment padded>
+            <Header as="h1">{this.state.title}</Header>
+            
+            <Divider/>
+
+            <Image src={this.state.image} size="large" floated="left"></Image>
+
+            <p style={{fontSize: "1.2em"}}>{this.state.ingress}</p>
+            <p>{this.state.body}</p>
+
+            <Divider/>
+
+            <strong>Written by: {this.state.written_by}</strong>
+            <br></br>
+            <i>{this.state.created_at}</i>
+
+          </Segment>
+              
+        </Container>
       </>
     )
   }
