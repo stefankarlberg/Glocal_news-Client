@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Divider, Segment, Header, Image, Container } from 'semantic-ui-react'
+import { Divider, Segment, Header, Image, Container, Grid } from 'semantic-ui-react'
 import moment from 'moment'
 
 class FullArticle extends Component {
@@ -33,7 +33,6 @@ class FullArticle extends Component {
     });
   }
 
-
   render() {
 
     let dateString = this.state.created_at;
@@ -44,25 +43,24 @@ class FullArticle extends Component {
     return (
       <>
         <Container>
+          <Grid centered columns={2}>
+            <Grid.Column width={11}>
+              <Segment padded>
+                <Header as="h1">{this.state.title}</Header>
+                <Divider />
+                <Image id={`photo_${this.state.id}`} src={this.state.image} size="large" floated="left"></Image>
+                <p style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
+                <p>{this.state.body}</p>
+                <Divider />
+                <strong>Written by: {this.state.written_by}</strong>
+                <br></br>
+                <i>{momentString}</i>
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={3}>
 
-          <Segment padded>
-            <Header as="h1">{this.state.title}</Header>
-
-            <Divider />
-
-            <Image id={`photo_${this.state.id}`} src={this.state.image} size="large" floated="left"></Image>
-
-            <p style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
-            <p>{this.state.body}</p>
-
-            <Divider />
-
-            <strong>Written by: {this.state.written_by}</strong>
-            <br></br>
-            <i>{momentString}</i>
-
-          </Segment>
-
+            </Grid.Column>
+          </Grid>
         </Container>
       </>
     )
