@@ -19,12 +19,6 @@ class ListOfArticles extends Component {
     });
   }
 
-  // handleClick = (e) => {
-  //   e.preventDefault();
-  //   this.state.id = e.currentTarget.id
-  //   this.state.redirect = true
-  // }
-
   handleClick = (e) => {
     this.setState({
       redirect: true,
@@ -40,14 +34,14 @@ class ListOfArticles extends Component {
         state: {
           id: this.state.id
         }
-      }} /> 
+      }} />
     } else if (this.state.redirect === false) {
       articleList = this.state.articles.length ? (
         <div>
           {this.state.articles.map(article => {
             return (
               <div id={article.id} key={article.id} onClick={this.handleClick}>
-  
+
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>
                 <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
@@ -58,10 +52,9 @@ class ListOfArticles extends Component {
         </div>
       ) : (
           <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
-      )
+        )
     }
 
-  
     return (
       <>
         <Container>

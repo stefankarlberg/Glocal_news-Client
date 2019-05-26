@@ -5,20 +5,16 @@ describe('Visitor can read an article', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles',
-      response: 'fixture:full_article.json',
+      response: 'fixture:list_of_articles.json',
       status: 200
     })
     cy.visit('http://localhost:3001')
-
-    let article = [
-      ["#1", "#title_1", "#ingress_1", "#photo_1", "#written_by_1", "#created_at_1"],
-    ]
-
-    cy.get(article[0]).click()
-    cy.get(article[0]).within(() => {
-      cy.get(article[1]), (article[2])
-      cy.get(article[3]).should('have.attr', 'src')
-      cy.get(article[4]), (article[5])
-    })
+    cy.get("#1").click()
+    cy.contains('A Day in Stockholm')
+    cy.contains('How to spend 24 hours in Stockholm')
+    cy.contains('body 1')
+    cy.contains('George')
+    cy.get('photo_1').should('have.attr', 'src')
+    cy.contains('2019/05/24')
   })
 })
