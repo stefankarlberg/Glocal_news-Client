@@ -1,3 +1,5 @@
 {
-  "message": "Body can't be blank"
+  "status": 422,
+  "headers": { },
+  "error": ["Body can't be blank"]
 }
