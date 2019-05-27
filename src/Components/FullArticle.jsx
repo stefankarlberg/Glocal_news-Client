@@ -43,10 +43,10 @@ class FullArticle extends Component {
           <Grid centered columns={2}>
             <Grid.Column width={11}>
               <Segment padded>
-                <Header as="h1">{this.state.title}</Header>
+                <Header id={`title_${this.state.id}`} as="h1">{this.state.title}</Header>
                 <Divider />
                 <Image id={`photo_${this.state.id}`} src={this.state.image} size="large" floated="left"></Image>
-                <p style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
+                <p id={`ingress_${this.state.id}`} style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
                 <p id={`body_${this.state.id}`}>{this.state.body}</p>
                 <Divider />
                 <strong id={`written_${this.state.id}`}>Written by: {this.state.written_by}</strong>
