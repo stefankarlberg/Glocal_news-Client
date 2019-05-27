@@ -11,9 +11,9 @@ describe('Visitor can view on the landing page', () => {
     cy.visit('http://localhost:3001')
 
     let articles = [
-      ["#id_1", "#title_1", "#ingress_1", "#photo_1"],
-      ["#id_2", "#title_2", "#ingress_2", "#photo_2"],
-      ["#id_3", "#title_3", "#ingress_3", "#photo_3"]
+      ["#1", "#title_1", "#ingress_1", "#photo_1"],
+      ["#2", "#title_2", "#ingress_2", "#photo_2"],
+      ["#3", "#title_3", "#ingress_3", "#photo_3"]
     ]
 
     articles.forEach(article => {
