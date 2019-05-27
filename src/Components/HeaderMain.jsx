@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select } from 'semantic-ui-react'
+import { Menu, Header, Select, Container } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const countryOptions = [
   {
@@ -26,15 +27,16 @@ const loggedInLabels = ['Welcome Member', 'Log Out']
 const HeaderMain = () => {
   return (
     <>
-      <Header as="h1" textAlign="center">
-        Glocal News
-      </Header>
-  
-      <Menu pointing primary>
-    
+      <Container textAlign="center">
+        <Header as={Link} to='/'>
+          GLOCAL NEWS
+        </Header>
+      </Container>
+
+      <Menu pointing>
         <Select
           placeholder="Select country"
-          selection 
+          selection
           id="country"
           options={countryOptions}
         />
@@ -45,35 +47,32 @@ const HeaderMain = () => {
           options={cityOptions}
         />
 
-
-        {mainLabels.map (m => (
+        {mainLabels.map(m => (
           <Menu.Item
-          key={m}
-          name={m}
-          link={m}
+            key={m}
+            name={m}
+            link={m}
           />
         ))}
         <Menu.Menu position='right'>
-          {loggedOutLabels.map (l => (
-            <Menu.Item 
-            key={l}
-            name={l}
-            link={l}
+          {loggedOutLabels.map(l => (
+            <Menu.Item
+              key={l}
+              name={l}
+              link={l}
             />
           ))}
-          {loggedInLabels.map (l => (
-            <Menu.Item 
-            key={l}
-            name={l}
-            link={l}
+          {loggedInLabels.map(l => (
+            <Menu.Item
+              key={l}
+              name={l}
+              link={l}
             />
-          ))}    
+          ))}
         </Menu.Menu>
       </Menu>
-    
-    <HeaderCategory/>
-
-  </>
+      <HeaderCategory />
+    </>
   )
 }
 export default HeaderMain
