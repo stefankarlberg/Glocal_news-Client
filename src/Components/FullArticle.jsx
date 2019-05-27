@@ -4,18 +4,15 @@ import { Divider, Segment, Header, Image, Container, Grid } from 'semantic-ui-re
 import moment from 'moment'
 
 class FullArticle extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: '',
-      title: '',
-      ingress: '',
-      body: '',
-      image: '',
-      written_by: '',
-      created_at: ''
-    };
-  }
+  state = {
+    id: '',
+    title: '',
+    ingress: '',
+    body: '',
+    image: '',
+    written_by: '',
+    created_at: ''
+  };
 
   componentDidMount() {
     let mainPath = '/api/v1/articles/'

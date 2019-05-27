@@ -1,6 +1,6 @@
 describe('Visitor can read an article', () => {
 
-  it('shows full article when clicked', () => {
+  beforeEach(function () {
     cy.server();
     cy.route({
       method: 'GET',
@@ -16,6 +16,10 @@ describe('Visitor can read an article', () => {
       response: 'fixture:full_article.json',
       status: 200
     })
+  })
+
+  it('shows full article when clicked', () => {
+
     cy.get("#1").click()
     cy.contains('A Day in Stockholm')
     cy.contains('Hot to spend 24 hours in Stockholm')

@@ -30,7 +30,7 @@ const HeaderMain = () => {
       <Container textAlign="center">
         <Header as={Link} to='/'>
           GLOCAL NEWS
-      </Header>
+        </Header>
       </Container>
 
       <Menu pointing>

@@ -4,18 +4,16 @@ import { Grid, Container } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 class ListOfArticles extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      id: '',
-      redirect: false
-    }
+  state = {
+    articles: [],
+    id: '',
+    redirect: false
   }
+
 
   componentDidMount() {
     axios.get('/api/v1/articles').then(response => {
-      this.setState({ articles: response.data.entries });
+      this.setState({ articles: response.data.data });
     });
   }
 
