@@ -47,11 +47,11 @@ class FullArticle extends Component {
                 <Divider />
                 <Image id={`photo_${this.state.id}`} src={this.state.image} size="large" floated="left"></Image>
                 <p style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
-                <p>{this.state.body}</p>
+                <p id={`body_${this.state.id}`}>{this.state.body}</p>
                 <Divider />
-                <strong>Written by: {this.state.written_by}</strong>
+                <strong id={`written_${this.state.id}`}>Written by: {this.state.written_by}</strong>
                 <br></br>
-                <i>{momentString}</i>
+                <i id={`date_${this.state.id}`}>{momentString}</i>
               </Segment>
             </Grid.Column>
             <Grid.Column width={3}>
