@@ -5,6 +5,7 @@ import axios from 'axios'
 
 class WriteArticle extends Component {
   state = {
+    id: '',
     title: '',
     ingress: '',
     body: '',
@@ -27,7 +28,10 @@ class WriteArticle extends Component {
     axios.post(path, payload)
       .then(response => {
         console.log(response)
-        this.setState({ redirect: true })
+        this.setState({ 
+          redirect: true,
+          id: response.data["article_id"]
+        })
       })
       .catch(error => {
         this.setState({ 
@@ -42,13 +46,15 @@ class WriteArticle extends Component {
 
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/article-created',
-        state: { 
+        pathname: '/full-article',
+        state: {
+          id: this.state.id,
           title: this.state.title, 
           ingress: this.state.ingress,
           body: this.state.body,
           image: this.state.image,
-          written_by: this.state.written_by    
+          written_by: this.state.written_by,
+          message: true    
         }
       }} />
     } else if (this.state.redirect === false) {
@@ -64,7 +70,6 @@ class WriteArticle extends Component {
             </ul>
           </Message>
         </>
-      
       )
     }
 
