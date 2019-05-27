@@ -27,10 +27,11 @@ class WriteArticle extends Component {
     const payload = {...this.state}
     axios.post(path, payload)
       .then(response => {
-        console.log(response)
+        //debugger
+        //console.log(response)
         this.setState({ 
           redirect: true,
-          id: response.data["article_id"]
+          id: response.data.article_id
         })
       })
       .catch(error => {
@@ -45,6 +46,7 @@ class WriteArticle extends Component {
     let message
 
     if (this.state.redirect === true) {
+      //debugger
       return <Redirect to={{
         pathname: '/full-article',
         state: {

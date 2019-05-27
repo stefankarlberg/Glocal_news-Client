@@ -1,7 +1,4 @@
 {
-  "status": 200,
-  "headers": { },
-  "data": {
-    "message": "Successfully created"
-  }
+  "message": "Successfully created",
+  "article_id": 9
 }
