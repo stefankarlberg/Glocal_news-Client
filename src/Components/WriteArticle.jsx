@@ -45,7 +45,6 @@ class WriteArticle extends Component {
     let message
 
     if (this.state.redirect === true) {
-      //debugger
       return <Redirect to={{
         pathname: '/full-article',
         state: {
