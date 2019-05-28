@@ -23,8 +23,8 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <Container as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
-              <div id={article.id} key={article.id}>
+            <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
+              <div id={article.id} >
 
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>

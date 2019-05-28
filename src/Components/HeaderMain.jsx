@@ -19,7 +19,16 @@ const cityOptions = [
   },
 ]
 
-const mainLabels = ['Write An Article', 'Review Articles']
+const mainLabels = [
+  {
+    name: 'Write An Article', 
+    link: '/write-article',
+    id: 'write_article'
+  }, {
+    name: 'Review Articles', 
+    link: ''
+  }
+]
 const loggedOutLabels = ['Sign Up', 'Log In']
 const loggedInLabels = ['Welcome Member', 'Log Out']
 
@@ -49,9 +58,11 @@ const HeaderMain = () => {
 
         {mainLabels.map(m => (
           <Menu.Item
-            key={m}
-            name={m}
-            link={m}
+            key={m.name}
+            name={m.name}
+            as={Link}
+            to={m.link}
+            id={m.id}
           />
         ))}
         <Menu.Menu position='right'>
