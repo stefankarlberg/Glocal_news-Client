@@ -37,11 +37,11 @@ class ListOfUnpublishedArticles extends Component {
 
   return (
     <>
-      <Header>
-        Unpublished Articles
-      </Header>
+     <Container>
+        <Header>
+          Unpublished Articles
+        </Header>
 
-      <Container>
          <Grid centered columns={3}>
            <Grid.Column width={7}>
              {articleList}

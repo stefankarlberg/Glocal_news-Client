@@ -1,8 +1,4 @@
 describe('Visitor can view unpublished articles', () => {
-  beforeEach(function () {
-    cy.visit('http://localhost:3001')
-    cy.get('#review_articles').click()
-  })
 
   it('by seeing a correct page headline', () => {
     cy.visit('http://localhost:3001')
@@ -18,7 +14,6 @@ describe('Visitor can view unpublished articles', () => {
       response: 'fixture:list_of_articles_with_review_count.json',
       status: 200
     })
-
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
 
@@ -35,4 +30,33 @@ describe('Visitor can view unpublished articles', () => {
     })
   })
 
+  beforeEach(function () {
+    cy.server();
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/articles',
+      response: 'fixture:list_of_articles_with_review_count.json',
+      status: 200
+    })
+    cy.visit('http://localhost:3001')
+    cy.get('#review_articles').click()
+  })
+  
+  it('by showing full article when clicked on', () => {
+    cy.server();
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/articles/1',
+      response: 'fixture:full_article.json',
+      status: 200
+    })
+
+    cy.get("#1").click()
+    
+    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1",]
+
+    article.forEach(element => {
+      cy.get(element)
+    })
+  })
 })
