@@ -1,11 +1,14 @@
 describe('Visitor can view unpublished articles', () => {
+  beforeEach(function () {
+    cy.visit('http://localhost:3001')
+    cy.get('#review_articles').click()
+  })
 
   it('by seeing a correct page headline', () => {
-    cy.visit('http://localhost:3001')
     cy.contains('Unpublished Articles')
   })
   
-  it('by seeing a list of unpublished articles', () => {
+  it('by seeing a list of unpublished articles on Reviews page', () => {
     cy.server();
     cy.route({
       method: 'GET',
@@ -13,7 +16,6 @@ describe('Visitor can view unpublished articles', () => {
       response: 'fixture:list_of_unpublished_articles.json',
       status: 200
     })
-    cy.visit('http://localhost:3001')
 
     let articles = [
       ["#1", "#title_1", "#ingress_1", "#photo_1"],
