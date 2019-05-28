@@ -5,6 +5,8 @@ describe('Visitor can view unpublished articles', () => {
   })
 
   it('by seeing a correct page headline', () => {
+    cy.visit('http://localhost:3001')
+    cy.get('#review_articles').click()
     cy.contains('Unpublished Articles')
   })
   
@@ -17,10 +19,12 @@ describe('Visitor can view unpublished articles', () => {
       status: 200
     })
 
+    cy.visit('http://localhost:3001')
+    cy.get('#review_articles').click()
+
     let articles = [
       ["#1", "#title_1", "#ingress_1", "#photo_1"],
       ["#2", "#title_2", "#ingress_2", "#photo_2"],
-      ["#3", "#title_3", "#ingress_3", "#photo_3"]
     ]
 
     articles.forEach(article => {

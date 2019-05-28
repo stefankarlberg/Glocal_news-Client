@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Header, Container } from 'semantic-ui-react';
+import { Header, Container, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 class ListOfUnpublishedArticles extends Component {
@@ -41,7 +41,19 @@ class ListOfUnpublishedArticles extends Component {
         Unpublished Articles
       </Header>
 
-      <p>{articleList}</p>
+      <Container>
+         <Grid centered columns={3}>
+           <Grid.Column width={7}>
+             {articleList}
+           </Grid.Column>
+
+           <Grid.Column width={4}>
+           </Grid.Column>
+
+           <Grid.Column width={3}>
+           </Grid.Column>
+         </Grid>
+      </Container>
     </>
   )
   }
