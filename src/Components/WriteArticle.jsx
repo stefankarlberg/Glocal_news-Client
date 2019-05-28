@@ -11,6 +11,7 @@ class WriteArticle extends Component {
     body: '',
     image: '',
     written_by: '',
+    category_id: '',
     redirect: '',
     errors: ''
   }
