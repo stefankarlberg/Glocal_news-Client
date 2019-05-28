@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "A Day in Stockholm",
+      "ingress": "How to spend 24 hours in Stockholm",
+      "image": "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg",
+      "review_count": 3
+    },
+    {
+      "id": 2,
+      "title": "A Day in Paris",
+      "ingress": "How to spend 24 hours in Paris",
+      "image": "https://image.freepik.com/free-photo/paris-city-view-from-high_1160-763.jpg",
+      "review_count": 0
+    },
+    {
+      "id": 3,
+      "title": "A Day in Rome",
+      "ingress": "How to spend 24 hours in Rome",
+      "image": "https://image.freepik.com/free-photo/roman-coliseum-seen-from-afar_1219-15.jpg",
+      "review_count": 2
+    }
+  ]
+}
