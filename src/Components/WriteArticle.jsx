@@ -50,11 +50,6 @@ class WriteArticle extends Component {
         pathname: '/full-article',
         state: {
           id: this.state.id,
-          title: this.state.title,
-          ingress: this.state.ingress,
-          body: this.state.body,
-          image: this.state.image,
-          written_by: this.state.written_by,
           message: true
         }
       }} />

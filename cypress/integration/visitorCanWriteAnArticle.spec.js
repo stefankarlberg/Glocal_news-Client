@@ -29,7 +29,7 @@ describe('Visitor can', () => {
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
   
-  xit('not create an article if all fields are not filled in', () => {
+  it('not create an article if all fields are not filled in', () => {
     cy.get('#title').type('Sunny day')
     cy.get('#ingress').type('Today the sun is shining.')
     cy.get('#written_by').type('Boa Matule')
