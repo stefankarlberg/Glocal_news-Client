@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { COUNTRY_OPTIONS } from './countriesData.js'
 
 class WriteArticle extends Component {
+  
   state = {
     id: '',
     title: '',
@@ -14,7 +16,8 @@ class WriteArticle extends Component {
     category_id: '',
     redirect: '',
     errors: '',
-    categories: []
+    categories: [],
+    country: ''
   }
 
   componentDidMount() {
@@ -51,6 +54,10 @@ class WriteArticle extends Component {
 
   handleChangeCategory = (e, { value }) => {
     this.setState({ category_id: value })
+  }
+  
+  handleChangeCountry = (e) => {
+    this.setState({ country: e.target.textContent })
   }
 
   render() {
@@ -122,10 +129,20 @@ class WriteArticle extends Component {
               placeholder="https://image.com"
             />
 
-            <Dropdown clearable placeholder="Select Category" value={value} options={options} id="category_select" onChange={this.handleChangeCategory} selection />
+            <Dropdown clearable search placeholder="Select Category" value={value} options={options} id="category_select" onChange={this.handleChangeCategory} selection />
             <br></br>
             <br></br>
-
+            <Dropdown
+              clearable
+              placeholder="Select Country"
+              onChange={this.handleChangeCountry}
+              options={COUNTRY_OPTIONS}
+              search
+              selection
+              selectOnBlur={false}
+            />
+            <br></br>
+            <br></br>
             <Button id="create">Create Article</Button>
           </Form>
         </Container>
