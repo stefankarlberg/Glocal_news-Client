@@ -18,9 +18,9 @@ class ListOfUnpublishedArticles extends Component {
     let articleList = (
       <div>
         {this.state.articles.map(article => {
-          if(article.review_count < 3) {
+          if(article.published !== true) {
             return (
-              <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
+              <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { }` } }}>
                 <div id={article.id} >
 
                   <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />

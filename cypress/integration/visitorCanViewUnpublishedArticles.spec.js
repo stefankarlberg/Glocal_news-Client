@@ -43,11 +43,10 @@ describe('Visitor can view unpublished articles', () => {
   })
   
   it('by showing full article when clicked on', () => {
-    cy.server();
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles/1',
-      response: 'fixture:list_of_articles_with_review_count.json',
+      response: 'fixture:full_article.json',
       status: 200
     })
 
