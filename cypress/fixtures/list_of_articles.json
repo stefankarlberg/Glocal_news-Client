@@ -1,20 +1,30 @@
 [
   {
-    "id": 1,
+    "id": 36,
     "title": "A Day in Stockholm",
     "ingress": "How to spend 24 hours in Stockholm",
     "image": "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"
   },
   {
-    "id": 2,
+    "id": 37,
     "title": "A Day in Paris",
     "ingress": "How to spend 24 hours in Paris",
     "image": "https://image.freepik.com/free-photo/paris-city-view-from-high_1160-763.jpg"
   },
   {
-    "id": 3,
+    "id": 38,
     "title": "A Day in Rome",
     "ingress": "How to spend 24 hours in Rome",
     "image": "https://image.freepik.com/free-photo/roman-coliseum-seen-from-afar_1219-15.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Rainy day",
+    "ingress": "Today it rained.",
+    "body": "Rain is good for flowers.",
+    "written_by": "Boa Matule",
+    "image": "https://github.com",
+    "category_id": 1
   }
+
 ]
