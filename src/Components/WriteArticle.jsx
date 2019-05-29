@@ -5,7 +5,6 @@ import axios from 'axios'
 import { COUNTRY_OPTIONS } from './countriesData.js'
 
 class WriteArticle extends Component {
-  
   state = {
     id: '',
     title: '',
@@ -17,7 +16,8 @@ class WriteArticle extends Component {
     redirect: '',
     errors: '',
     categories: [],
-    country: ''
+    country: '',
+    city: ''
   }
 
   componentDidMount() {
@@ -55,9 +55,9 @@ class WriteArticle extends Component {
   handleChangeCategory = (e, { value }) => {
     this.setState({ category_id: value })
   }
-  
-  handleChangeCountry = (e) => {
-    this.setState({ country: e.target.textContent })
+
+  handleChangeCountry = (e, { value }) => {
+    this.setState({ country: value })
   }
 
   render() {
@@ -66,8 +66,6 @@ class WriteArticle extends Component {
     const options = this.state.categories.map(category => {
       return { key: category.id, text: category.name, value: category.id }
     })
-
-    const { value } = this.state
 
     if (this.state.redirect === true) {
       return <Redirect to={{
@@ -128,18 +126,33 @@ class WriteArticle extends Component {
               onChange={this.onChangeHandler}
               placeholder="https://image.com"
             />
-
-            <Dropdown clearable search placeholder="Select Category" value={value} options={options} id="category_select" onChange={this.handleChangeCategory} selection />
+            <Dropdown
+              clearable
+              search
+              placeholder="Select Category"
+              options={options}
+              id="category_select"
+              onChange={this.handleChangeCategory}
+              selection
+            />
             <br></br>
             <br></br>
             <Dropdown
               clearable
+              id="select_country"
               placeholder="Select Country"
               onChange={this.handleChangeCountry}
               options={COUNTRY_OPTIONS}
               search
               selection
-              selectOnBlur={false}
+            />
+            <br></br>
+            <br></br>
+            <Form.Input
+              id="city"
+              value={this.state.city}
+              onChange={this.onChangeHandler}
+              placeholder="City Name"
             />
             <br></br>
             <br></br>
