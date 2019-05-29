@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Container, Button, Message } from 'semantic-ui-react'
+import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
@@ -42,8 +42,19 @@ class WriteArticle extends Component {
       })
   }
 
+  handleChangeCategory = (e, { value }) => {
+    this.setState({ category_id: value })
+  }
+
   render() {
     let message
+    
+    const options = [
+      { key: 1, text: 'Choice 1', value: 1 },
+      { key: 2, text: 'Choice 2', value: 2 },
+      { key: 3, text: 'Choice 3', value: 3 },
+    ]
+    const { value } = this.state
 
     if (this.state.redirect === true) {
       return <Redirect to={{
@@ -69,7 +80,7 @@ class WriteArticle extends Component {
       )
     }
 
-    return (
+    return (    
       <>
         <Container>
           <Form type="medium" id="write-article" onSubmit={this.onSubmit}>
@@ -103,6 +114,10 @@ class WriteArticle extends Component {
               onChange={this.onChangeHandler}
               placeholder="https://image.com"
             />
+
+            <Dropdown clearable value={value} options={options} id="category_id" onChange={this.handleChangeCategory} selection />
+
+
             <Button id="create">Create Article</Button>
           </Form>
           <p>{message}</p>
