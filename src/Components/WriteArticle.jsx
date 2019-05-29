@@ -13,7 +13,15 @@ class WriteArticle extends Component {
     written_by: '',
     category_id: '',
     redirect: '',
-    errors: ''
+    errors: '',
+    categories: []
+  }
+  
+  componentDidMount() {
+    axios.get('/api/v1/categories').then(response => {
+      debugger
+      this.setState({ categories: response.data });
+    });
   }
 
   onChangeHandler = (e) => {
@@ -49,21 +57,11 @@ class WriteArticle extends Component {
   render() {
     let message
 
-    const options = [
-      { key: 1, text: 'Politics', value: 1 },
-      { key: 2, text: 'Opinion', value: 2 },
-      { key: 3, text: 'Business', value: 3 },
-      { key: 4, text: 'Technology', value: 4 },
-      { key: 5, text: 'Science', value: 5 },
-      { key: 6, text: 'Health', value: 6 },
-      { key: 7, text: 'Sports', value: 7 },
-      { key: 8, text: 'Arts', value: 8 },
-      { key: 9, text: 'Books', value: 9 },
-      { key: 10, text: 'Style', value: 10 },
-      { key: 11, text: 'Food', value: 11 },
-      { key: 12, text: 'Travel', value: 12 },
-      { key: 13, text: 'Real Estate', value: 13 }
-    ]
+    const options = []
+    this.state.categories.forEach(category => {
+      options.push({key: category.id, text: category.name, value: category.id})
+    })
+
     const { value } = this.state
 
     if (this.state.redirect === true) {
