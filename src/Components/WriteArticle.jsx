@@ -122,7 +122,15 @@ class WriteArticle extends Component {
               placeholder="https://image.com"
             />
 
-            <Dropdown clearable placeholder="Select Category" value={value} options={options} id="category_select" onChange={this.handleChangeCategory} selection />
+            <Dropdown 
+              clearable 
+              placeholder="Select Category" 
+              value={value} 
+              options={options} 
+              id="category_select" 
+              onChange={this.handleChangeCategory} 
+              selection 
+            />
             <br></br>
             <br></br>
 

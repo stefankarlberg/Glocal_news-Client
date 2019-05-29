@@ -4,7 +4,7 @@ describe('Visitor can view unpublished articles', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles',
-      response: 'fixture:list_of_articles_with_review_count.json',
+      response: 'fixture:list_of_articles_with_published.json',
       status: 200
     })
     cy.visit('http://localhost:3001')
@@ -18,13 +18,6 @@ describe('Visitor can view unpublished articles', () => {
   })
   
   it('by seeing a list of unpublished articles on Reviews page', () => {
-    cy.server();
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
-      response: 'fixture:list_of_articles_with_review_count.json',
-      status: 200
-    })
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
 
@@ -51,7 +44,7 @@ describe('Visitor can view unpublished articles', () => {
 
     cy.get("#1").click()
     
-    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1",]
+    let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36",]
 
     article.forEach(element => {
       cy.get(element)
