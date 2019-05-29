@@ -16,10 +16,9 @@ class WriteArticle extends Component {
     errors: '',
     categories: []
   }
-  
+
   componentDidMount() {
     axios.get('/api/v1/categories').then(response => {
-      debugger
       this.setState({ categories: response.data });
     });
   }
@@ -57,9 +56,8 @@ class WriteArticle extends Component {
   render() {
     let message
 
-    const options = []
-    this.state.categories.forEach(category => {
-      options.push({key: category.id, text: category.name, value: category.id})
+    const options = this.state.categories.map(category => {
+      return { key: category.id, text: category.name, value: category.id }
     })
 
     const { value } = this.state
