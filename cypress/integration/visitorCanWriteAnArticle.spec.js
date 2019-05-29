@@ -22,15 +22,13 @@ describe('Visitor can', () => {
     cy.get('#body').type('Rain is good for flowers.')
     cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
-    cy.get('#categorySelect').select('Politics')
-
-
+    cy.get('#category_select').click()
     cy.get('#create').click()
     cy.contains('Rainy day')
     cy.contains('Politics')
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
-  
+
   it('not create an article if all fields are not filled in', () => {
     cy.get('#title').type('Sunny day')
     cy.get('#ingress').type('Today the sun is shining.')

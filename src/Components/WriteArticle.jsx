@@ -48,7 +48,7 @@ class WriteArticle extends Component {
 
   render() {
     let message
-    
+
     const options = [
       { key: 1, text: 'Politics', value: 1 },
       { key: 2, text: 'Opinion', value: 2 },
@@ -90,9 +90,10 @@ class WriteArticle extends Component {
       )
     }
 
-    return (    
+    return (
       <>
         <Container>
+          <p>{message}</p>
           <Form type="medium" id="write-article" onSubmit={this.onSubmit}>
             <Form.Input
               id="title"
@@ -125,12 +126,12 @@ class WriteArticle extends Component {
               placeholder="https://image.com"
             />
 
-            <Dropdown clearable value={value} options={options} id="category_id" onChange={this.handleChangeCategory} selection />
-
+            <Dropdown clearable value={value} options={options} id="category_select" onChange={this.handleChangeCategory} selection />
+            <br></br>
+            <br></br>
 
             <Button id="create">Create Article</Button>
           </Form>
-          <p>{message}</p>
         </Container>
       </>
     )

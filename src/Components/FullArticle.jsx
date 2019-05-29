@@ -20,7 +20,6 @@ class FullArticle extends Component {
     let mainPath = '/api/v1/articles/'
     let articlePath = (this.props.location.state.id)
     axios.get(mainPath + articlePath).then(response => {
-      //debugger
       this.setState({
         id: response.data.id,
         title: response.data.title,
@@ -34,12 +33,12 @@ class FullArticle extends Component {
     });
     this.setState(
       {
-        message: this.props.location.state.message 
+        message: this.props.location.state.message
       }
     )
   }
 
-  
+
 
   render() {
 

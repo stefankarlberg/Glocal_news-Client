@@ -25,7 +25,6 @@ class ListOfArticles extends Component {
           return (
             <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
               <div id={article.id} >
-
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>
                 <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
