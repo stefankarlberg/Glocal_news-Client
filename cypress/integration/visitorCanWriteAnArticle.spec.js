@@ -29,9 +29,13 @@ describe('Visitor can', () => {
     cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
     cy.get('#category_select').click()
+    cy.get('#country_select').click()
+    cy.get('#city_select').type('Thessaloniki')
     cy.get('#create').click()
     cy.contains('Rainy day')
     cy.contains('Politics')
+    cy.contains('Greece')
+    cy.contains('Thessaloniki')
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
 

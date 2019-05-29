@@ -5,6 +5,8 @@
   "body": "Rain is good for flowers.",
   "written_by": "Boa Matule",
   "image": "https://github.com",
+  "country": "Greece",
+  "city": "Thessaloniki",
   "category": {
     "id": 1,
     "name": "Politics"
