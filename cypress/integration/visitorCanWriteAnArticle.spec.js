@@ -12,6 +12,12 @@ describe('Visitor can', () => {
       url: 'http://localhost:3000/api/v1/articles',
       response: 'fixture:create_article_success.json'
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/articles/9',
+      response: 'fixture:one_article.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
     cy.get('#write_article').click()
   })

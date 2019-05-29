@@ -15,7 +15,7 @@ describe('Visitor can read an article', () => {
     cy.server();
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1',
+      url: 'http://localhost:3000/api/v1/articles/36',
       response: 'fixture:full_article.json',
       status: 200
     })
