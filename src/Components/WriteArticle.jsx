@@ -50,9 +50,19 @@ class WriteArticle extends Component {
     let message
     
     const options = [
-      { key: 1, text: 'Choice 1', value: 1 },
-      { key: 2, text: 'Choice 2', value: 2 },
-      { key: 3, text: 'Choice 3', value: 3 },
+      { key: 1, text: 'Politics', value: 1 },
+      { key: 2, text: 'Opinion', value: 2 },
+      { key: 3, text: 'Business', value: 3 },
+      { key: 4, text: 'Technology', value: 4 },
+      { key: 5, text: 'Science', value: 5 },
+      { key: 6, text: 'Health', value: 6 },
+      { key: 7, text: 'Sports', value: 7 },
+      { key: 8, text: 'Arts', value: 8 },
+      { key: 9, text: 'Books', value: 9 },
+      { key: 10, text: 'Style', value: 10 },
+      { key: 11, text: 'Food', value: 11 },
+      { key: 12, text: 'Travel', value: 12 },
+      { key: 13, text: 'Real Estate', value: 13 }
     ]
     const { value } = this.state
 

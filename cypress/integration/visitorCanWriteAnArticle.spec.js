@@ -27,6 +27,7 @@ describe('Visitor can', () => {
 
     cy.get('#create').click()
     cy.contains('Rainy day')
+    cy.contains('Politics')
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
   

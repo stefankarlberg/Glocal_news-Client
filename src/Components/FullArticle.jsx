@@ -12,6 +12,7 @@ class FullArticle extends Component {
     image: '',
     written_by: '',
     created_at: '',
+    category_name: '',
     message: false
   };
 
@@ -19,6 +20,7 @@ class FullArticle extends Component {
     let mainPath = '/api/v1/articles/'
     let articlePath = (this.props.location.state.id)
     axios.get(mainPath + articlePath).then(response => {
+      //debugger
       this.setState({
         id: response.data.id,
         title: response.data.title,
@@ -26,7 +28,8 @@ class FullArticle extends Component {
         body: response.data.body,
         image: response.data.image,
         written_by: response.data.written_by,
-        created_at: response.data.created_at
+        created_at: response.data.created_at,
+        category_name: response.data.category.name
       });
     });
     this.setState(
@@ -70,6 +73,8 @@ class FullArticle extends Component {
                 <strong id={`written_${this.state.id}`}>Written by: {this.state.written_by}</strong>
                 <br></br>
                 <i id={`date_${this.state.id}`}>{momentString}</i>
+                <br></br>
+                <strong id={`category_${this.state.id}`}>Category: {this.state.category_name}</strong>
               </Segment>
             </Grid.Column>
             <Grid.Column width={3}>
