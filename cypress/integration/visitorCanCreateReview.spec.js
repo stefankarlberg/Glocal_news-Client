@@ -9,7 +9,7 @@ describe('Visitor can', () => {
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/??????',
+      url: 'http://localhost:3000/api/v1/articles/1/reviews',
       response: 'fixture:create_a_review_success.json'
     })
     cy.visit('http://localhost:3001')
@@ -19,7 +19,7 @@ describe('Visitor can', () => {
   it('see unpublished article when clicked on', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/???????',
+      url: 'http://localhost:3000/api/v1/articles/1',
       response: 'fixture:full_article.json',
       status: 200
     })
@@ -47,7 +47,7 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/????????????????',
+      url: 'http://localhost:3000/api/v1/articles/1/reviews',
       response: 'fixture:create_review_no_success.json',
       status: 422
     })
