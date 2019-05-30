@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Politics"
+  },
+  {
+    "id": 2,
+    "name": "Opinion"
+  },
+  {
+    "id": 3,
+    "name": "Business"
+  },
+  {
+    "id": 4,
+    "name": "Technology"
+  },
+  {
+    "id": 5,
+    "name": "Science"
+  },
+  {
+    "id": 6,
+    "name": "Health"
+  },
+  {
+    "id": 7,
+    "name": "Sports"
+  },
+  {
+    "id": 8,
+    "name": "Arts"
+  },
+  {
+    "id": 9,
+    "name": "Books"
+  },
+  {
+    "id": 10,
+    "name": "Style"
+  },
+  {
+    "id": 11,
+    "name": "Food"
+  },
+  {
+    "id": 12,
+    "name": "Travel"
+  },
+  {
+    "id": 13,
+    "name": "Real Estate"
+  }
+]

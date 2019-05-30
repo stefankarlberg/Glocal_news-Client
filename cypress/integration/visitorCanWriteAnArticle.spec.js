@@ -18,6 +18,12 @@ describe('Visitor can', () => {
       response: 'fixture:one_article.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
     cy.get('#write_article').click()
   })
@@ -29,8 +35,8 @@ describe('Visitor can', () => {
     cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
     cy.get('#category_select').click()
-    cy.get('#country_select').click()
-    cy.get('#city_select').type('Thessaloniki')
+    cy.get('#select_country').click()
+    cy.get('#write_city').type('Thessaloniki')
     cy.get('#create').click()
     cy.contains('Rainy day')
     cy.contains('Politics')

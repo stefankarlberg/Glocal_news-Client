@@ -139,7 +139,7 @@ class WriteArticle extends Component {
             <br></br>
             <Dropdown
               clearable
-              id="country"
+              id="select_country"
               placeholder="Select Country"
               onChange={this.handleChangeCountry}
               options={COUNTRY_OPTIONS}
@@ -149,7 +149,7 @@ class WriteArticle extends Component {
             <br></br>
             <br></br>
             <Form.Input
-              id="city"
+              id="write_city"
               value={this.state.city}
               onChange={this.onChangeHandler}
               placeholder="City Name"
