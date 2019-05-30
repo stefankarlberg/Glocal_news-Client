@@ -34,4 +34,18 @@ describe('Visitor can', () => {
     cy.get('#create').click()
     cy.contains('Thank you for reviewing!')
   })
+
+  it('get an error message if all fields are not filled in', () => {
+    cy.get('#comment').type('Great article!')
+    cy.server();
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/articles',
+      response: 'fixture:create_review_no_success.json',
+      status: 422
+    })
+    cy.get('#create').click()
+    cy.contains("Score can't be blank")
+  })
+
 })
