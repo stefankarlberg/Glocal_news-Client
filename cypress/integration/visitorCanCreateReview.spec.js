@@ -9,7 +9,7 @@ describe('Visitor can', () => {
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/reviews',
+      url: 'http://localhost:3000/api/v1/??????',
       response: 'fixture:create_a_review_success.json'
     })
     cy.visit('http://localhost:3001')
@@ -19,7 +19,7 @@ describe('Visitor can', () => {
   it('see unpublished article when clicked on', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/reviews',
+      url: 'http://localhost:3000/api/v1/???????',
       response: 'fixture:full_article.json',
       status: 200
     })
@@ -38,7 +38,7 @@ describe('Visitor can', () => {
     // not sure how to get id of score, should we say ex. score_1 and/or have a selector?
 
     cy.get('#comment').type('Great article!')
-    cy.get('#create-review').click()
+    cy.get('#create_review').click()
     cy.contains('Thank you for reviewing!')
   })
 
@@ -47,12 +47,12 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3000/api/v1/????????????????',
       response: 'fixture:create_review_no_success.json',
       status: 422
     })
-    cy.get('#create-review').click()
-    cy.contains("Your article could not be created because of following error(s):")
+    cy.get('#create_review').click()
+    cy.contains("Your review could not be created because of following error(s):")
     cy.contains("Score can't be blank")
   })
 
