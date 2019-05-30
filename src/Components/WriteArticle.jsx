@@ -17,7 +17,7 @@ class WriteArticle extends Component {
     errors: '',
     categories: [],
     country: '',
-    city: ''
+    write_city: ''
   }
 
   componentDidMount() {
