@@ -80,6 +80,48 @@ class ReviewArticle extends Component {
       
       return (
         <>
+          <Container>
+            <Grid centered columns={2}>
+              <Grid.Column width={11}>
+                {message}
+                <Segment padded>
+                  <Header id={`title_${this.state.id}`} as="h1">{this.state.title}</Header>
+                    <Divider />
+                      <Image id={`photo_${this.state.id}`} src={this.state.image} size="large" floated="left"></Image>
+                        <p id={`ingress_${this.state.id}`} style={{ fontSize: "1.2em" }}>{this.state.ingress}</p>
+                        <p id={`body_${this.state.id}`}>{this.state.body}</p>
+                    <Divider />
+                      <strong id={`written_${this.state.id}`}>Written by: {this.state.written_by}</strong>
+                      <br></br>
+                      <i id={`date_${this.state.id}`}>{momentString}</i>
+
+                    <Form type="medium" id="review_articles" onSubmit={this.onSubmit}>
+                    { /* SHOULD IT BE A NEW COLUMN OR BENEATH THE ARTICLE? */}
+                    { /* SHOULD IT BE 10 DIFFERENT BUTTONS????? OR SELECTOR??? */}
+                      <Form.Input
+                          id="score"
+                          value={this.state.score}
+                          onChange={this.onChangeHandler}
+                          placeholder="Score"
+                        />
+
+                      <Form.Input
+                        id="comment"
+                        value={this.state.comment}
+                        onChange={this.onChangeHandler}
+                        placeholder="Comment"
+                      />
+                      <Button id="create_review">Send review</Button>
+                    </Form>
+
+                </Segment>
+              </Grid.Column>
+
+              <Grid.Column width={3}>
+
+              </Grid.Column>
+            </Grid>
+          </Container>
         </>
       )
     }
