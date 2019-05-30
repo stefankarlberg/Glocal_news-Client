@@ -1,5 +1,5 @@
 {
   "status": 422,
-  "headers": { },
+  "headers": {},
   "error": ["Score can't be blank"]
 }
