@@ -13,7 +13,9 @@ class FullArticle extends Component {
     written_by: '',
     created_at: '',
     category_name: '',
-    message: false
+    message: false,
+    country: '',
+    city: ''
   };
 
   componentDidMount() {
@@ -28,7 +30,9 @@ class FullArticle extends Component {
         image: response.data.image,
         written_by: response.data.written_by,
         created_at: response.data.created_at,
-        category_name: response.data.category.name
+        category_name: response.data.category.name,
+        country: response.data.country,
+        city: response.data.city
       });
     });
     this.setState(
@@ -74,6 +78,10 @@ class FullArticle extends Component {
                 <i id={`date_${this.state.id}`}>{momentString}</i>
                 <br></br>
                 <strong id={`category_${this.state.id}`}>Category: {this.state.category_name}</strong>
+                <br></br>
+                <strong id={`country_${this.state.id}`}>Country: {this.state.country}</strong>
+                <br></br>
+                <strong id={`city_${this.state.id}`}>City: {this.state.city}</strong>
               </Segment>
             </Grid.Column>
             <Grid.Column width={3}>
