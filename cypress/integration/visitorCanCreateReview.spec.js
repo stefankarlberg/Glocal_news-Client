@@ -26,7 +26,7 @@ describe('Visitor can', () => {
 
     cy.get("#1").click()
 
-    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1"]
+    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1", "#created_at"]
 
     article.forEach(element => {
       cy.get(element)
@@ -42,17 +42,17 @@ describe('Visitor can', () => {
     cy.contains('Thank you for reviewing!')
   })
 
-//   it('get an error message if all fields are not filled in', () => {
-//     cy.get('#comment').type('Great article!')
-//     cy.server();
-//     cy.route({
-//       method: 'POST',
-//       url: 'http://localhost:3000/api/v1/articles/1/reviews',
-//       response: 'fixture:create_review_no_success.json',
-//       status: 422
-//     })
-//     cy.get('#create_review').click()
-//     cy.contains("Your review could not be created because of following error(s):")
-//     cy.contains("Score can't be blank")
-//   })
+  it('get an error message if all fields are not filled in', () => {
+    cy.get('#comment').type('Great article!')
+    cy.server();
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/articles/1/reviews',
+      response: 'fixture:create_review_no_success.json',
+      status: 422
+    })
+    cy.get('#create_review').click()
+    cy.contains("Your review could not be created because of following error(s):")
+    cy.contains("Score can't be blank")
+  })
 })

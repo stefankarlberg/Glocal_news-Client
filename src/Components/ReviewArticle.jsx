@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Divider, Segment, Button, Header, Image, Container, Grid, Message } from 'semantic-ui-react'
+import { Divider, Segment, Button, Header, Image, Container, Grid, Message, Form } from 'semantic-ui-react'
 import moment from 'moment'
 
 class ReviewArticle extends Component {
@@ -17,55 +17,57 @@ class ReviewArticle extends Component {
     score: '',
     comment: '',
     redirect: '',
+    published: false
   }
 
-  // componentDidMount() {
-  //   let mainPath = '/api/v1/articles/'
-  //   let articlePath = (this.props.location.state.id)
-  //   axios.get(mainPath + articlePath).then(response => {
-  //     this.setState({
-  //       id: response.data.id,
-  //       title: response.data.title,
-  //       ingress: response.data.ingress,
-  //       body: response.data.body,
-  //       image: response.data.image,
-  //       written_by: response.data.written_by,
-  //       created_at: response.data.created_at,
-  //       category_name: response.data.category.name
-  //     });
-  //   });
-  //   this.setState(
-  //     {
-  //       message: this.props.location.state.message
-  //     }
-  //   )
-  // }
+  componentDidMount() {
+    let mainPath = '/api/v1/articles'
+    let articlePath = (this.props.location.state.id)
+    axios.get(mainPath + articlePath).then(response => {
+      this.setState({
+        id: response.data.id,
+        title: response.data.title,
+        ingress: response.data.ingress,
+        body: response.data.body,
+        image: response.data.image,
+        written_by: response.data.written_by,
+        created_at: response.data.created_at,
+        category_name: response.data.category.name,
+        published: response.data.published
+      });
+    });
+    this.setState(
+      {
+        message: this.props.location.state.message
+      }
+    )
+  }
   
-  // onChangeHandler = (e) => {
-  //   this.setState({
-  //     [e.target.id]: e.target.value
-  //   })
-  // }
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
-  // onSubmit = (e) => {
-  //   e.preventDefault();
-  // const path = '/api/v1/articles' { /* should this then be /1/reviews? it feels wrong */}
-  //   const payload = { ...this.state }
-  //   axios.post(path, payload)
-  //     .then(response => {
-  //       console.log(response)
-  //       this.setState({
-  //         redirect: true,
-  //         id: response.data.article_id
-  //       })
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         redirect: false,
-  //         errors: error.response.data.error
-  //       })
-  //     })
-  // }
+  onSubmit = (e) => {
+    e.preventDefault();
+  const path = '/api/v1/articles/1/reviews'
+    const payload = { ...this.state }
+    axios.post(path, payload)
+      .then(response => {
+        console.log(response)
+        this.setState({
+          redirect: true,
+          id: response.data.article_id
+        })
+      })
+      .catch(error => {
+        this.setState({
+          redirect: false,
+          errors: error.response.data.error
+        })
+      })
+  }
 
     render() {
 
@@ -146,6 +148,6 @@ class ReviewArticle extends Component {
       )
     }
   }
-}
+// }
 
 export default ReviewArticle
