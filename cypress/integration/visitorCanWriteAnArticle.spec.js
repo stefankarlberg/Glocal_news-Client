@@ -8,6 +8,12 @@ describe('Visitor can', () => {
       status: 200
     })
     cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/categories',
+      response: 'fixture:list_of_categories.json',
+      status: 200
+    })
+    cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
       response: 'fixture:create_article_success.json'
@@ -35,7 +41,9 @@ describe('Visitor can', () => {
     cy.get('#written_by').type('Boa Matule')
     cy.get('#image').type('https://github.com')
     cy.get('#category_select').click()
+    cy.get('.visible > .selected > .text').click()
     cy.get('#select_country').click()
+    cy.get('.visible > .selected > .text').click()
     cy.get('#write_city').type('Thessaloniki')
     cy.get('#create').click()
     cy.contains('Rainy day')

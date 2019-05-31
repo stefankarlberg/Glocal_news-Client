@@ -17,7 +17,7 @@ class WriteArticle extends Component {
     errors: '',
     categories: [],
     country: '',
-    write_city: ''
+    city: ''
   }
 
   componentDidMount() {
@@ -129,27 +129,27 @@ class WriteArticle extends Component {
             <Dropdown
               clearable
               search
+              selection
               placeholder="Select Category"
               options={options}
               id="category_select"
               onChange={this.handleChangeCategory}
-              selection
             />
             <br></br>
             <br></br>
             <Dropdown
               clearable
-              id="select_country"
-              placeholder="Select Country"
-              onChange={this.handleChangeCountry}
-              options={COUNTRY_OPTIONS}
               search
               selection
+              placeholder="Select Country"
+              options={COUNTRY_OPTIONS}
+              id="select_country"
+              onChange={this.handleChangeCountry}
             />
             <br></br>
             <br></br>
             <Form.Input
-              id="write_city"
+              id="city"
               value={this.state.city}
               onChange={this.onChangeHandler}
               placeholder="City Name"
