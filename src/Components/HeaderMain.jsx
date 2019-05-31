@@ -26,7 +26,8 @@ const mainLabels = [
     id: 'write_article'
   }, {
     name: 'Review Articles', 
-    link: ''
+    link: '/review-articles',
+    id: 'review_articles'
   }
 ]
 const loggedOutLabels = ['Sign Up', 'Log In']

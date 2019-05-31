@@ -16,8 +16,7 @@ class ListOfArticles extends Component {
     });
   }
 
-
-
+  
   render() {
     let articleList = this.state.articles.length ? (
       <div>

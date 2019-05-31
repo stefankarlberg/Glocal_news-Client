@@ -47,6 +47,26 @@ class ReviewArticle extends Component {
     })
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+  const path = '/api/v1/articles' { /* should this then be /1/reviews? it feels wrong */}
+    const payload = { ...this.state }
+    axios.post(path, payload)
+      .then(response => {
+        console.log(response)
+        this.setState({
+          redirect: true,
+          id: response.data.article_id
+        })
+      })
+      .catch(error => {
+        this.setState({
+          redirect: false,
+          errors: error.response.data.error
+        })
+      })
+  }
+
     render() {
 
       let dateString = this.state.created_at;
