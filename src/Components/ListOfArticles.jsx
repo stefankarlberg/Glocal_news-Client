@@ -16,7 +16,7 @@ class ListOfArticles extends Component {
     });
   }
 
-  
+
   render() {
     let articleList = this.state.articles.length ? (
       <div>
@@ -27,6 +27,7 @@ class ListOfArticles extends Component {
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>
                 <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
+                <h5 id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`}</h5>
                 <br />
               </div>
             </Container>

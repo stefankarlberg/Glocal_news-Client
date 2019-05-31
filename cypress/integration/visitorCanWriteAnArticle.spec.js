@@ -8,12 +8,6 @@ describe('Visitor can', () => {
       status: 200
     })
     cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/v1/categories',
-      response: 'fixture:list_of_categories.json',
-      status: 200
-    })
-    cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
       response: 'fixture:create_article_success.json'
@@ -22,6 +16,12 @@ describe('Visitor can', () => {
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles/9',
       response: 'fixture:one_article.json',
+      status: 200
+    })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/v1/categories',
+      response: 'fixture:categories_list.json',
       status: 200
     })
     cy.visit('http://localhost:3001')
@@ -36,9 +36,14 @@ describe('Visitor can', () => {
     cy.get('#image').type('https://github.com')
     cy.get('#category_select').click()
     cy.get('.visible > .selected > .text').click()
+    cy.get('#select_country').click()
+    cy.get('.visible > .selected > .text').click()
+    cy.get('#city').type('Thessaloniki')
     cy.get('#create').click()
     cy.contains('Rainy day')
     cy.contains('Politics')
+    cy.contains('Greece')
+    cy.contains('Thessaloniki')
     cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
   })
 

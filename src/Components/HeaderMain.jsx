@@ -21,11 +21,11 @@ const cityOptions = [
 
 const mainLabels = [
   {
-    name: 'Write An Article', 
+    name: 'Write An Article',
     link: '/write-article',
     id: 'write_article'
   }, {
-    name: 'Review Articles', 
+    name: 'Review Articles',
     link: '/review-articles',
     id: 'review_articles'
   }
@@ -53,7 +53,7 @@ const HeaderMain = () => {
         <Select
           placeholder="Select city"
           selection
-          id="city"
+          id="city_header"
           options={cityOptions}
         />
 

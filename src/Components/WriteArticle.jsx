@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { COUNTRY_OPTIONS } from './countriesData.js'
 
 class WriteArticle extends Component {
   state = {
@@ -14,7 +15,9 @@ class WriteArticle extends Component {
     category_id: '',
     redirect: '',
     errors: '',
-    categories: []
+    categories: [],
+    country: '',
+    city: ''
   }
 
   componentDidMount() {
@@ -53,14 +56,16 @@ class WriteArticle extends Component {
     this.setState({ category_id: value })
   }
 
+  handleChangeCountry = (e, { value }) => {
+    this.setState({ country: value })
+  }
+
   render() {
     let message
 
     const options = this.state.categories.map(category => {
       return { key: category.id, text: category.name, value: category.id }
     })
-
-    const { value } = this.state
 
     if (this.state.redirect === true) {
       return <Redirect to={{
@@ -121,19 +126,36 @@ class WriteArticle extends Component {
               onChange={this.onChangeHandler}
               placeholder="https://image.com"
             />
-
-            <Dropdown 
-              clearable 
-              placeholder="Select Category" 
-              value={value} 
-              options={options} 
-              id="category_select" 
-              onChange={this.handleChangeCategory} 
-              selection 
+            <Dropdown
+              clearable
+              search
+              selection
+              placeholder="Select Category"
+              options={options}
+              id="category_select"
+              onChange={this.handleChangeCategory}
             />
             <br></br>
             <br></br>
-
+            <Dropdown
+              clearable
+              search
+              selection
+              placeholder="Select Country"
+              options={COUNTRY_OPTIONS}
+              id="select_country"
+              onChange={this.handleChangeCountry}
+            />
+            <br></br>
+            <br></br>
+            <Form.Input
+              id="city"
+              value={this.state.city}
+              onChange={this.onChangeHandler}
+              placeholder="City Name"
+            />
+            <br></br>
+            <br></br>
             <Button id="create">Create Article</Button>
           </Form>
         </Container>
