@@ -3,7 +3,7 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:list_of_articles_with_published.json',
       status: 200
     })
@@ -19,7 +19,7 @@ describe('Visitor can', () => {
   it('see unpublished article when clicked on', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1/reviews',
+      url: 'http://localhost:3002/api/v1/articles/1/reviews',
       response: 'fixture:one_unpublished_article.json',
       status: 200
     })
@@ -47,7 +47,7 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles/1/reviews',
+      url: 'http://localhost:3002/api/v1/articles/1/reviews',
       response: 'fixture:create_review_no_success.json',
       status: 422
     })
