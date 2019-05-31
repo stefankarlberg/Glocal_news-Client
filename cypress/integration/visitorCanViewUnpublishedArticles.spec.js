@@ -33,21 +33,4 @@ describe('Visitor can view unpublished articles', () => {
       })
     })
   })
-  
-  it('by showing full article when clicked on', () => {
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1',
-      response: 'fixture:full_article.json',
-      status: 200
-    })
-
-    cy.get("#1").click()
-    
-    let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36",]
-
-    article.forEach(element => {
-      cy.get(element)
-    })
-  })
 })
