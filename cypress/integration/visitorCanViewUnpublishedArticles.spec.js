@@ -3,7 +3,7 @@ describe('Visitor can view unpublished articles', () => {
     cy.server();
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:list_of_articles.json',
       status: 200
     })
@@ -37,7 +37,7 @@ describe('Visitor can view unpublished articles', () => {
   it('by showing full article when clicked on', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/36',
+      url: 'http://localhost:3002/api/v1/articles/36',
       response: 'fixture:full_article.json',
       status: 200
     })

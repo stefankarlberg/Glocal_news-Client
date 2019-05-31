@@ -3,24 +3,24 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:list_of_articles.json',
       status: 200
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:create_article_success.json'
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/36',
+      url: 'http://localhost:3002/api/v1/articles/36',
       response: 'fixture:full_article.json',
       status: 200
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/categories',
+      url: 'http://localhost:3002/api/v1/categories',
       response: 'fixture:categories_list.json',
       status: 200
     })
@@ -72,7 +72,7 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:create_article_no_success.json',
       status: 422
     })
