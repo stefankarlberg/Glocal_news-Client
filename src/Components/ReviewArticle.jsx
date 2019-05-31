@@ -19,53 +19,53 @@ class ReviewArticle extends Component {
     redirect: '',
   }
 
-  componentDidMount() {
-    let mainPath = '/api/v1/articles/'
-    let articlePath = (this.props.location.state.id)
-    axios.get(mainPath + articlePath).then(response => {
-      this.setState({
-        id: response.data.id,
-        title: response.data.title,
-        ingress: response.data.ingress,
-        body: response.data.body,
-        image: response.data.image,
-        written_by: response.data.written_by,
-        created_at: response.data.created_at,
-        category_name: response.data.category.name
-      });
-    });
-    this.setState(
-      {
-        message: this.props.location.state.message
-      }
-    )
-  }
+  // componentDidMount() {
+  //   let mainPath = '/api/v1/articles/'
+  //   let articlePath = (this.props.location.state.id)
+  //   axios.get(mainPath + articlePath).then(response => {
+  //     this.setState({
+  //       id: response.data.id,
+  //       title: response.data.title,
+  //       ingress: response.data.ingress,
+  //       body: response.data.body,
+  //       image: response.data.image,
+  //       written_by: response.data.written_by,
+  //       created_at: response.data.created_at,
+  //       category_name: response.data.category.name
+  //     });
+  //   });
+  //   this.setState(
+  //     {
+  //       message: this.props.location.state.message
+  //     }
+  //   )
+  // }
   
-  onChangeHandler = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
+  // onChangeHandler = (e) => {
+  //   this.setState({
+  //     [e.target.id]: e.target.value
+  //   })
+  // }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-  const path = '/api/v1/articles' { /* should this then be /1/reviews? it feels wrong */}
-    const payload = { ...this.state }
-    axios.post(path, payload)
-      .then(response => {
-        console.log(response)
-        this.setState({
-          redirect: true,
-          id: response.data.article_id
-        })
-      })
-      .catch(error => {
-        this.setState({
-          redirect: false,
-          errors: error.response.data.error
-        })
-      })
-  }
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+  // const path = '/api/v1/articles' { /* should this then be /1/reviews? it feels wrong */}
+  //   const payload = { ...this.state }
+  //   axios.post(path, payload)
+  //     .then(response => {
+  //       console.log(response)
+  //       this.setState({
+  //         redirect: true,
+  //         id: response.data.article_id
+  //       })
+  //     })
+  //     .catch(error => {
+  //       this.setState({
+  //         redirect: false,
+  //         errors: error.response.data.error
+  //       })
+  //     })
+  // }
 
     render() {
 
@@ -75,28 +75,28 @@ class ReviewArticle extends Component {
       let momentString = momentObj.format('YYYY-MM-DD');
       let message
 
-      if (this.state.redirect === true) {
-        return <Redirect to={{
-          pathname: '/review-articles',
-          state: {
-            id: this.state.id,
-            message: true
-          }
-        }} />
-      } else if (this.state.redirect === false) {
-        message = (
-          <>
-            <br />
-            <Message color="red">
-              <p>Your review could not be created because of following error(s):</p>
-              <ul>
-                {this.state.errors.map(error => (
-                  <li key={error}>{error}</li>
-                ))}
-              </ul>
-            </Message>
-          </>
-        )
+      // if (this.state.redirect === true) {
+      //   return <Redirect to={{
+      //     pathname: '/review-articles',
+      //     state: {
+      //       id: this.state.id,
+      //       message: true
+      //     }
+      //   }} />
+      // } else if (this.state.redirect === false) {
+      //   message = (
+      //     <>
+      //       <br />
+      //       <Message color="red">
+      //         <p>Your review could not be created because of following error(s):</p>
+      //         <ul>
+      //           {this.state.errors.map(error => (
+      //             <li key={error}>{error}</li>
+      //           ))}
+      //         </ul>
+      //       </Message>
+      //     </>
+      //   )
       
       return (
         <>

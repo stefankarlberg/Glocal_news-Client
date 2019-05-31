@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "title": "Rainy day",
+  "ingress": "Today it rained.",
+  "body": "Rain is good for flowers.",
+  "written_by": "Boa Matule",
+  "image": "https://github.com",
+  "category": {
+    "id": 1,
+    "name": "Politics",
+  "published": false
+  }
+}

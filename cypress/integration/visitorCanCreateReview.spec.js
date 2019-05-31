@@ -7,11 +7,11 @@ describe('Visitor can', () => {
       response: 'fixture:list_of_articles_with_published.json',
       status: 200
     })
-    cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles/1/reviews',
-      response: 'fixture:create_a_review_success.json'
-    })
+    // cy.route({
+    //   method: 'POST',
+    //   url: 'http://localhost:3000/api/v1/articles/1/reviews',
+    //   response: 'fixture:create_review_success.json'
+    // })
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
   })
@@ -19,8 +19,8 @@ describe('Visitor can', () => {
   it('see unpublished article when clicked on', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1',
-      response: 'fixture:full_article.json',
+      url: 'http://localhost:3000/api/v1/articles/1/reviews',
+      response: 'fixture:one_unpublished_article.json',
       status: 200
     })
 
@@ -42,18 +42,17 @@ describe('Visitor can', () => {
     cy.contains('Thank you for reviewing!')
   })
 
-  it('get an error message if all fields are not filled in', () => {
-    cy.get('#comment').type('Great article!')
-    cy.server();
-    cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles/1/reviews',
-      response: 'fixture:create_review_no_success.json',
-      status: 422
-    })
-    cy.get('#create_review').click()
-    cy.contains("Your review could not be created because of following error(s):")
-    cy.contains("Score can't be blank")
-  })
-
+//   it('get an error message if all fields are not filled in', () => {
+//     cy.get('#comment').type('Great article!')
+//     cy.server();
+//     cy.route({
+//       method: 'POST',
+//       url: 'http://localhost:3000/api/v1/articles/1/reviews',
+//       response: 'fixture:create_review_no_success.json',
+//       status: 422
+//     })
+//     cy.get('#create_review').click()
+//     cy.contains("Your review could not be created because of following error(s):")
+//     cy.contains("Score can't be blank")
+//   })
 })
