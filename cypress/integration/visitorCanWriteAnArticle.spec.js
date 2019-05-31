@@ -14,8 +14,8 @@ describe('Visitor can', () => {
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/9',
-      response: 'fixture:one_article.json',
+      url: 'http://localhost:3000/api/v1/articles/36',
+      response: 'fixture:full_article.json',
       status: 200
     })
     cy.route({
@@ -33,7 +33,7 @@ describe('Visitor can', () => {
     cy.get('#ingress').type('Today it rained.')
     cy.get('#body').type('Rain is good for flowers.')
     cy.get('#written_by').type('Boa Matule')
-    cy.get('#image').type('https://github.com')
+    cy.get('#image').type('https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg')
     cy.get('#category_select').click()
     cy.get('.visible > .selected > .text').click()
     cy.get('#select_country').click()
@@ -51,7 +51,7 @@ describe('Visitor can', () => {
     cy.get('#title').type('Sunny day')
     cy.get('#ingress').type('Today the sun is shining.')
     cy.get('#written_by').type('Boa Matule')
-    cy.get('#image').type('https://github.com')
+    cy.get('#image').type('https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg')
     cy.server();
     cy.route({
       method: 'POST',

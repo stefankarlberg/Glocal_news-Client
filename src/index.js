@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://glocal-news.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:3000'
 ReactDOM.render((
   <BrowserRouter>
     <App />
@@ -14,3 +14,5 @@ ReactDOM.render((
 ), document.getElementById('root'));
 
 serviceWorker.unregister();
+
+// 'https://glocal-news.herokuapp.com'
