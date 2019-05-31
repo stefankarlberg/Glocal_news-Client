@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import FullArticle from './FullArticle'
+import ReviewForm from './ReviewForm'
 import { Button, Form } from 'semantic-ui-react'
 
 class ReviewArticle extends Component {
@@ -19,23 +20,7 @@ class ReviewArticle extends Component {
     return (
       <>
         <FullArticle id={this.state.id}/>
-
-        <Form>
-          <Form.Input
-              id="score"
-              value={this.state.score}
-              onChange={this.onChangeHandler}
-              placeholder="Score"
-            />
-
-          <Form.Input
-            id="comment"
-            value={this.state.comment}
-            onChange={this.onChangeHandler}
-            placeholder="Comment"
-          />
-          <Button id="create_review">Send review</Button>
-        </Form>
+        <ReviewForm />
       </>
     )
   }
