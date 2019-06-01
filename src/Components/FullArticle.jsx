@@ -13,9 +13,9 @@ class FullArticle extends Component {
     written_by: '',
     created_at: '',
     category_name: '',
-    message: false,
     country: '',
-    city: ''
+    city: '',
+    success_message: false
   };
 
   componentDidMount() {
@@ -35,11 +35,10 @@ class FullArticle extends Component {
         city: response.data.city
       });
     });
-//    this.props.location && this.setState(
-//      {
-//        message: this.props.location.state.message
-//      }
-//    )
+
+    this.setState({
+      success_message: this.props.location.state.success_message
+    })
   }
 
 
@@ -52,7 +51,7 @@ class FullArticle extends Component {
     let momentString = momentObj.format('YYYY-MM-DD');
     let message
 
-    if (this.state.message) {
+    if (this.state.success_message) {
       message = (
         <Message color="green">
           Thank you for sharing your story! Your article is awaiting reviews.

@@ -22,7 +22,7 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <Container key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}` }}>
+            <Container key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { success_message: false } }}>
               <div id={article.id} >
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>

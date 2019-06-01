@@ -12,11 +12,12 @@ class WriteArticle extends Component {
     image: '',
     written_by: '',
     category_id: '',
-    redirect: '',
     errors: '',
     categories: [],
     country: '',
-    city: ''
+    city: '',
+    success_message: false,
+    error_message: false
   }
 
   componentDidMount() {
@@ -37,16 +38,16 @@ class WriteArticle extends Component {
     const payload = { ...this.state }
     axios.post(path, payload)
       .then(response => {
-        console.log(response)
-        this.setState({
-          redirect: true,
-          id: response.data.article_id
+        this.props.history.push({
+          pathname: `/full-article/${response.data.article_id}`,
+          state: { success_message: true }
         })
-        this.props.history.push(`/full-article/${response.data.article_id}`)
+
+        //this.props.history.push(`/full-article/${response.data.article_id}`)
       })
       .catch(error => {
         this.setState({
-          redirect: false,
+          error_message: true,
           errors: error.response.data.error
         })
       })
@@ -67,17 +68,7 @@ class WriteArticle extends Component {
       return { key: category.id, text: category.name, value: category.id }
     })
 
- //   if (this.state.redirect === true) {
-      // return <Redirect to={{
-      //   pathname: '/full-article',
-      //   state: {
-      //     id: this.state.id,
-      //     message: true
-      //   }
-      // }} />
-
-    //  this.props.history.push(`/full-article/${this.state.id}`)
-     if (this.state.redirect === false) {
+    if (this.state.error_message) {
       message = (
         <>
           <br />
