@@ -16,6 +16,7 @@ class HeaderCategory extends Component {
       <Menu pointing secondary>
         {categories.map (c => (
           <Menu.Item
+          id={c}
           key={c}
           name={c}
           link={c}
