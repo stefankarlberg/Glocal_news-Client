@@ -13,14 +13,7 @@ class HeaderCategory extends Component {
   handleItemClick = (e, { name }) => {this.setState({ activeItem: name, category_name: name})}
 
   render() {
-    const { activeItem } = this.state
-
-    // if (this.state.redirect === true) {
-    //   return <Redirect to={{
-    //     pathname: '/article-by-category',
-    //     state: {category_name: this.state.category_name}
-    //   }} />
-    // }  
+    const { activeItem } = this.state 
     
     return (
     <>
@@ -31,7 +24,7 @@ class HeaderCategory extends Component {
           key={category}
           name={category}
           as={Link}
-          to={{pathname: '/article-by-category', state: {category_name: `${category}`} }}
+          to={{pathname: `/${category}`, state: {category_name: `${category}`} }}
           active={activeItem === category}
           onClick={this.handleItemClick}
           />

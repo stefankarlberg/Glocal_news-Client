@@ -13,6 +13,8 @@ describe('Visitor can view articles filtered by category', () => {
   it('by seeing a correct page headline', () => {
     cy.get('#Politics').click()
     cy.get('#headline').contains('Politics')
+    cy.get('#Arts').click()
+    cy.get('#headline').contains('Arts')
   })
 
   it('by seeing correct filtered articles', () => {
