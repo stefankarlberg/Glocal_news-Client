@@ -20,7 +20,7 @@ class FullArticle extends Component {
 
   componentDidMount() {
     let mainPath = '/api/v1/articles/'
-    let articlePath = (this.props.location.state.id)
+    let articlePath = this.props.match ? this.props.match.params.id : this.props.id
     axios.get(mainPath + articlePath).then(response => {
       this.setState({
         id: response.data.id,
@@ -35,11 +35,11 @@ class FullArticle extends Component {
         city: response.data.city
       });
     });
-    this.setState(
-      {
-        message: this.props.location.state.message
-      }
-    )
+//    this.props.location && this.setState(
+//      {
+//        message: this.props.location.state.message
+//      }
+//    )
   }
 
 
