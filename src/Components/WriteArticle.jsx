@@ -40,7 +40,7 @@ class WriteArticle extends Component {
       .then(response => {
         this.props.history.push({
           pathname: `/full-article/${response.data.article_id}`,
-          state: { success_message: true }
+          state: { success_message: true, review_form: false }
         })
 
         //this.props.history.push(`/full-article/${response.data.article_id}`)

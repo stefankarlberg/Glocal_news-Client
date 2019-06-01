@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Divider, Segment, Header, Image, Container, Grid, Message } from 'semantic-ui-react'
 import moment from 'moment'
+import ReviewForm from './ReviewForm'
 
 class FullArticle extends Component {
   state = {
@@ -15,7 +16,8 @@ class FullArticle extends Component {
     category_name: '',
     country: '',
     city: '',
-    success_message: false
+    success_message: false,
+    review_form: false
   };
 
   componentDidMount() {
@@ -37,11 +39,10 @@ class FullArticle extends Component {
     });
 
     this.setState({
-      success_message: this.props.location.state.success_message
+      success_message: this.props.location.state.success_message,
+      review_form: this.props.location.state.review_form
     })
   }
-
-
 
   render() {
 
@@ -50,6 +51,15 @@ class FullArticle extends Component {
     let momentObj = moment(dateObj);
     let momentString = momentObj.format('YYYY-MM-DD');
     let message
+    let review_form
+
+    if (this.state.review_form) {
+      review_form = (
+        <Segment>
+          <ReviewForm />
+        </Segment>
+      )
+    }
 
     if (this.state.success_message) {
       message = (
@@ -82,6 +92,7 @@ class FullArticle extends Component {
                 <br></br>
                 <strong id={`city_${this.state.id}`}>City: {this.state.city}</strong>
               </Segment>
+              {review_form}
             </Grid.Column>
             <Grid.Column width={3}>
 

@@ -9,20 +9,18 @@ class ListOfArticles extends Component {
     id: '',
   }
 
-
   componentDidMount() {
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     });
   }
 
-
   render() {
     let articleList = this.state.articles.length ? (
       <div>
         {this.state.articles.map(article => {
           return (
-            <Container key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { success_message: false } }}>
+            <Container key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { success_message: false, review_form: false } }}>
               <div id={article.id} >
                 <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                 <h1 id={`title_${article.id}`}>{article.title}</h1>
