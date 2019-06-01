@@ -13,7 +13,7 @@ const App = () => {
       <HeaderMain />
         <Switch>
           <Route exact path='/' component={ListOfArticles}></Route>
-          <Route exact path='article-by-category' component={ArticlesByCategory}></Route>
+          <Route exact path='/article-by-category' component={ArticlesByCategory}></Route>
           <Route exact path='/write-article' component={WriteArticle}></Route>
           <Route exact path='/review-articles' component={ListOfUnpublishedArticles}></Route>
           <Route exact path='/full-article' component={FullArticle}></Route>
