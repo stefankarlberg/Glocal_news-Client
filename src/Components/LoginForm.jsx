@@ -18,6 +18,7 @@ class LoginForm extends Component {
   }
 
   onSubmit = (e) => {
+   // debugger
     e.preventDefault();
     const { signInUser } = this.props
     const {
@@ -25,17 +26,21 @@ class LoginForm extends Component {
       password
     } = this.state
     signInUser({ email, password })
-      .then(response => {
-        this.setState({ uid: response.data.uid })
-      })
+      .then( console.log("yay")
+  //      response => {
+  //      debugger
+  //      this.setState({ uid: response.data.uid })
+      )
       .catch(
-        error => {
-          this.setState({
-            authenticated: false,
-            errors: error.response.data.error
-          }
+        console.log("why???")
+   //     error => {
+      //    debugger
+   //       this.setState({
+    //        authenticated: false,
+     //       errors: error.response.data.error
+      //    }
           )
-        })
+        }
 
     // const path = '/api/vi/auth'
     // const payload = { ...this.state }
@@ -53,7 +58,7 @@ class LoginForm extends Component {
     //       errors: error.response.data.error
     //     })
     //   })
-  }
+  
 
   render() {
 
