@@ -1,0 +1,12 @@
+{
+  "data": {
+    "allow_password_change": false,
+    "email": "boa@mail.com",
+    "id": 3,
+    "image": null,
+    "name": "Boa Matule",
+    "nickname": "Boa",
+    "provider": "email",
+    "uid": "boa@mail.com"
+  }
+}
