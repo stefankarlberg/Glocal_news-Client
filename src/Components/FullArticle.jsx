@@ -56,7 +56,7 @@ class FullArticle extends Component {
     if (this.state.review_form) {
       review_form = (
         <Segment>
-          <ReviewForm />
+          <ReviewForm id={this.state.id} />
         </Segment>
       )
     }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 class ListOfUnpublishedArticles extends Component {
   state = {
     articles: [],
+    review_success_message: false
   }
 
   componentDidMount() {
@@ -34,9 +35,18 @@ class ListOfUnpublishedArticles extends Component {
       </div>
     )
 
+    let message
+
+    if(this.state.review_success_message){
+      message = (
+        <p>Review successfully something</p>
+      )
+    }
+
     return (
       <>
         <Container>
+          {message}
           <Header>
             Unpublished Articles (if you see nothing in this page, there are no articles up for review)
           </Header>

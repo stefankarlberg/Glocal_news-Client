@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Form, Dropdown } from 'semantic-ui-react'
+import { Button, Form, Dropdown, Message } from 'semantic-ui-react'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+
 
 class ReviewForm extends Component {
   state = {
-    score: ''
+    score: '',
+    comment: '',
+    error_message: false,
+    article_id: ''
   }
 
   handleChangeScore = (e, { value }) => {
@@ -14,6 +20,32 @@ class ReviewForm extends Component {
     this.setState({
       [e.target.id]: e.target.value
     })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const path = `/api/v1/articles/${this.props.id}/reviews`
+    const payload = {
+      score: this.state.score,
+      comment: this.state.comment,
+      article_id: this.props.id
+    }
+    axios.post(path, payload)
+      .then(response => {
+        this.context.history.push({
+          pathname: '/review-articles',
+          state: { success_message: response.data.message }
+        })
+        //so here we need to redirect to review-aarticles, but it doesnt work :/
+
+        //this.props.history.push(`/full-article/${response.data.article_id}`)
+      })
+      .catch(
+        this.setState({
+          error_message: true,
+          //errors: error.response.data.error
+        })
+      )
   }
 
   render() {
@@ -30,9 +62,23 @@ class ReviewForm extends Component {
       { key: '10', text: '10', value: '10' }
     ]
 
+    let message
+
+    if(this.state.error_message) {
+      message = (
+        <>
+        <br />
+        <Message color="red">
+          <p>Your article could not be created because of following error(s):</p>
+          
+        </Message>
+      </>
+      )
+    }
+
     return (
       <>
-        <Form>
+        <Form onSubmit={this.onSubmit}>
           <Dropdown
             clearable
             search
@@ -52,6 +98,7 @@ class ReviewForm extends Component {
 
           <Button id="create_review">Send Review</Button>
         </Form>
+        {message}
       </>
     )
   }
