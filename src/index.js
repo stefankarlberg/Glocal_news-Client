@@ -9,7 +9,8 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://glocal-news.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:3002'
+//https://glocal-news.herokuapp.com'
 
 const store = configureStore()
 verifyCredentials(store)

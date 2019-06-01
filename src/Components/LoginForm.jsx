@@ -11,6 +11,11 @@ class LoginForm extends Component {
     authenticated: ''
   }
 
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -51,14 +56,9 @@ class LoginForm extends Component {
   }
 
   render() {
-    onChangeHandler = (e) => {
-      this.setState({
-        [e.target.id]: e.target.value
-      })
-    }
 
     return (
-      <Form id="login-form">
+      <Form id="login-form" onSubmit={this.onSubmit}>
         <Form.Input
           id="email"
           value={this.state.email}
