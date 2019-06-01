@@ -5,6 +5,7 @@ import WriteArticle from './Components/WriteArticle'
 import ListOfUnpublishedArticles from './Components/ListOfUnpublishedArticles'
 import { Switch, Route } from 'react-router-dom'
 import FullArticle from './Components/FullArticle'
+import ArticlesByCategory from './Components/ArticlesByCategory';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <HeaderMain />
         <Switch>
           <Route exact path='/' component={ListOfArticles}></Route>
+          <Route exact path='article-by-category' component={ArticlesByCategory}></Route>
           <Route exact path='/write-article' component={WriteArticle}></Route>
           <Route exact path='/review-articles' component={ListOfUnpublishedArticles}></Route>
           <Route exact path='/full-article' component={FullArticle}></Route>
