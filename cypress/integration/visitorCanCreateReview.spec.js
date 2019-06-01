@@ -34,8 +34,8 @@ describe('Visitor can', () => {
   })
 
   it('write an review for article successfully', () => {
-    cy.get('#score').type('8')
-    // not sure how to get id of score, should we say ex. score_1 and/or have a selector?
+    cy.get('#score_select').click()
+    cy.get('.visible > .selected > .text').click()
 
     cy.get('#comment').type('Great article!')
     cy.get('#create_review').click()

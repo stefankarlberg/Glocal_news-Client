@@ -32,7 +32,8 @@ class ReviewForm extends Component {
 
     return (
       <>
-        <Form>
+        <Form type="medium" id="review-article" // onSubmit={this.onSubmit} 
+        >
           <Dropdown
             clearable
             search

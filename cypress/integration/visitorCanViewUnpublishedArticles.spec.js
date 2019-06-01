@@ -22,8 +22,8 @@ describe('Visitor can view unpublished articles', () => {
     cy.get('#review_articles').click()
 
     let articles = [
-      ["#1", "#title_1", "#ingress_1", "#photo_1"],
-      ["#2", "#title_2", "#ingress_2", "#photo_2"],
+      ["#36", "#title_36", "#ingress_36", "#photo_36"],
+      ["#37", "#title_37", "#ingress_37", "#photo_37"],
     ]
 
     articles.forEach(article => {
@@ -31,6 +31,23 @@ describe('Visitor can view unpublished articles', () => {
         cy.get(article[1]), (article[2])
         cy.get(article[3]).should('have.attr', 'src')
       })
+    })
+  })
+  
+  it('by showing full article when clicked on', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/articles/36',
+      response: 'fixture:full_article.json',
+      status: 200
+    })
+
+    cy.get("#36").click()
+    
+    let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36",]
+
+    article.forEach(element => {
+      cy.get(element)
     })
   })
 })

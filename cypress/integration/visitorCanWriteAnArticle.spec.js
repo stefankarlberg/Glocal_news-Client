@@ -3,24 +3,24 @@ describe('Visitor can', () => {
     cy.server();
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:list_of_articles.json',
       status: 200
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:create_article_success.json'
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/9',
-      response: 'fixture:one_article.json',
+      url: 'http://localhost:3002/api/v1/articles/36',
+      response: 'fixture:full_article.json',
       status: 200
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/categories',
+      url: 'http://localhost:3002/api/v1/categories',
       response: 'fixture:categories_list.json',
       status: 200
     })
@@ -29,38 +29,60 @@ describe('Visitor can', () => {
   })
 
   it('write an article successfully', () => {
-    cy.get('#title').type('Rainy day')
-    cy.get('#ingress').type('Today it rained.')
-    cy.get('#body').type('Rain is good for flowers.')
-    cy.get('#written_by').type('Boa Matule')
-    cy.get('#image').type('https://github.com')
+
+    let form = [
+      ["#title", "Rainy Day"],
+      ["#ingress", "Today it rained"],
+      ["#body", "Rain  is good for flowers"],
+      ["#written_by", "Boa Matule"],
+      ["#image", "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"],
+      ["#city", "Thessaloniki"]
+    ]
+
+    form.forEach(element => {
+      cy.get(element[0]).type(element[1])
+    })
+
     cy.get('#category_select').click()
     cy.get('.visible > .selected > .text').click()
     cy.get('#select_country').click()
     cy.get('.visible > .selected > .text').click()
-    cy.get('#city').type('Thessaloniki')
     cy.get('#create').click()
-    cy.contains('Rainy day')
-    cy.contains('Politics')
-    cy.contains('Greece')
-    cy.contains('Thessaloniki')
-    cy.contains('Thank you for sharing your story! Your article is awaiting reviews.')
+
+    let text = ["Rainy day", "Politics", "Greece", "Thessaloniki", "Thank you for sharing your story! Your article is awaiting reviews."]
+
+    text.forEach(contain => {
+      cy.contains(contain)
+    })
   })
 
   it('not create an article if all fields are not filled in', () => {
-    cy.get('#title').type('Sunny day')
-    cy.get('#ingress').type('Today the sun is shining.')
-    cy.get('#written_by').type('Boa Matule')
-    cy.get('#image').type('https://github.com')
+
+    let form2 = [
+      ["#title", "Rainy Day"],
+      ["#ingress", "Today it rained"],
+      ["#written_by", "Boa Matule"],
+      ["#image", "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"]
+    ]
+
+      form2.forEach(element => {
+        cy.get(element[0]).type(element[1])
+      })
+      
     cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:create_article_no_success.json',
       status: 422
     })
+
     cy.get('#create').click()
-    cy.contains("Your article could not be created because of following error(s):")
-    cy.contains("Body can't be blank")
+
+    let text2 = ["Your article could not be created because of following error(s):", "Body can't be blank"]
+
+    text2.forEach(contain => {
+      cy.contains(contain)
+    })
   })
 })
