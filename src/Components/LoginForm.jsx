@@ -7,6 +7,7 @@ class LoginForm extends Component {
   state = {
     email: '',
     password: '',
+    uid: '',
     authenticated: ''
   }
 
@@ -16,11 +17,20 @@ class LoginForm extends Component {
     const { signInUser } = this.props
     const {
       email,
-      password,
+      password
     } = this.state
-    signInUser({ email, paassword })
-      .then(...)
-      .catch(...)
+    signInUser({ email, password })
+      .then(response => {
+        this.setState({ uid: response.data.uid })
+      })
+      .catch(
+        error => {
+          this.setState({
+            authenticated: false,
+            errors: error.response.data.error
+          }
+          )
+        })
 
     // const path = '/api/vi/auth'
     // const payload = { ...this.state }
@@ -40,7 +50,7 @@ class LoginForm extends Component {
     //   })
   }
 
-  render () {
+  render() {
     onChangeHandler = (e) => {
       this.setState({
         [e.target.id]: e.target.value
@@ -64,15 +74,15 @@ class LoginForm extends Component {
         />
 
         <Button id="login">Login</Button>
-          
+
       </Form>
     )
   }
 
- 
+
 }
 
-export default connect (
+export default connect(
   null,
   { signInUser },
 )(LoginForm)
