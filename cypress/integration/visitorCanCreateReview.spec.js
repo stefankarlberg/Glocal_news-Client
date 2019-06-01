@@ -26,7 +26,7 @@ describe('Visitor can', () => {
 
     cy.get("#1").click()
 
-    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1", "#created_at"]
+    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1", "#created_at_1"]
 
     article.forEach(element => {
       cy.get(element)
