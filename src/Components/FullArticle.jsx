@@ -25,12 +25,11 @@ class FullArticle extends Component {
       'HTTP_ACCEPT': 'application/json',
       'access-token': window.localStorage.getItem('access-token'),
       'token-type': 'Bearer',
-      'client': window.localStorage.getItem('client') ,
-      'expiry': window.localStorage.getItem('expiry') ,
-      'uid': window.localStorage.getItem('uid') 
+      'client': window.localStorage.getItem('client'),
+      'expiry': window.localStorage.getItem('expiry'),
+      'uid': window.localStorage.getItem('uid')
     }
-
-    axios.get((mainPath + articlePath), {headers: session_headers}).then(response => {
+    axios.get((mainPath + articlePath), { headers: session_headers }).then(response => {
       this.setState({
         id: response.data.id,
         title: response.data.title,
@@ -43,6 +42,9 @@ class FullArticle extends Component {
         country: response.data.country,
         city: response.data.city
       });
+      window.localStorage.setItem('expiry', response.headers.expiry);
+      window.localStorage.setItem('client', response.headers.client);
+      window.localStorage.setItem('access-token', response.headers["access-token"]);
     });
     this.setState(
       {
@@ -50,8 +52,6 @@ class FullArticle extends Component {
       }
     )
   }
-
-
 
   render() {
 

@@ -9,13 +9,11 @@ class ListOfArticles extends Component {
     id: '',
   }
 
-
   componentDidMount() {
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     });
   }
-
 
   render() {
     let articleList = this.state.articles.length ? (
