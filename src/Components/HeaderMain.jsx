@@ -7,19 +7,20 @@ import { signOutUser } from '../reduxTokenAuthConfig';
 
 
 class HeaderMain extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
   signOut = (e) => {
     e.preventDefault()
     const { signOutUser } = this.props
-    signOutUser() 
+    signOutUser()
       .then()
       .catch()
   }
 
-  render(){
+  render() {
+
     const countryOptions = [
       {
         key: "Sweden",
@@ -27,7 +28,7 @@ class HeaderMain extends Component {
         value: "Sweden",
       },
     ]
-    
+
     const cityOptions = [
       {
         key: "Stockholm",
@@ -35,7 +36,7 @@ class HeaderMain extends Component {
         value: "Stockholm",
       },
     ]
-    
+
     const mainLabels = [
       {
         name: 'Write An Article',
@@ -47,9 +48,10 @@ class HeaderMain extends Component {
         id: 'review_articles'
       }
     ]
+
     const loggedOutLabels = [
       {
-        name: 'Sign Up', 
+        name: 'Sign Up',
         link: '/signup',
         id: 'sign_up'
       }, {
@@ -60,21 +62,14 @@ class HeaderMain extends Component {
     ]
 
     const { signOut } = this
-    
+
     const loggedInLabels = [
       {
-        name: 'Welcome Member',
-        link: '/',
-        id: 'welcome'
-      }, {
         name: 'Log Out',
-        onClick: {signOut},
         id: 'logout'
       }
     ]
 
-
-    
     return (
       <>
         <Container textAlign="center">
@@ -82,7 +77,6 @@ class HeaderMain extends Component {
             GLOCAL NEWS
           </Header>
         </Container>
-
         <Menu pointing>
           <Select
             placeholder="Select country"
@@ -96,7 +90,6 @@ class HeaderMain extends Component {
             id="city_header"
             options={cityOptions}
           />
-
           {mainLabels.map(m => (
             <Menu.Item
               key={m.name}
@@ -120,8 +113,8 @@ class HeaderMain extends Component {
               <Menu.Item
                 key={l.name}
                 name={l.name}
-                link={l}
                 onClick={signOut}
+                id={l.id}
               />
             ))}
           </Menu.Menu>
@@ -129,8 +122,6 @@ class HeaderMain extends Component {
         <HeaderCategory />
       </>
     )
-    
-
   }
 }
 
