@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider } from 'semantic-ui-react'
+import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const countryOptions = [
@@ -50,14 +50,19 @@ const HeaderMain = () => {
       </Container>
 
       <Container>
-        <Menu pointing>
+      <Segment inverted
+        style={{ background: '#e0e1e2'}}
+      >
+        <Menu secondary>
           <Select
+            style={{ border: 'none', margin: '2px' }}
             placeholder="Select country"
             selection
             id="country"
             options={countryOptions}
           />
           <Select
+            style={{ border: 'none', margin: '2px'  }}
             placeholder="Select city"
             selection
             id="city_header"
@@ -73,6 +78,7 @@ const HeaderMain = () => {
               id={m.id}
             />
           ))}
+
           <Menu.Menu position='right'>
             {loggedOutLabels.map(l => (
               <Menu.Item
@@ -91,7 +97,9 @@ const HeaderMain = () => {
           </Menu.Menu>
         </Menu>
         
+        </Segment>
       </Container>
+
       <Container>
         <HeaderCategory />
       </Container>
