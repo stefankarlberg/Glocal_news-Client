@@ -8,9 +8,12 @@ class ReviewForm extends Component {
   state = {
     score: '',
     comment: '',
-    error_message: false,
-    article_id: ''
+    review_error_message: false,
+    review_success_message: false,
+    review_form: true,
+    article_id: this.props.id
   }
+
 
   handleChangeScore = (e, { value }) => {
     this.setState({ score: value })
@@ -28,24 +31,21 @@ class ReviewForm extends Component {
     const payload = {
       score: this.state.score,
       comment: this.state.comment,
-      article_id: this.props.id
+      //article_id: this.props.id
     }
     axios.post(path, payload)
-      .then(response => {
-        this.context.history.push({
-          pathname: '/review-articles',
-          state: { success_message: response.data.message }
-        })
-        //so here we need to redirect to review-aarticles, but it doesnt work :/
-
-        //this.props.history.push(`/full-article/${response.data.article_id}`)
+    .then(
+      this.setState({
+        review_success_message: true,
+        review_form: false
       })
-      .catch(
-        this.setState({
-          error_message: true,
-          //errors: error.response.data.error
-        })
-      )
+    )
+    .catch(error => {
+      this.setState({
+        review_error_message: true,
+        errors: error.response.data.error
+      })
+    })
   }
 
   render() {
@@ -62,10 +62,12 @@ class ReviewForm extends Component {
       { key: '10', text: '10', value: '10' }
     ]
 
-    let message
+    let review_error_message
+    let success_message
+    let review_form
 
     if(this.state.error_message) {
-      message = (
+      review_error_message = (
         <>
         <br />
         <Message color="red">
@@ -76,8 +78,21 @@ class ReviewForm extends Component {
       )
     }
 
-    return (
-      <>
+    if(this.state.review_success_message) {
+      success_message = (
+        <>
+        <br />
+        <Message color="green">
+          <p>Yay motherfucker!!</p>
+          
+        </Message>
+      </>
+      )
+    }
+
+    if(this.state.review_form) {
+      review_form = (
+        <>
         <Form onSubmit={this.onSubmit}>
           <Dropdown
             clearable
@@ -98,7 +113,16 @@ class ReviewForm extends Component {
 
           <Button id="create_review">Send Review</Button>
         </Form>
-        {message}
+        </>
+      )
+    }
+
+
+    return (
+      <>
+        {review_form}
+        {review_error_message}
+        {success_message}
       </>
     )
   }
