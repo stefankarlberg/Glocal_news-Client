@@ -33,7 +33,7 @@ const mainLabels = [
 const loggedOutLabels = [
   {
     name: 'Sign Up', 
-    link: '/',
+    link: '/signup',
     id: 'sign_up'
   }, {
     name: 'Log In',
