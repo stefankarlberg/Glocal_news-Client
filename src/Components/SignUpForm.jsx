@@ -8,8 +8,6 @@ class SignUpForm extends Component {
     email: '',
     password: '',
     password_confirmation: '',
-    uid: '',
-    authenticated: ''
   }
 
   onChangeHandler = (e) => {
@@ -18,48 +16,19 @@ class SignUpForm extends Component {
     })
   }
 
-  onSubmit = (e) => {
-    // debugger
+  onSubmit = async (e) => {
     e.preventDefault();
-    const { registerUser } = this.props
+    const { history, registerUser } = this.props
     const {
       email,
       password,
       password_confirmation,
     } = this.state
-    registerUser({ email, password, password_confirmation })
-      .then(console.log("yay")
-        //      response => {
-        //      debugger
-        //      this.setState({ uid: response.data.uid })
-      )
-      .catch(
-        console.log("why???")
-        //     error => {
-        //    debugger
-        //       this.setState({
-        //        authenticated: false,
-        //       errors: error.response.data.error
-        //    }
-      )
+    try {
+      await registerUser({ email, password, password_confirmation })
+      history.push('/')
+    } catch (error) { console.log(error) }
   }
-
-  // const path = '/api/vi/auth'
-  // const payload = { ...this.state }
-  // axios.post(path, payload)
-  //   .then(response => {
-  //     console.log(response)
-  //     this.setState({
-  //       authenticated: true,
-  //       uid: 
-  //     })
-  //   })
-  //   .catch(error => {
-  //     this.setState({
-  //       authenticated: false,
-  //       errors: error.response.data.error
-  //     })
-  //   })
 
 
   render() {

@@ -13,10 +13,12 @@ class HeaderMain extends Component {
 
   signOut = (e) => {
     e.preventDefault()
-    const { signOutUser } = this.props
-    signOutUser()
-      .then()
-      .catch()
+    window.localStorage.clear();
+    window.location.reload(true);
+//    const { signOutUser } = this.props
+//    signOutUser()
+//      .then()
+//      .catch()
   }
 
   render() {

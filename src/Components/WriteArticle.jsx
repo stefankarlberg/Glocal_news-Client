@@ -36,19 +36,32 @@ class WriteArticle extends Component {
     e.preventDefault();
     const path = '/api/v1/articles'
     const payload = { ...this.state }
-    axios.post(path, payload)
+    let session_headers = {
+      'HTTP_ACCEPT': 'application/json',
+      'access-token': window.localStorage.getItem('access-token'),
+      'token-type': 'Bearer',
+      'client': window.localStorage.getItem('client'),
+      'expiry': window.localStorage.getItem('expiry'),
+      'uid': window.localStorage.getItem('uid')
+    }
+    axios.post(path, payload, { headers: session_headers })
       .then(response => {
-        console.log(response)
         this.setState({
           redirect: true,
           id: response.data.article_id
         })
+        window.localStorage.setItem('expiry', response.headers.expiry);
+        window.localStorage.setItem('client', response.headers.client);
+        window.localStorage.setItem('access-token', response.headers["access-token"]);
       })
       .catch(error => {
         this.setState({
           redirect: false,
           errors: error.response.data.error
         })
+        window.localStorage.setItem('expiry', error.response.headers.expiry);
+        window.localStorage.setItem('client', error.response.headers.client);
+        window.localStorage.setItem('access-token', error.response.headers["access-token"]);
       })
   }
 
@@ -75,6 +88,7 @@ class WriteArticle extends Component {
           message: true
         }
       }} />
+
     } else if (this.state.redirect === false) {
       message = (
         <>
