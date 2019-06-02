@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react'
+import { Menu, Divider } from 'semantic-ui-react'
 
-const categories = ['News', 'Arts', 'Books', 'Business', 'Food', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Style', 'Tech', 'Travel']
+const categories = [
+  {name: 'News', color: 'red'},
+  {name: 'Arts', color: 'yellow'},
+  {name: 'Books', color: 'pink'},
+  {name: 'Business', color: 'purple'},
+  {name: 'Food', color: 'blue'},
+  {name: 'Opinion', color: 'orange'},
+  {name: 'Politics', color: 'green'},
+  {name: 'Real Estate', color: 'teal'},
+  {name: 'Science', color: 'olive'},
+  {name: 'Sports', color: 'brown'},
+  {name: 'Style', color: 'violet'},
+  {name: 'Tech', color: 'grey'},
+  {name: 'Travel', color: '#009900'}
+]
 
 class HeaderCategory extends Component {
   state = { activeItem: '' }
@@ -13,17 +27,19 @@ class HeaderCategory extends Component {
   
   return (
     <>
-      <Menu pointing secondary>
-        {categories.map (c => (
-          <Menu.Item
-          key={c}
-          name={c}
-          link={c}
-          active={activeItem === c}
-          onClick={this.handleItemClick}
-          />
-        ))}
-      </Menu>
+        <Menu pointing secondary centered>
+          {categories.map (c => (
+            <Menu.Item
+            key={c.name}
+            name={c.name}
+            link={c.name}
+            color={c.color}
+            active={activeItem === c.name}
+            onClick={this.handleItemClick}
+            />
+          ))}
+        </Menu>
+      <Divider hidden/>
     </>
     )
   }
