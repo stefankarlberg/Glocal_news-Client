@@ -4,7 +4,7 @@ const initialState = {
       isLoading: false,
       isSignedIn: false,
       attributes: {
-        uid: ""
+        uid: ''
       },
     },
   },

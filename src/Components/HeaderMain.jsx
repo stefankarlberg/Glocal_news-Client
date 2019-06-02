@@ -30,7 +30,17 @@ const mainLabels = [
     id: 'review_articles'
   }
 ]
-const loggedOutLabels = ['Sign Up', 'Log In']
+const loggedOutLabels = [
+  {
+    name: 'Sign Up', 
+    link: '/',
+    id: 'sign_up'
+  }, {
+    name: 'Log In',
+    link: '/login',
+    id: 'login'
+  }
+]
 const loggedInLabels = ['Welcome Member', 'Log Out']
 
 
@@ -69,9 +79,11 @@ const HeaderMain = () => {
         <Menu.Menu position='right'>
           {loggedOutLabels.map(l => (
             <Menu.Item
-              key={l}
-              name={l}
-              link={l}
+              key={l.name}
+              name={l.name}
+              as={Link}
+              to={l.link}
+              id={l.id}
             />
           ))}
           {loggedInLabels.map(l => (
