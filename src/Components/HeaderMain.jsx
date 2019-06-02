@@ -39,8 +39,10 @@ const HeaderMain = () => {
     <>
       <Container textAlign="center">
         <Divider hidden />
-          <Header as={Link} to='/'
-            as="h1"
+          <Header 
+            as={Link} 
+            to='/'
+            style={{ fontSize: "2em" }}
           >
             GLOCAL NEWS
           </Header>
@@ -88,6 +90,9 @@ const HeaderMain = () => {
             ))}
           </Menu.Menu>
         </Menu>
+        
+      </Container>
+      <Container>
         <HeaderCategory />
       </Container>
     </>

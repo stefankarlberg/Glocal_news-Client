@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Menu, Divider } from 'semantic-ui-react'
+import { Menu, Divider, Container } from 'semantic-ui-react'
 
 const categories = [
   {name: 'News', color: 'red'},
-  {name: 'Arts', color: 'yellow'},
-  {name: 'Books', color: 'pink'},
-  {name: 'Business', color: 'purple'},
-  {name: 'Food', color: 'blue'},
-  {name: 'Opinion', color: 'orange'},
-  {name: 'Politics', color: 'green'},
-  {name: 'Real Estate', color: 'teal'},
+  {name: 'Business', color: 'blue'},
+  {name: 'Tech', color: 'pink'},
+  {name: 'Sports', color: 'teal'},
+  {name: 'Politics', color: 'grey'},
   {name: 'Science', color: 'olive'},
-  {name: 'Sports', color: 'brown'},
-  {name: 'Style', color: 'violet'},
-  {name: 'Tech', color: 'grey'},
-  {name: 'Travel', color: '#009900'}
+  {name: 'Real Estate', color: 'black'},
+  {name: 'Arts', color: 'purple'},
+  {name: 'Opinion', color: 'brown'},
+  {name: 'Food', color: 'orange'},
+  {name: 'Books', color: 'violet'},
+  {name: 'Travel', color: 'green'},
+  {name: 'Style', color: 'yellow'}
 ]
 
 class HeaderCategory extends Component {
@@ -27,19 +27,22 @@ class HeaderCategory extends Component {
   
   return (
     <>
-        <Menu pointing secondary centered>
-          {categories.map (c => (
-            <Menu.Item
-            key={c.name}
-            name={c.name}
-            link={c.name}
-            color={c.color}
-            active={activeItem === c.name}
-            onClick={this.handleItemClick}
-            />
-          ))}
-        </Menu>
-      <Divider hidden/>
+      <Container>
+          <Menu pointing secondary >
+            {categories.map (c => (
+              <Menu.Item
+              style={{ margin: "auto" }}
+              key={c.name}
+              name={c.name}
+              link={c.name}
+              color={c.color}
+              active={activeItem === c.name}
+              onClick={this.handleItemClick}
+              />
+            ))}
+          </Menu>
+        <Divider hidden/>
+      </Container>
     </>
     )
   }
