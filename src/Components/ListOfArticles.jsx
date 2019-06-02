@@ -23,12 +23,14 @@ class ListOfArticles extends Component {
         {this.state.articles.map(article => {
           return (
             <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
-              <div id={article.id} >
+              <div id={article.id}>
                 <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
-                <h1 id={`title_${article.id}`}>{article.title}</h1>
-                <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
-                <h5 id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`}</h5>
-                <br />
+                  <Card.Content>
+                    <Card.Header id={`title_${article.id}`}>{article.title}</Card.Header>
+                    <Card.Description id={`ingress_${article.id}`}>{article.ingress}</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`}</Card.Content>
+          
               </div>
             </Card>
           )
