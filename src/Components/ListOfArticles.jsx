@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Grid, Container, Card, Image } from 'semantic-ui-react'
+import { Grid, Container, Card, Image, Icon, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class ListOfArticles extends Component {
@@ -22,15 +22,14 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>
-              <div id={article.id}>
+            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
+              <div id={article.id} style={{ color: 'black' }}>
                 <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
-                  <Card.Content>
-                    <Card.Header id={`title_${article.id}`}>{article.title}</Card.Header>
-                    <Card.Description id={`ingress_${article.id}`}>{article.ingress}</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`}</Card.Content>
-          
+                <Card.Content style={{ padding: '2em' }}>
+                  <Card.Header as='h1' id={`title_${article.id}`}>{article.title}</Card.Header>
+                  <p id={`ingress_${article.id}`}>{article.ingress}</p>
+                  <h5 style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</h5>
+                </Card.Content>
               </div>
             </Card>
           )
@@ -44,7 +43,7 @@ class ListOfArticles extends Component {
       <>
         <Container>
           <Grid fluid columns={3}>
-            <Grid.Column width={7}>
+            <Grid.Column width={8}>
               {articleList}
             </Grid.Column>
 
