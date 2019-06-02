@@ -4,30 +4,35 @@ import { Header, Container, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
-  state = {
-      category_name: 'News',
-      articles: [],
+  constructor(props){
+    super(props)
+    this.state = {
+        category_name: this.props.location.state.category_name,
+        articles: [],
+    }
   }
 
   componentDidMount() {
-    this.setState({ category_name: this.props.location.state.category_name })
     axios.get('/api/v1/articles').then(response => {
-      this.setState({
-        articles: response.data,
-      })
-    })
+      this.setState({ articles: response.data });
+    });
   }
 
   render() {
+    let category = this.state.category_name
+    let filteredArticles = []
 
-    // this.setState({category_name: this.props.location.state.category_name})
-
-    let categoryHeadline = this.state.category_name
+    this.state.articles.forEach(article => {
+      if (article.category.name === category) {
+        return filteredArticles.push(article)
+      } else {
+        return filteredArticles
+      }
+    })
 
     let articleList = (
       <div>
-        {this.state.articles.map(article => {
-          if (article.category.name === this.state.category_name) {
+        {filteredArticles.map(article => {
             return (
               <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: article.id } }}>
                 <div id={article.id} >
@@ -38,7 +43,6 @@ class ArticlesByCategory extends Component {
                 </div>
               </Container>
             )
-          }
         })}
       </div>
     )
@@ -47,7 +51,7 @@ class ArticlesByCategory extends Component {
       <>
         <Container>
           <Header id="headline">
-            {categoryHeadline}
+            {category}
           </Header>
 
           <Grid centered columns={3}>
