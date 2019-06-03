@@ -72,8 +72,8 @@ class HeaderMain extends Component {
       <>
         <Container textAlign="center">
           <Divider hidden />
-          <Header 
-            as={Link} 
+          <Header
+            as={Link}
             to='/'
             style={{ fontSize: "2em" }}>
             GLOCAL NEWS
@@ -82,64 +82,71 @@ class HeaderMain extends Component {
         </Container>
 
         <Container>
-        <Segment inverted
-          style={{ background: '#e0e1e2'}} >
-        <Menu secondary>
-          <Select
-            style={{ border: 'none', margin: '2px' }}
-            placeholder="Select country"
-            selection
-            id="country"
-            options={countryOptions}
-          />
-          <Select
-            style={{ border: 'none', margin: '2px'  }}
-            placeholder="Select city"
-            selection
-            id="city_header"
-            options={cityOptions}
-          />
-          {mainLabels.map(m => (
-            <Menu.Item
-              key={m.name}
-              name={m.name}
-              as={Link}
-              to={m.link}
-              id={m.id}
-            />
-          ))}
-          <Menu.Menu position='right'>
-            {loggedOutLabels.map(l => (
-              <Menu.Item
-                key={l.name}
-                name={l.name}
-                as={Link}
-                to={l.link}
-                id={l.id}
+          <Segment inverted
+            style={{ background: '#e0e1e2' }} >
+            <Menu secondary>
+              <Select
+                style={{ border: 'none', margin: '2px' }}
+                placeholder="Select country"
+                selection
+                id="country"
+                options={countryOptions}
               />
-            ))}
-            {loggedInLabels.map(l => (
-              <Menu.Item
-                key={l.name}
-                name={l.name}
-                onClick={signOut}
-                id={l.id}
+              <Select
+                style={{ border: 'none', margin: '2px' }}
+                placeholder="Select city"
+                selection
+                id="city_header"
+                options={cityOptions}
               />
-            ))}
-          </Menu.Menu>
-        </Menu>
-        
-        </Segment>
-      </Container>
+              {mainLabels.map(m => (
+                <Menu.Item
+                  key={m.name}
+                  name={m.name}
+                  as={Link}
+                  to={m.link}
+                  id={m.id}
+                />
+              ))}
+              <Menu.Menu position='right'>
+                {loggedOutLabels.map(l => (
+                  <Menu.Item
+                    key={l.name}
+                    name={l.name}
+                    as={Link}
+                    to={l.link}
+                    id={l.id}
+                  />
+                ))}
+                {loggedInLabels.map(l => (
+                  <Menu.Item
+                    key={l.name}
+                    name={l.name}
+                    onClick={signOut}
+                    id={l.id}
+                  />
+                ))}
+              </Menu.Menu>
+            </Menu>
 
-      <Container>
-        <HeaderCategory />
-      </Container>
-    </>
-  )
+          </Segment>
+        </Container>
+
+        <Container>
+          <HeaderCategory />
+        </Container>
+      </>
+    )
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
 }
+
 export default connect(
-  null,
+  mapStateToProps,
   { signOutUser },
 )(HeaderMain)
