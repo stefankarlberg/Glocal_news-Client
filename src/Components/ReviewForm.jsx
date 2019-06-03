@@ -92,6 +92,7 @@ class ReviewForm extends Component {
         <Segment>
           <Form onSubmit={this.onSubmit}>
             <Dropdown
+              style={{ margin: '4px' }}
               clearable
               search
               selection
@@ -101,7 +102,7 @@ class ReviewForm extends Component {
               onChange={this.handleChangeScore}
             />
 
-            <Form.Input
+            <Form.TextArea
               id="comment"
               value={this.state.comment}
               onChange={this.onChangeHandler}
