@@ -44,6 +44,7 @@ class SignUpForm extends Component {
 
         <Form.Input
           id="password"
+          type="password"
           value={this.state.password}
           onChange={this.onChangeHandler}
           placeholder="Password"
@@ -51,6 +52,7 @@ class SignUpForm extends Component {
 
         <Form.Input
           id="password_confirmation"
+          type="password"
           value={this.state.password_confirmation}
           onChange={this.onChangeHandler}
           placeholder="Password Confirmation"
