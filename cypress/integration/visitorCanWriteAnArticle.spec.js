@@ -24,8 +24,23 @@ describe('Visitor can', () => {
       response: 'fixture:categories_list.json',
       status: 200
     })
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3002/api/v1/auth/sign_in',
+      response: 'fixture:successful_login.json',
+      headers: {
+        "uid": "user@mail.com"
+      }
+    })
     cy.visit('http://localhost:3001')
     cy.get('#write_article').click()
+    cy.get('#login-form').within(() => {
+      cy.get('#email').type('boa@mail.com')
+      cy.get('#password').type('password')
+    })
+    cy.get('button').click()
+    cy.get('#write_article').click()
+
   })
 
   it('write an article successfully', () => {
@@ -33,7 +48,7 @@ describe('Visitor can', () => {
     let form = [
       ["#title", "Rainy Day"],
       ["#ingress", "Today it rained"],
-      ["#body", "Rain  is good for flowers"],
+      ["#body", "Rain is good for flowers"],
       ["#written_by", "Boa Matule"],
       ["#image", "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"],
       ["#city", "Thessaloniki"]
@@ -65,10 +80,10 @@ describe('Visitor can', () => {
       ["#image", "https://image.freepik.com/free-photo/sailing-boats-yachts-pier-stockholm-front-city-center_72229-307.jpg"]
     ]
 
-      form2.forEach(element => {
-        cy.get(element[0]).type(element[1])
-      })
-      
+    form2.forEach(element => {
+      cy.get(element[0]).type(element[1])
+    })
+
     cy.server();
     cy.route({
       method: 'POST',
