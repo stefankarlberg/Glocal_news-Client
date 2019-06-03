@@ -19,11 +19,8 @@ class ArticlesByCategory extends Component {
 
   componentDidUpdate(prevProps) {
     let category_name= this.props.location.pathname.substring(1)
-    if (prevProps.location.state.category_name !== category_name ) {
+    if (prevProps.location.pathname.substring(1) !== category_name ) {
       this.setState({category_name: category_name})
-      axios.get('/api/v1/articles').then(response => {
-        this.setState({ articles: response.data });
-      })
     }
   }
 
