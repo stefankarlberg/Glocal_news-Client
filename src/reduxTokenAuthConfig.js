@@ -6,6 +6,7 @@ const config = {
     uid: 'uid'
   },
   userRegistrationAttributes: {
+    password_confirmation: 'password_confirmation'
   },
 }
 

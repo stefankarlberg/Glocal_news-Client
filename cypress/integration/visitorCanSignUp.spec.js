@@ -23,7 +23,7 @@ describe('User can sign up', () => {
     cy.contains('Welcome Zane Mail Com')
   })
 
-  it('with invalid credentials', () => {
+  it('and gets error message if email is not valid and/or passwords do not match', () => {
     cy.server();
     cy.route({
       method: 'GET',
@@ -32,7 +32,7 @@ describe('User can sign up', () => {
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3002/api/v1/auth/sign_in',
+      url: 'http://localhost:3002/api/v1/auth',
       status: "401",
       response: 'fixture:unsuccessful_login.json',
     })
