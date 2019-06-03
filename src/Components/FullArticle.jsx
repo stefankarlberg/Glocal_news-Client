@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Divider, Segment, Header, Image, Container, Grid, Message } from 'semantic-ui-react'
 import moment from 'moment'
+import ReviewForm from './ReviewForm'
 
 class FullArticle extends Component {
   state = {
@@ -13,14 +14,15 @@ class FullArticle extends Component {
     written_by: '',
     created_at: '',
     category_name: '',
-    message: false,
     country: '',
-    city: ''
+    city: '',
+    success_message: false,
+    review_form: false
   };
 
   componentDidMount() {
     let mainPath = '/api/v1/articles/'
-    let articlePath = (this.props.location.state.id)
+    let articlePath = this.props.match ? this.props.match.params.id : this.props.id
     axios.get(mainPath + articlePath).then(response => {
       this.setState({
         id: response.data.id,
@@ -35,14 +37,12 @@ class FullArticle extends Component {
         city: response.data.city
       });
     });
-    this.setState(
-      {
-        message: this.props.location.state.message
-      }
-    )
+
+    this.setState({
+      success_message: this.props.location.state.success_message,
+      review_form: this.props.location.state.review_form
+    })
   }
-
-
 
   render() {
 
@@ -51,8 +51,15 @@ class FullArticle extends Component {
     let momentObj = moment(dateObj);
     let momentString = momentObj.format('YYYY-MM-DD');
     let message
+    let review_form
 
-    if (this.state.message) {
+    if (this.state.review_form) {
+      review_form = (
+        <ReviewForm id={this.state.id} />
+      )
+    }
+
+    if (this.state.success_message) {
       message = (
         <Message color="green">
           Thank you for sharing your story! Your article is awaiting reviews.
@@ -83,6 +90,7 @@ class FullArticle extends Component {
                 <br></br>
                 <strong id={`city_${this.state.id}`}>City: {this.state.city}</strong>
               </Segment>
+              {review_form}
             </Grid.Column>
             <Grid.Column width={3}>
 
