@@ -3,6 +3,7 @@ import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { COUNTRY_OPTIONS } from './countriesData.js'
+import { getCategories } from '../Modules/CategoriesData'
 
 class WriteArticle extends Component {
   state = {
@@ -20,10 +21,9 @@ class WriteArticle extends Component {
     city: ''
   }
 
-  componentDidMount() {
-    axios.get('/api/v1/categories').then(response => {
-      this.setState({ categories: response.data });
-    });
+  async componentDidMount() {
+    let categories = await getCategories()
+    this.setState({ categories: categories });
   }
 
   onChangeHandler = (e) => {

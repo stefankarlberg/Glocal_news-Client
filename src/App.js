@@ -6,38 +6,23 @@ import ListOfUnpublishedArticles from './Components/ListOfUnpublishedArticles'
 import { Switch, Route } from 'react-router-dom'
 import FullArticle from './Components/FullArticle'
 import ArticlesByCategory from './Components/ArticlesByCategory'
-import getCategories from './Components/CategoriesData'
-
-// const categories = ['News', 'Arts', 'Books', 'Business', 'Food', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Style', 'Tech', 'Travel']
-
-// const categoryPaths = []
-// categories.forEach(category => {
-//   categoryPaths.push(`/${category}`)
-// })
-
-
+import {getCategoryPaths} from './Modules/CategoriesData'
 
 class App extends Component {
-
-  // componentDidMount() {
-  //   this.setState({
-  //     categories: getCategories()
-  //   })  
-  // }
-
+  state = {
+    paths: []
+  }
+  async componentWillMount() {
+    let categoryPaths = await getCategoryPaths()
+    this.setState({paths: categoryPaths})
+  }
   render() {
-    let categories = getCategories();
-    debugger
-    let categoryNames = categories.map(category => {
-      return category.name && `/${category.name}`
-    })
-    debugger
     return (
       <>
         <HeaderMain />
           <Switch>
             <Route exact path='/' component={ListOfArticles}></Route>
-            {/* <Route exact path={categoryPaths} component={ArticlesByCategory}></Route> */}
+            <Route exact path={this.state.paths} component={ArticlesByCategory}></Route>
             <Route exact path='/write-article' component={WriteArticle}></Route>
             <Route exact path='/review-articles' component={ListOfUnpublishedArticles}></Route>
             <Route exact path='/full-article' component={FullArticle}></Route>

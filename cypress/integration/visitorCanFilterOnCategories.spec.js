@@ -11,9 +11,9 @@ describe('Visitor can view articles filtered by category', () => {
   })
 
   it('by seeing a correct page headline', () => {
-    cy.get('#Politics').click()
+    cy.get('#politics').click()
     cy.get('#headline').contains('Politics')
-    cy.get('#Arts').click()
+    cy.get('#arts').click()
     cy.get('#headline').contains('Arts')
   })
 
@@ -28,7 +28,7 @@ describe('Visitor can view articles filtered by category', () => {
       ["#38", "#title_38", "#ingress_38", "#photo_38"],
     ]
 
-    cy.get('#Politics').click()
+    cy.get('#politics').click()
     cy.get('#38').should('not.exist')
     politics.forEach(article => {
       cy.get(article[0]).within(() => {
@@ -37,7 +37,7 @@ describe('Visitor can view articles filtered by category', () => {
       })
     })
 
-    cy.get('#Arts').click()
+    cy.get('#arts').click()
     cy.get('#36').should('not.exist')
     cy.get('#37').should('not.exist')
     arts.forEach(article => {

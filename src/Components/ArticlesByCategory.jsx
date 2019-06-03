@@ -5,27 +5,28 @@ import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
   state = {
-    category_name: 'News',
+    categoryName: 'News',
     articles: []
   }
 
   componentDidMount() {
-    let category_name= this.props.location.pathname.substring(1)
-    this.setState({category_name: category_name})
+    let categoryName= this.props.location.pathname.substring(1)
+    this.setState({categoryName: categoryName})
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     })
   }
 
   componentDidUpdate(prevProps) {
-    let category_name= this.props.location.pathname.substring(1)
-    if (prevProps.location.pathname.substring(1) !== category_name ) {
-      this.setState({category_name: category_name})
+    let categoryName= this.props.location.pathname.substring(1)
+
+    if (prevProps.location.pathname.substring(1) !== categoryName ) {
+      this.setState({categoryName: categoryName})
     }
   }
 
   render() {
-    let category = this.state.category_name
+    let category = this.state.categoryName.charAt(0).toUpperCase() + this.state.categoryName.slice(1);
     let filteredArticles = []
 
     this.state.articles.forEach(article => {
