@@ -17,18 +17,19 @@ class LoginForm extends Component {
     })
   }
 
-  onSubmit = async (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
     const { history, signInUser } = this.props
     const {
       email,
       password
     } = this.state
-    try {
-      await signInUser({ email, password })
-      this.setState({ message: true })
-      setTimeout(function () { history.push('/') }, 3000)
-    } catch (response) { console.log(response.errors) }
+    signInUser({ email, password })
+      .then(response => {
+        console.log(response.success)
+        this.setState({ message: true })
+        setTimeout(function () { history.push('/') }, 3000)
+      }).catch(error => { console.log(error.response) })
   }
 
   render() {
@@ -51,6 +52,7 @@ class LoginForm extends Component {
         <p>{message}</p>
         <Form id="login-form" onSubmit={this.onSubmit}>
           <Form.Input
+            required
             id="email"
             value={this.state.email}
             onChange={this.onChangeHandler}
@@ -58,6 +60,7 @@ class LoginForm extends Component {
           />
 
           <Form.Input
+            required
             id="password"
             type="password"
             value={this.state.password}

@@ -17,7 +17,7 @@ class SignUpForm extends Component {
     })
   }
 
-  onSubmit = async (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
     const { history, registerUser } = this.props
     const {
@@ -25,11 +25,13 @@ class SignUpForm extends Component {
       password,
       password_confirmation,
     } = this.state
-    try {
-      await registerUser({ email, password, password_confirmation })
-      this.setState({ message: true })
-      setTimeout(function () { history.push('/') }, 3000)
-    } catch (error) { console.log(error) }
+    registerUser({ email, password, password_confirmation })
+      .then(response => {
+        this.setState({ message: true })
+        setTimeout(function () { history.push('/') }, 3000)
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
 
@@ -53,6 +55,7 @@ class SignUpForm extends Component {
         {message}
         <Form id="signup-form" onSubmit={this.onSubmit}>
           <Form.Input
+            required
             id="email"
             value={this.state.email}
             onChange={this.onChangeHandler}
@@ -60,6 +63,7 @@ class SignUpForm extends Component {
           />
 
           <Form.Input
+            required
             id="password"
             type="password"
             value={this.state.password}
@@ -68,6 +72,7 @@ class SignUpForm extends Component {
           />
 
           <Form.Input
+            required
             id="password_confirmation"
             type="password"
             value={this.state.password_confirmation}
