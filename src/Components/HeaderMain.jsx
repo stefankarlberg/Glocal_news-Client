@@ -47,26 +47,49 @@ class HeaderMain extends Component {
       }
     ]
 
-    const loggedOutLabels = [
-      {
-        name: 'Sign Up',
-        link: '/signup',
-        id: 'sign_up'
-      }, {
-        name: 'Log In',
-        link: '/login',
-        id: 'login'
-      }
-    ]
-
     const { signOut } = this
 
-    const loggedInLabels = [
-      {
-        name: 'Log Out',
-        id: 'logout'
-      }
-    ]
+    let user = this.props.currentUser.isSignedIn
+    let userSession = this.props.currentUser.attributes.uid
+    let labels
+    if (user === true) {
+      labels = (
+        <>
+          <Menu.Item
+            key='welcome'
+            name={`Welcome ${userSession}`}
+            id='welcome'
+          />
+
+          <Menu.Item
+            key='logOut'
+            name='LogOut'
+            onClick={signOut}
+            id='logOut'
+          />
+        </>
+      )
+    } else {
+      labels = (
+        <>
+          <Menu.Item
+            key='signup'
+            name='Sign Up'
+            as={Link}
+            to='/signup'
+            id='sign_up'
+          />
+
+          <Menu.Item
+            key='login'
+            name='Log In'
+            as={Link}
+            to='/login'
+            id='login'
+          />
+        </>
+      )
+    }
 
     return (
       <>
@@ -109,26 +132,9 @@ class HeaderMain extends Component {
                 />
               ))}
               <Menu.Menu position='right'>
-                {loggedOutLabels.map(l => (
-                  <Menu.Item
-                    key={l.name}
-                    name={l.name}
-                    as={Link}
-                    to={l.link}
-                    id={l.id}
-                  />
-                ))}
-                {loggedInLabels.map(l => (
-                  <Menu.Item
-                    key={l.name}
-                    name={l.name}
-                    onClick={signOut}
-                    id={l.id}
-                  />
-                ))}
+                {labels}
               </Menu.Menu>
             </Menu>
-
           </Segment>
         </Container>
 
