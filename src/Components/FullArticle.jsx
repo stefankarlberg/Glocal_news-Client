@@ -42,9 +42,6 @@ class FullArticle extends Component {
         country: response.data.country,
         city: response.data.city
       });
-      window.localStorage.setItem('expiry', response.headers.expiry);
-      window.localStorage.setItem('client', response.headers.client);
-      window.localStorage.setItem('access-token', response.headers["access-token"]);
     });
     this.setState(
       {

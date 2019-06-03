@@ -50,18 +50,12 @@ class WriteArticle extends Component {
           redirect: true,
           id: response.data.article_id
         })
-        window.localStorage.setItem('expiry', response.headers.expiry);
-        window.localStorage.setItem('client', response.headers.client);
-        window.localStorage.setItem('access-token', response.headers["access-token"]);
       })
       .catch(error => {
         this.setState({
           redirect: false,
           errors: error.response.data.error
         })
-        window.localStorage.setItem('expiry', error.response.headers.expiry);
-        window.localStorage.setItem('client', error.response.headers.client);
-        window.localStorage.setItem('access-token', error.response.headers["access-token"]);
       })
   }
 

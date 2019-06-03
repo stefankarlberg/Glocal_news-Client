@@ -26,7 +26,6 @@ class LoginForm extends Component {
     } = this.state
     signInUser({ email, password })
       .then(response => {
-        console.log(response.success)
         this.setState({ message: true })
         setTimeout(function () { history.push('/') }, 3000)
       }).catch(error => { console.log(error.response) })
