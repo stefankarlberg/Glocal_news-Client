@@ -46,5 +46,22 @@ describe('Visitor can view articles filtered by category', () => {
         cy.get(article[3]).should('have.attr', 'src')
       })
     })
-  })  
+  })
+  
+  it('by seeing all articles under News tab', () => {
+
+    let news = [
+      ["#36", "#title_36", "#ingress_36", "#photo_36"],
+      ["#37", "#title_37", "#ingress_37", "#photo_37"],
+      ["#38", "#title_38", "#ingress_38", "#photo_38"],
+    ]
+
+    cy.get('#news').click()
+    arts.forEach(article => {
+      cy.get(article[0]).within(() => {
+        cy.get(article[1]), (article[2])
+        cy.get(article[3]).should('have.attr', 'src')
+      })
+    })
+  })
 })

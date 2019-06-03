@@ -12,7 +12,6 @@ class HeaderCategory extends Component {
   async componentDidMount() {
     let categories = await getCategoryNames()
     this.setState({categories: categories})
-    debugger;
   }
 
   handleItemClick = (e, { name }) => {this.setState({ activeItem: name})}
