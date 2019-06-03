@@ -33,16 +33,19 @@ describe('User can sign up', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3002/api/v1/auth',
-      status: "401",
-      response: 'fixture:unsuccessful_login.json',
+      status: 422,
+      response: 'fixture:unsuccessful_signup.json',
     })
     cy.visit('http://localhost:3001')
-    cy.get('#login').click()
-    cy.get('#login-form').within(() => {
-      cy.get('#email').type('boa@mail.com')
-      cy.get('#password').type('wrongpassword')
+    cy.get('#sign_up').click()
+    cy.get('#signup-form').within(() => {
+      cy.get('#email').type('boa@')
+      cy.get('#password').type('pass')
+      cy.get('#password_confirmation').type('password')
       cy.get('button').click()
     })
-    cy.contains('Invalid login credentials. Please try again.')
+    cy.contains("Password confirmation doesn't match Password")
+    cy.contains("Password is too short (minimum is 6 characters")
+    cy.contains("Email is not an email")
   })
 })
