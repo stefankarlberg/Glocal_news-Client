@@ -30,6 +30,21 @@ const getCategoryNames = async () => {
 
     let news = {id: null, name: 'News'}
     response.data.unshift(news)
+// const categories = [
+//   {name: 'News', color: 'red'},
+//   {name: 'Business', color: 'blue'},
+//   {name: 'Tech', color: 'pink'},
+//   {name: 'Sports', color: 'teal'},
+//   {name: 'Politics', color: 'grey'},
+//   {name: 'Science', color: 'olive'},
+//   {name: 'Real Estate', color: 'black'},
+//   {name: 'Arts', color: 'purple'},
+//   {name: 'Opinion', color: 'brown'},
+//   {name: 'Food', color: 'orange'},
+//   {name: 'Books', color: 'violet'},
+//   {name: 'Travel', color: 'green'},
+//   {name: 'Style', color: 'yellow'}
+// ]
     return response.data
   } catch (error) {
     return {error}
