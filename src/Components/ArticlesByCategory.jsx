@@ -19,7 +19,6 @@ class ArticlesByCategory extends Component {
 
   componentDidUpdate(prevProps) {
     let categoryName= this.props.location.pathname.substring(1)
-
     if (prevProps.location.pathname.substring(1) !== categoryName ) {
       this.setState({categoryName: categoryName})
     }
