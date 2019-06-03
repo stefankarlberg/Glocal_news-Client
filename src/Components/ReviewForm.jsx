@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Button, Form, Dropdown, Message } from 'semantic-ui-react'
+import { Button, Form, Dropdown, Message, Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 
 
 class ReviewForm extends Component {
   state = {
     score: '',
     comment: '',
+    errors: '',
     review_error_message: false,
     review_success_message: false,
     review_form: true,
@@ -31,12 +31,12 @@ class ReviewForm extends Component {
     const payload = {
       score: this.state.score,
       comment: this.state.comment,
-      //article_id: this.props.id
     }
     axios.post(path, payload)
-    .then(
+    .then(() =>
       this.setState({
         review_success_message: true,
+        review_error_message: false,
         review_form: false
       })
     )
@@ -66,62 +66,58 @@ class ReviewForm extends Component {
     let success_message
     let review_form
 
-    if(this.state.error_message) {
+    if(this.state.review_error_message) {
       review_error_message = (
-        <>
-        <br />
         <Message color="red">
           <p>Your article could not be created because of following error(s):</p>
-          
+          <ul>
+            {this.state.errors.map(error => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
         </Message>
-      </>
       )
     }
 
     if(this.state.review_success_message) {
       success_message = (
-        <>
-        <br />
         <Message color="green">
-          <p>Yay motherfucker!!</p>
-          
+          <p>Thank you! Your review has been succesfully saved!</p>
         </Message>
-      </>
       )
     }
 
     if(this.state.review_form) {
       review_form = (
-        <>
-        <Form onSubmit={this.onSubmit}>
-          <Dropdown
-            clearable
-            search
-            selection
-            placeholder="Select Score"
-            options={options}
-            id="score_select"
-            onChange={this.handleChangeScore}
-          />
+        <Segment>
+          <Form onSubmit={this.onSubmit}>
+            <Dropdown
+              clearable
+              search
+              selection
+              placeholder="Select Score"
+              options={options}
+              id="score_select"
+              onChange={this.handleChangeScore}
+            />
 
-          <Form.Input
-            id="comment"
-            value={this.state.comment}
-            onChange={this.onChangeHandler}
-            placeholder="Comment"
-          />
+            <Form.Input
+              id="comment"
+              value={this.state.comment}
+              onChange={this.onChangeHandler}
+              placeholder="Comment"
+            />
 
-          <Button id="create_review">Send Review</Button>
-        </Form>
-        </>
+            <Button id="create_review">Send Review</Button>
+          </Form>
+        </Segment>
       )
     }
-
-
+    
     return (
       <>
-        {review_form}
         {review_error_message}
+        {review_form}
         {success_message}
       </>
     )
