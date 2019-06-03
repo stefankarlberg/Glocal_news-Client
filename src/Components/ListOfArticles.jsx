@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Grid, Container, Card, Image, Icon, Segment } from 'semantic-ui-react'
+import { Grid, Container, Card, Image, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class ListOfArticles extends Component {
@@ -9,13 +9,11 @@ class ListOfArticles extends Component {
     id: '',
   }
 
-
   componentDidMount() {
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     });
   }
-
 
   render() {
     let articleList = this.state.articles.length ? (

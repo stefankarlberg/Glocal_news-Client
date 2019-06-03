@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { COUNTRY_OPTIONS } from './countriesData.js'
+import { COUNTRY_OPTIONS } from '../Modules/countriesData.js'
 
 class WriteArticle extends Component {
   state = {
@@ -36,9 +36,16 @@ class WriteArticle extends Component {
     e.preventDefault();
     const path = '/api/v1/articles'
     const payload = { ...this.state }
-    axios.post(path, payload)
+    let session_headers = {
+      'HTTP_ACCEPT': 'application/json',
+      'access-token': window.localStorage.getItem('access-token'),
+      'token-type': 'Bearer',
+      'client': window.localStorage.getItem('client'),
+      'expiry': window.localStorage.getItem('expiry'),
+      'uid': window.localStorage.getItem('uid')
+    }
+    axios.post(path, payload, { headers: session_headers })
       .then(response => {
-        console.log(response)
         this.setState({
           redirect: true,
           id: response.data.article_id
@@ -75,6 +82,7 @@ class WriteArticle extends Component {
           message: true
         }
       }} />
+
     } else if (this.state.redirect === false) {
       message = (
         <>

@@ -1,58 +1,89 @@
-import React from 'react';
-import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import HeaderCategory from './HeaderCategory';
+import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOutUser } from '../reduxTokenAuthConfig';
 
-const countryOptions = [
-  {
-    key: "Sweden",
-    text: "Sweden",
-    value: "Sweden",
-  },
-]
 
-const cityOptions = [
-  {
-    key: "Stockholm",
-    text: "Stockholm",
-    value: "Stockholm",
-  },
-]
+class HeaderMain extends Component {
 
-const mainLabels = [
-  {
-    name: 'Write An Article',
-    link: '/write-article',
-    id: 'write_article'
-  }, {
-    name: 'Review Articles',
-    link: '/review-articles',
-    id: 'review_articles'
+  signOut = (e) => {
+    e.preventDefault()
+    const { signOutUser } = this.props
+    signOutUser()
+      .then(response => {
+        window.location.reload(true);
+      })
   }
-]
-const loggedOutLabels = ['Sign Up', 'Log In']
-const loggedInLabels = ['Welcome Member', 'Log Out']
 
+  render() {
 
-const HeaderMain = () => {
-  return (
-    <>
-      <Container textAlign="center">
-        <Divider hidden />
+    const countryOptions = [
+      {
+        key: "Sweden",
+        text: "Sweden",
+        value: "Sweden",
+      },
+    ]
+
+    const cityOptions = [
+      {
+        key: "Stockholm",
+        text: "Stockholm",
+        value: "Stockholm",
+      },
+    ]
+
+    const mainLabels = [
+      {
+        name: 'Write An Article',
+        link: '/write-article',
+        id: 'write_article'
+      }, {
+        name: 'Review Articles',
+        link: '/review-articles',
+        id: 'review_articles'
+      }
+    ]
+
+    const loggedOutLabels = [
+      {
+        name: 'Sign Up',
+        link: '/signup',
+        id: 'sign_up'
+      }, {
+        name: 'Log In',
+        link: '/login',
+        id: 'login'
+      }
+    ]
+
+    const { signOut } = this
+
+    const loggedInLabels = [
+      {
+        name: 'Log Out',
+        id: 'logout'
+      }
+    ]
+
+    return (
+      <>
+        <Container textAlign="center">
+          <Divider hidden />
           <Header 
             as={Link} 
             to='/'
-            style={{ fontSize: "2em" }}
-          >
+            style={{ fontSize: "2em" }}>
             GLOCAL NEWS
           </Header>
-        <Divider hidden />
-      </Container>
+          <Divider hidden />
+        </Container>
 
-      <Container>
-      <Segment inverted
-        style={{ background: '#e0e1e2'}}
-      >
+        <Container>
+        <Segment inverted
+          style={{ background: '#e0e1e2'}} >
         <Menu secondary>
           <Select
             style={{ border: 'none', margin: '2px' }}
@@ -68,7 +99,6 @@ const HeaderMain = () => {
             id="city_header"
             options={cityOptions}
           />
-
           {mainLabels.map(m => (
             <Menu.Item
               key={m.name}
@@ -78,20 +108,22 @@ const HeaderMain = () => {
               id={m.id}
             />
           ))}
-
           <Menu.Menu position='right'>
             {loggedOutLabels.map(l => (
               <Menu.Item
-                key={l}
-                name={l}
-                link={l}
+                key={l.name}
+                name={l.name}
+                as={Link}
+                to={l.link}
+                id={l.id}
               />
             ))}
             {loggedInLabels.map(l => (
               <Menu.Item
-                key={l}
-                name={l}
-                link={l}
+                key={l.name}
+                name={l.name}
+                onClick={signOut}
+                id={l.id}
               />
             ))}
           </Menu.Menu>
@@ -106,4 +138,8 @@ const HeaderMain = () => {
     </>
   )
 }
-export default HeaderMain
+}
+export default connect(
+  null,
+  { signOutUser },
+)(HeaderMain)
