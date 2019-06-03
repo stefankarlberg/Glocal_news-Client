@@ -17,7 +17,8 @@ class HeaderMain extends Component {
     window.location.reload(true);
 //    const { signOutUser } = this.props
 //    signOutUser()
-//      .then()
+//    history.push('/')
+//      .then(history.push('/'))
 //      .catch()
   }
 

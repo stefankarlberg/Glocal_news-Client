@@ -63,8 +63,6 @@ class SignUpForm extends Component {
       </Form>
     )
   }
-
-
 }
 
 export default connect(

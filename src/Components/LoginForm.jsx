@@ -26,7 +26,7 @@ class LoginForm extends Component {
     try {
       await signInUser({ email, password })
       setTimeout(function(){ history.push('/') }, 3000)
-    } catch (error) { console.log(error) }
+    } catch (response) { console.log(response.errors) }
   }
 
   render() {
