@@ -7,13 +7,14 @@ describe('Visitor can', () => {
       response: 'fixture:list_of_articles_with_published.json',
       status: 200
     })
-    // cy.route({
-    //   method: 'POST',
-    //   url: 'http://localhost:3000/api/v1/articles/1/reviews',
-    //   response: 'fixture:create_review_success.json'
-    // })
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/articles/1/reviews',
+      response: 'fixture:create_review_success.json'
+    })
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
+    cy.get("#1").click()
   })
 
   it('see unpublished article when clicked on', () => {
@@ -24,9 +25,7 @@ describe('Visitor can', () => {
       status: 200
     })
 
-    cy.get("#1").click()
-
-    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1", "#created_at_1"]
+    let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1"]
 
     article.forEach(element => {
       cy.get(element)
@@ -36,10 +35,9 @@ describe('Visitor can', () => {
   it('write an review for article successfully', () => {
     cy.get('#score_select').click()
     cy.get('.visible > .selected > .text').click()
-
     cy.get('#comment').type('Great article!')
     cy.get('#create_review').click()
-    cy.contains('Thank you for reviewing!')
+    cy.contains('Thank you! Your review has been succesfully saved!')
   })
 
   it('get an error message if all fields are not filled in', () => {
@@ -52,7 +50,7 @@ describe('Visitor can', () => {
       status: 422
     })
     cy.get('#create_review').click()
-    cy.contains("Your review could not be created because of following error(s):")
+    cy.contains('Your review could not be created because of following error(s):')
     cy.contains("Score can't be blank")
   })
 })

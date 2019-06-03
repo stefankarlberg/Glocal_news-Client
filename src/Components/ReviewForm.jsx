@@ -69,7 +69,7 @@ class ReviewForm extends Component {
     if(this.state.review_error_message) {
       review_error_message = (
         <Message color="red">
-          <p>Your article could not be created because of following error(s):</p>
+          <p>Your review could not be created because of following error(s):</p>
           <ul>
             {this.state.errors.map(error => (
               <li key={error}>{error}</li>
