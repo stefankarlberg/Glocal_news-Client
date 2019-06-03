@@ -4,18 +4,27 @@ import { Header, Container, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-        category_name: this.props.location.state.category_name,
-        articles: [],
-    }
+  state = {
+    category_name: 'News',
+    articles: []
   }
 
   componentDidMount() {
+    let category_name= this.props.location.pathname.substring(1)
+    this.setState({category_name: category_name})
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
-    });
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    let category_name= this.props.location.pathname.substring(1)
+    if (prevProps.location.state.category_name !== category_name ) {
+      this.setState({category_name: category_name})
+      axios.get('/api/v1/articles').then(response => {
+        this.setState({ articles: response.data });
+      })
+    }
   }
 
   render() {
