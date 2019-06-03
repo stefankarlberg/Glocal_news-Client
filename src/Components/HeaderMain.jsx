@@ -7,19 +7,14 @@ import { signOutUser } from '../reduxTokenAuthConfig';
 
 
 class HeaderMain extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   signOut = (e) => {
     e.preventDefault()
-    window.localStorage.clear();
-    window.location.reload(true);
-//    const { signOutUser } = this.props
-//    signOutUser()
-//    history.push('/')
-//      .then(history.push('/'))
-//      .catch()
+    const { signOutUser } = this.props
+    signOutUser()
+      .then(response => {
+        window.location.reload(true);
+      })
   }
 
   render() {

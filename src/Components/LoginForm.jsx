@@ -8,7 +8,8 @@ class LoginForm extends Component {
     email: '',
     password: '',
     errors: '',
-    message: false
+    message: '',
+    errorsLogin: ''
   }
 
   onChangeHandler = (e) => {
@@ -28,12 +29,18 @@ class LoginForm extends Component {
       .then(response => {
         this.setState({ message: true })
         setTimeout(function () { history.push('/') }, 3000)
-      }).catch(error => { console.log(error.response) })
+      }).catch(error => {
+        this.setState({
+          errorsLogin: error.response.data.errors[0],
+          message: false
+        })
+      })
   }
 
   render() {
 
     let message
+    let messageErrors
 
     if (this.state.message === true) {
       message = (
@@ -46,9 +53,21 @@ class LoginForm extends Component {
       )
     }
 
+    if (this.state.message === false) {
+      messageErrors = (
+        <>
+          <br />
+          <Message color="red">
+            <p>{this.state.errorsLogin}</p>
+          </Message>
+        </>
+      )
+    }
+
     return (
       <Container>
         <p>{message}</p>
+        <p>{messageErrors}</p>
         <Form id="login-form" onSubmit={this.onSubmit}>
           <Form.Input
             required
