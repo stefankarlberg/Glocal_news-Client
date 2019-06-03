@@ -8,7 +8,8 @@ class SignUpForm extends Component {
     email: '',
     password: '',
     password_confirmation: '',
-    message: false
+    message: '',
+    errors_signup: ''
   }
 
   onChangeHandler = (e) => {
@@ -26,12 +27,15 @@ class SignUpForm extends Component {
       password_confirmation,
     } = this.state
     registerUser({ email, password, password_confirmation })
-      .then(response => {
-        this.setState({ message: true })
-        setTimeout(function () { history.push('/') }, 3000)
-      }).catch(error => {
-        console.log(error)
+    .then(response => {
+      this.setState({ message: true })
+      setTimeout(function () { history.push('/') }, 3000)
+    }).catch(error => {
+      this.setState({
+        errors_signup: error.response.data.errors.full_messages,
+        message: false
       })
+    })
   }
 
 
@@ -45,6 +49,21 @@ class SignUpForm extends Component {
           <br />
           <Message color="green">
             <p>You have succesfully signed up. Wait to be redirected to the main page.</p>
+          </Message>
+        </>
+      )
+    }
+    if (this.state.message === false ) {
+      message = (
+        <>
+          <br />
+          <Message color="red">
+            <p>Your account could not be created because of following error(s):</p>
+            <ul>
+              {this.state.errors_signup.map(error => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
           </Message>
         </>
       )

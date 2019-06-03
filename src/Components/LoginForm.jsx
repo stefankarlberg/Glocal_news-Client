@@ -7,7 +7,6 @@ class LoginForm extends Component {
   state = {
     email: '',
     password: '',
-    errors: '',
     message: '',
     errorsLogin: ''
   }
@@ -40,7 +39,6 @@ class LoginForm extends Component {
   render() {
 
     let message
-    let messageErrors
 
     if (this.state.message === true) {
       message = (
@@ -54,7 +52,7 @@ class LoginForm extends Component {
     }
 
     if (this.state.message === false) {
-      messageErrors = (
+      message = (
         <>
           <br />
           <Message color="red">
@@ -67,7 +65,6 @@ class LoginForm extends Component {
     return (
       <Container>
         <p>{message}</p>
-        <p>{messageErrors}</p>
         <Form id="login-form" onSubmit={this.onSubmit}>
           <Form.Input
             required
