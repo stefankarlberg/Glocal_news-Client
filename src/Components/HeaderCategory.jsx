@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import {getCategoryNames} from '../Modules/CategoriesData'
+import {getCategoryNames} from '../Modules/categoriesData'
 
 class HeaderCategory extends Component {
   state = { 

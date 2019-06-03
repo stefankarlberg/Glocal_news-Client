@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { COUNTRY_OPTIONS } from './countriesData.js'
-import { getCategories } from '../Modules/CategoriesData'
+import { COUNTRY_OPTIONS } from '../Modules/countriesData'
+import { getCategories } from '../Modules/categoriesData'
 
 class WriteArticle extends Component {
   state = {

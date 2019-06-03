@@ -6,7 +6,7 @@ import ListOfUnpublishedArticles from './Components/ListOfUnpublishedArticles'
 import { Switch, Route } from 'react-router-dom'
 import FullArticle from './Components/FullArticle'
 import ArticlesByCategory from './Components/ArticlesByCategory'
-import {getCategoryPaths} from './Modules/CategoriesData'
+import {getCategoryPaths} from './Modules/categoriesData'
 
 class App extends Component {
   state = {
