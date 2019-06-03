@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
   state = {
-    categoryName: 'News',
+    categoryName: '',
     articles: []
   }
 
@@ -30,7 +30,9 @@ class ArticlesByCategory extends Component {
     let filteredArticles = []
 
     this.state.articles.forEach(article => {
-      if (article.category.name === category) {
+      if (this.state.categoryName === 'news') {
+        return filteredArticles.push(article)
+      } else if (article.category.name === category) {
         return filteredArticles.push(article)
       } else {
         return filteredArticles

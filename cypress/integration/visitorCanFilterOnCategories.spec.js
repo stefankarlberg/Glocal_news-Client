@@ -57,7 +57,7 @@ describe('Visitor can view articles filtered by category', () => {
     ]
 
     cy.get('#news').click()
-    arts.forEach(article => {
+    news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
         cy.get(article[3]).should('have.attr', 'src')

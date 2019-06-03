@@ -15,6 +15,8 @@ const getCategoryPaths = async () => {
   try {
     let response = await axios.get('/api/v1/categories');
 
+    let news = {id: null, name: 'News'}
+    response.data.unshift(news)
     let paths = response.data.map(category => {
       return `/${category.name.toLowerCase()}`
     })
