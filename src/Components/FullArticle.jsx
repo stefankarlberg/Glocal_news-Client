@@ -21,15 +21,7 @@ class FullArticle extends Component {
   componentDidMount() {
     let mainPath = '/api/v1/articles/'
     let articlePath = (this.props.location.state.id)
-    let session_headers = {
-      'HTTP_ACCEPT': 'application/json',
-      'access-token': window.localStorage.getItem('access-token'),
-      'token-type': 'Bearer',
-      'client': window.localStorage.getItem('client'),
-      'expiry': window.localStorage.getItem('expiry'),
-      'uid': window.localStorage.getItem('uid')
-    }
-    axios.get((mainPath + articlePath), { headers: session_headers }).then(response => {
+    axios.get(mainPath + articlePath).then(response => {
       this.setState({
         id: response.data.id,
         title: response.data.title,

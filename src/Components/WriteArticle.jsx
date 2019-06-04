@@ -36,15 +36,7 @@ class WriteArticle extends Component {
     e.preventDefault();
     const path = '/api/v1/articles'
     const payload = { ...this.state }
-    let session_headers = {
-      'HTTP_ACCEPT': 'application/json',
-      'access-token': window.localStorage.getItem('access-token'),
-      'token-type': 'Bearer',
-      'client': window.localStorage.getItem('client'),
-      'expiry': window.localStorage.getItem('expiry'),
-      'uid': window.localStorage.getItem('uid')
-    }
-    axios.post(path, payload, { headers: session_headers })
+    axios.post(path, payload)
       .then(response => {
         this.setState({
           redirect: true,

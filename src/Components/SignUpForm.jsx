@@ -28,6 +28,7 @@ class SignUpForm extends Component {
     } = this.state
     registerUser({ email, password, password_confirmation })
     .then(response => {
+      this.setState({ message: true })
       setTimeout(function () { history.push('/') }, 3000)
     }).catch(error => {
       this.setState({
@@ -42,7 +43,7 @@ class SignUpForm extends Component {
     let user = this.props.currentUser.isSignedIn
     let message
 
-    if (user === true) {
+    if (user === true && this.state.message === true) {
       message = (
         <>
           <br />

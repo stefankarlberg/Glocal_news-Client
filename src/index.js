@@ -8,11 +8,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
+import { setupInterceptors } from './Modules/axiosInterceptor';
 
-axios.defaults.baseURL = 'http://localhost:3002'
+axios.defaults.baseURL = 'https://glocal-news.herokuapp.com'
 
 const store = configureStore()
 verifyCredentials(store)
+
+setupInterceptors()
 
 ReactDOM.render((
   <Provider store={store}>
@@ -23,7 +26,3 @@ ReactDOM.render((
 ), document.getElementById('root'));
 
 serviceWorker.unregister();
-
-
-
-// https://glocal-news.herokuapp.com

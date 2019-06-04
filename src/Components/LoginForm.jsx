@@ -26,6 +26,7 @@ class LoginForm extends Component {
     } = this.state
     signInUser({ email, password })
       .then(response => {
+        this.setState({ message: true })
         setTimeout(function () { history.push('/') }, 3000)
       }).catch(error => {
         this.setState({
@@ -40,7 +41,7 @@ class LoginForm extends Component {
     let message
     let user = this.props.currentUser.isSignedIn
 
-    if (user === true) {
+    if (user === true && this.state.message === true) {
       message = (
         <>
           <br />
