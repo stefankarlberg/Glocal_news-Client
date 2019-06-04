@@ -1,29 +1,53 @@
 import React, { Component } from 'react';
 import { Container, Segment, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import {getCategoryNames} from '../Modules/categoriesData'
 
 class LatestNews extends Component {
 
+  state = {
+    categories: []
+  }
+
+  async componentDidMount() {
+    let categories = await getCategoryNames()
+    this.setState({
+      categories: categories,
+    })
+  }
+
   render() {
+   
 
     let articleList = (
       <>
         {this.props.articles.map(article => {
+          let color
+          for (let i = 0; i < this.state.categories.length; i++) {
+            if (article.category.name === this.state.categories[i].name) {
+              color = (
+                this.state.categories[i].color
+              )
+            }
+          }
+
           return (
-            <div id={article.id} key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
-              <h2 id={`title_${article.id}`}>{article.title}</h2>
-              <h5 style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</h5>
+            <Segment color={color}>
+            <div id={article.id} key={article.id} >
+              <Header id={`title_${article.id}`} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>{article.title}</Header>
+              <p style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</p>
             </div>
+            </Segment>
           )
         })}
       </>
     )
 
     return (
-      <Segment id="latest_news">
+      <Container id="latest_news">
         <Header>Latest News</Header>
         {articleList}
-      </Segment>
+      </Container>
 
     )
   }
