@@ -4,16 +4,17 @@ import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-r
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOutUser } from '../reduxTokenAuthConfig';
+import { withRouter } from 'react-router-dom';
 
 
 class HeaderMain extends Component {
 
   signOut = (e) => {
     e.preventDefault()
-    const { signOutUser } = this.props
+    const { history, signOutUser } = this.props
     signOutUser()
       .then(response => {
-        window.location.reload(true);
+        history.push('/')
       })
   }
 
@@ -155,7 +156,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   { signOutUser },
-)(HeaderMain)
+)(HeaderMain))
