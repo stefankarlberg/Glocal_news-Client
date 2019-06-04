@@ -20,7 +20,7 @@ class HeaderCategory extends Component {
     
     return (
     <>
-      <Container>
+      <Container id="header_category">
           <Menu pointing secondary >
             {this.state.categories.map(c => (
               <Menu.Item
@@ -31,7 +31,7 @@ class HeaderCategory extends Component {
               as={Link}
               to={{pathname: `/${c.name.toLowerCase()}`, state: {categoryName: `${c.name}`} }}
               color={c.color}
-              active={this.props.activeItem === c.name}
+              active={this.props.activeItem === c.name.toLowerCase()}
               onClick={this.props.handleItemClick}
               />
             ))}

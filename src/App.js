@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     paths: []
   }
+
   async componentWillMount() {
     let categoryPaths = await getCategoryPaths()
     this.setState({paths: categoryPaths})
