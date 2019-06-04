@@ -3,7 +3,7 @@ import ListOfArticles from './Components/ListOfArticles';
 import HeaderMain from './Components/HeaderMain.jsx'
 import WriteArticle from './Components/WriteArticle'
 import ListOfUnpublishedArticles from './Components/ListOfUnpublishedArticles'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import FullArticle from './Components/FullArticle'
 import ArticlesByCategory from './Components/ArticlesByCategory'
 import {getCategoryPaths} from './Modules/categoriesData'
@@ -22,7 +22,7 @@ class App extends Component {
       <>
         <HeaderMain />
           <Switch>
-            <Route exact path='/' component={ListOfArticles}></Route>
+            <Route exact path='/' render={() => (<Redirect to="/news" component={ArticlesByCategory} activeItem={'news'}/>)}></Route>
             <Route exact path={this.state.paths} component={ArticlesByCategory}></Route>
             <Route exact path='/write-article' component={WriteArticle}></Route>
             <Route exact path='/review-articles' component={ListOfUnpublishedArticles}></Route>

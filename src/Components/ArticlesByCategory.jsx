@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Header, Container, Grid } from 'semantic-ui-react';
+import { Header, Container, Grid, Card, Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
@@ -38,21 +38,25 @@ class ArticlesByCategory extends Component {
       }
     })
 
-    let articleList = (
+    let articleList = filteredArticles.length ? (
       <div>
         {filteredArticles.map(article => {
-            return (
-              <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: article.id } }}>
-                <div id={article.id} >
-                  <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
-                  <h1 id={`title_${article.id}`}>{article.title}</h1>
-                  <h3 id={`ingress_${article.id}`}>{article.ingress}</h3>
-                  <h5 id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`}</h5>
-                </div>
-              </Container>
-            )
-        })}
+          return (
+            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
+              <div id={article.id} style={{ color: 'black' }}>
+                <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
+                <Card.Content style={{ padding: '2em' }}>
+                  <Card.Header as='h1' id={`title_${article.id}`}>{article.title}</Card.Header>
+                  <p id={`ingress_${article.id}`}>{article.ingress}</p>
+                  <h5 style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</h5>
+                </Card.Content>
+              </div>
+            </Card>
+          )
+        })}     
       </div>
+    ) : (
+      <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
     )
 
     return(
@@ -62,8 +66,8 @@ class ArticlesByCategory extends Component {
             {category}
           </Header>
 
-          <Grid centered columns={3}>
-            <Grid.Column width={7}>
+          <Grid fluid columns={3}>
+            <Grid.Column width={8}>
               {articleList}
             </Grid.Column>
 

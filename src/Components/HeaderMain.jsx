@@ -36,7 +36,7 @@ const loggedInLabels = ['Welcome Member', 'Log Out']
 
 class HeaderMain extends Component {
 state = {
-  activeItem: '',
+  activeItem: 'news',
 }
 
   handleItemClick = (e) => {
