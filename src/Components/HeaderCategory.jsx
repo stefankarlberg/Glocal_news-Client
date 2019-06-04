@@ -5,7 +5,6 @@ import { Menu, Divider, Container } from 'semantic-ui-react'
 
 class HeaderCategory extends Component {
   state = { 
-    activeItem:'',
     categories: []
   }
 
@@ -15,14 +14,6 @@ class HeaderCategory extends Component {
       categories: categories,
     })
   }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.activeItem !== this.props.activeItem ) {
-      this.setState({activeItem: this.props.activeItem})
-    }
-  }
-
-  handleItemClick = (e, { name }) => {this.setState({ activeItem: name})}
 
   render() {
     const { activeItem } = this.state 
@@ -40,8 +31,8 @@ class HeaderCategory extends Component {
               as={Link}
               to={{pathname: `/${c.name.toLowerCase()}`, state: {categoryName: `${c.name}`} }}
               color={c.color}
-              active={activeItem === c.name}
-              onClick={this.handleItemClick}
+              active={this.props.activeItem === c.name}
+              onClick={this.props.handleItemClick}
               />
             ))}
           </Menu>

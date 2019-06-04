@@ -39,7 +39,10 @@ state = {
   activeItem: '',
 }
 
-  handleItemClick = () => {this.setState({ activeItem: 'News'})}
+  handleItemClick = (e) => {
+    const category = e.target.id[0].toUpperCase() + e.target.id.slice(1);
+    this.setState({activeItem : category})
+  }
 
  render() {
   return (
@@ -47,6 +50,7 @@ state = {
         <Container textAlign="center">
           <Divider hidden />
             <Header 
+              id='news'
               as={Link} 
               to={{pathname: '/news', state: {activeItem: this.state.activeItem} }}
               style={{ fontSize: "2em" }}
@@ -110,7 +114,7 @@ state = {
 
         <Container>
           <HeaderCategory
-            activeItem={this.state.activeItem}/>
+           handleItemClick={this.handleItemClick} activeItem={this.state.activeItem}/>
         </Container>
       </>
     )
