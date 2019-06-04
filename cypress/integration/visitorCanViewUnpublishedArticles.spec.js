@@ -12,7 +12,7 @@ describe('Visitor can view unpublished articles', () => {
       url: 'http://localhost:3002/api/v1/auth/sign_in',
       response: 'fixture:successful_login.json',
       headers: {
-        "uid": "user@mail.com"
+        "uid": "boa@mail.com"
       }
     })
     cy.visit('http://localhost:3001')
@@ -28,7 +28,6 @@ describe('Visitor can view unpublished articles', () => {
     cy.get('#review_articles').click()
     cy.contains('Unpublished Articles')
   })
-
   it('by seeing a list of unpublished articles on Reviews page', () => {
     cy.get('#review_articles').click()
 

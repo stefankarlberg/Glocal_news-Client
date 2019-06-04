@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { COUNTRY_OPTIONS } from '../Modules/countriesData.js'
 
@@ -13,11 +12,12 @@ class WriteArticle extends Component {
     image: '',
     written_by: '',
     category_id: '',
-    redirect: '',
     errors: '',
     categories: [],
     country: '',
-    city: ''
+    city: '',
+    success_message: false,
+    error_message: false
   }
 
   componentDidMount() {
@@ -38,14 +38,15 @@ class WriteArticle extends Component {
     const payload = { ...this.state }
     axios.post(path, payload)
       .then(response => {
-        this.setState({
-          redirect: true,
-          id: response.data.article_id
+        this.props.history.push({
+          pathname: `/full-article/${response.data.article_id}`,
+          state: { success_message: true, review_form: false }
         })
+
       })
       .catch(error => {
         this.setState({
-          redirect: false,
+          error_message: true,
           errors: error.response.data.error
         })
       })
@@ -66,16 +67,7 @@ class WriteArticle extends Component {
       return { key: category.id, text: category.name, value: category.id }
     })
 
-    if (this.state.redirect === true) {
-      return <Redirect to={{
-        pathname: '/full-article',
-        state: {
-          id: this.state.id,
-          message: true
-        }
-      }} />
-
-    } else if (this.state.redirect === false) {
+    if (this.state.error_message) {
       message = (
         <>
           <br />

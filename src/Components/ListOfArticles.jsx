@@ -20,7 +20,7 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
+            <Card fluid key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { id: `${article.id}` } }} >
               <div id={article.id} style={{ color: 'black' }}>
                 <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
                 <Card.Content style={{ padding: '2em' }}>

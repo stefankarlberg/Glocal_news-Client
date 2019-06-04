@@ -13,20 +13,20 @@ describe('Visitor can read an article', () => {
       url: 'http://localhost:3002/api/v1/auth/sign_in',
       response: 'fixture:successful_login.json',
       headers: {
-        "uid": "user@mail.com"
+        "uid": "boa@mail.com"
       }
     })
-    cy.visit('http://localhost:3001')
-  })
-
-  it('shows full article when clicked', () => {
-    cy.server();
     cy.route({
       method: 'GET',
       url: 'http://localhost:3002/api/v1/articles/36',
       response: 'fixture:full_article.json',
       status: 200
     })
+    cy.visit('http://localhost:3001')
+  })
+
+  it('shows full article when clicked', () => {
+    
     cy.get("#36").click()
     cy.get('#login-form').within(() => {
       cy.get('#email').type('boa@mail.com')
