@@ -28,7 +28,6 @@ class SignUpForm extends Component {
     } = this.state
     registerUser({ email, password, password_confirmation })
     .then(response => {
-      this.setState({ message: true })
       setTimeout(function () { history.push('/') }, 3000)
     }).catch(error => {
       this.setState({
@@ -38,12 +37,12 @@ class SignUpForm extends Component {
     })
   }
 
-
   render() {
 
+    let user = this.props.currentUser.isSignedIn
     let message
 
-    if (this.state.message === true) {
+    if (user === true) {
       message = (
         <>
           <br />
@@ -107,7 +106,13 @@ class SignUpForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { registerUser },
 )(SignUpForm)
