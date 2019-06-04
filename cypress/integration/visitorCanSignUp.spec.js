@@ -20,7 +20,7 @@ describe('User can sign up', () => {
       cy.get('#password_confirmation').type('password')
     })
     cy.get('button').click()
-    cy.contains('Welcome Zane Mail Com')
+    cy.contains('Welcome Zane')
   })
 
   it('and gets error message if email is not valid and/or passwords do not match', () => {

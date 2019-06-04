@@ -53,11 +53,14 @@ class HeaderMain extends Component {
     let userSession = this.props.currentUser.attributes.uid
     let labels
     if (user === true) {
+      let str = userSession
+      let nameMatch = str.match(/^([^@]*)@/);
+      let name = nameMatch ? nameMatch[1] : null;
       labels = (
         <>
           <Menu.Item
             key='welcome'
-            name={`Welcome ${userSession}`}
+            name={`Welcome ${name}`}
             id='welcome'
           />
 

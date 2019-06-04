@@ -21,7 +21,7 @@ describe('User can log in', () => {
       cy.get('#password').type('password')
     })
     cy.get('button').click()
-    cy.contains('Welcome Boa Mail Com')
+    cy.contains('Welcome Boa')
   })
 
   it('with invalid credentials', () => {
