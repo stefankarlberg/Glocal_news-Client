@@ -16,7 +16,6 @@ class HeaderCategory extends Component {
   }
 
   render() {
-    const { activeItem } = this.state 
     
     return (
     <>

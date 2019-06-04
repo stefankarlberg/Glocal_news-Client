@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Header, Container, Grid, Card, Image, Icon } from 'semantic-ui-react';
+import { Header, Container, Grid, Card, Image, Icon, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 class ArticlesByCategory extends Component {
@@ -56,7 +56,12 @@ class ArticlesByCategory extends Component {
         })}     
       </div>
     ) : (
-      <h2>There are no articles at the moment. You can be the first to post your own article and become a neighborhood journalist!</h2>
+      <Message>
+        <Message.Header>There are no {category} articles at the moment</Message.Header>
+        <p>
+          Be the first to post your own article and become a neighborhood journalist!
+        </p>
+      </Message>
     )
 
     return(
