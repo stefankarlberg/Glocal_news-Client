@@ -39,7 +39,7 @@ class ListOfUnpublishedArticles extends Component {
 
     if(this.state.review_success_message){
       message = (
-        <p>Review successfully something</p>
+        <p>Review successfully created</p>
       )
     }
 
