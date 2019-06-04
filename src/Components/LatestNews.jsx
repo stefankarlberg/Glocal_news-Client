@@ -19,15 +19,15 @@ class LatestNews extends Component {
 
   render() {
 
-    // const sortedArticles = this.props.articles.sort(function(a, b) {
-    //   let dateA = new Date(a.created_at), dateB = new Date(b.created_at);
-    //   return dateA - dateB;
-    // })
-   
+    const sortedArticles = this.props.articles.sort(function(a, b) {
+      let dateA = new Date(a.created_at), dateB = new Date(b.created_at);
+      return dateB - dateA;
+    })
+
     let articleList = (
       <>
-        {this.props.articles.map(article => {
-
+        {sortedArticles.map(article => {
+          
           let dateString = article.created_at
           let dateObj = new Date(dateString);
           let momentObj = moment(dateObj);
