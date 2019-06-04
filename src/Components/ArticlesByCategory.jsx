@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Header, Container, Grid, Card, Image, Icon, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
+import LatestNews from './LatestNews'
 
 class ArticlesByCategory extends Component {
   state = {
@@ -77,6 +78,9 @@ class ArticlesByCategory extends Component {
             </Grid.Column>
 
             <Grid.Column width={4}>
+              <LatestNews
+                articles={this.state.articles}
+              />
             </Grid.Column>
 
             <Grid.Column width={3}>
