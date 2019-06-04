@@ -25,7 +25,7 @@ describe('User can log out', () => {
       cy.get('#email').type('boa@mail.com')
       cy.get('#password').type('password')
     })
-    cy.get('button').click()
+    cy.get('#login_form_button').click()
     cy.contains('Welcome Boa')
     cy.get('#logOut').click()
     cy.contains('Welcome Boa').should('not.exist')

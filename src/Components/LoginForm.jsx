@@ -83,7 +83,7 @@ class LoginForm extends Component {
             placeholder="Password"
           />
 
-          <Button id="login">Login</Button>
+          <Button id="login_form_button">Login</Button>
 
         </Form>
 

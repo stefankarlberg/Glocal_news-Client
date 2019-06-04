@@ -1,11 +1,15 @@
 describe('User can sign up', () => {
-  it('successfully', () => {
+
+  beforeEach(function () {
     cy.server()
     cy.route({
       method: 'GET',
       url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:list_of_articles.json',
     })
+  })
+
+  it('successfully', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3002/api/v1/auth',
@@ -24,12 +28,6 @@ describe('User can sign up', () => {
   })
 
   it('and gets error message if email is not valid and/or passwords do not match', () => {
-    cy.server();
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3002/api/v1/articles',
-      response: 'fixture:list_of_articles.json',
-    })
     cy.route({
       method: 'POST',
       url: 'http://localhost:3002/api/v1/auth',
