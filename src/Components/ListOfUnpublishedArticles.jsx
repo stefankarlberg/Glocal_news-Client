@@ -41,7 +41,7 @@ class ListOfUnpublishedArticles extends Component {
 
     let message
 
-    if(this.state.review_success_message){
+    if (this.state.review_success_message) {
       message = (
         <p>Review successfully created</p>
       )
