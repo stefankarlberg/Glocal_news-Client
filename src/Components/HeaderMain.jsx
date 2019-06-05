@@ -1,109 +1,162 @@
-import React from 'react';
-import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import HeaderCategory from './HeaderCategory';
+import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOutUser } from '../reduxTokenAuthConfig';
+import { withRouter } from 'react-router-dom';
 
-const countryOptions = [
-  {
-    key: "Sweden",
-    text: "Sweden",
-    value: "Sweden",
-  },
-]
 
-const cityOptions = [
-  {
-    key: "Stockholm",
-    text: "Stockholm",
-    value: "Stockholm",
-  },
-]
+class HeaderMain extends Component {
 
-const mainLabels = [
-  {
-    name: 'Write An Article',
-    link: '/write-article',
-    id: 'write_article'
-  }, {
-    name: 'Review Articles',
-    link: '/review-articles',
-    id: 'review_articles'
+  signOut = (e) => {
+    e.preventDefault()
+    const { history, signOutUser } = this.props
+    signOutUser()
+      .then(response => {
+        history.push('/')
+      })
   }
-]
-const loggedOutLabels = ['Sign Up', 'Log In']
-const loggedInLabels = ['Welcome Member', 'Log Out']
 
+  render() {
 
-const HeaderMain = () => {
-  return (
-    <>
-      <Container textAlign="center">
-        <Divider hidden />
-          <Header 
-            as={Link} 
+    const countryOptions = [
+      {
+        key: "Sweden",
+        text: "Sweden",
+        value: "Sweden",
+      },
+    ]
+
+    const cityOptions = [
+      {
+        key: "Stockholm",
+        text: "Stockholm",
+        value: "Stockholm",
+      },
+    ]
+
+    const mainLabels = [
+      {
+        name: 'Write An Article',
+        link: '/write-article',
+        id: 'write_article'
+      }, {
+        name: 'Review Articles',
+        link: '/review-articles',
+        id: 'review_articles'
+      }
+    ]
+
+    const { signOut } = this
+
+    let user = this.props.currentUser.isSignedIn
+    let userSession = this.props.currentUser.attributes.uid
+    let labels
+    if (user === true) {
+      let str = userSession
+      let nameMatch = str.match(/^([^@]*)@/);
+      let name = nameMatch ? nameMatch[1] : null;
+      labels = (
+        <>
+          <Menu.Item
+            key='welcome'
+            name={`Welcome ${name}`}
+            id='welcome'
+          />
+
+          <Menu.Item
+            key='logOut'
+            name='LogOut'
+            onClick={signOut}
+            id='logOut'
+          />
+        </>
+      )
+    } else {
+      labels = (
+        <>
+          <Menu.Item
+            key='signup'
+            name='Sign Up'
+            as={Link}
+            to='/signup'
+            id='sign_up'
+          />
+
+          <Menu.Item
+            key='login'
+            name='Log In'
+            as={Link}
+            to='/login'
+            id='login'
+          />
+        </>
+      )
+    }
+
+    return (
+      <>
+        <Container textAlign="center">
+          <Divider hidden />
+          <Header
+            as={Link}
             to='/'
-            style={{ fontSize: "2em" }}
-          >
+            style={{ fontSize: "2em" }}>
             GLOCAL NEWS
           </Header>
-        <Divider hidden />
-      </Container>
+          <Divider hidden />
+        </Container>
 
-      <Container>
-      <Segment inverted
-        style={{ background: '#e0e1e2'}}
-      >
-        <Menu secondary>
-          <Select
-            style={{ border: 'none', margin: '2px' }}
-            placeholder="Select country"
-            selection
-            id="country"
-            options={countryOptions}
-          />
-          <Select
-            style={{ border: 'none', margin: '2px'  }}
-            placeholder="Select city"
-            selection
-            id="city_header"
-            options={cityOptions}
-          />
-
-          {mainLabels.map(m => (
-            <Menu.Item
-              key={m.name}
-              name={m.name}
-              as={Link}
-              to={m.link}
-              id={m.id}
-            />
-          ))}
-
-          <Menu.Menu position='right'>
-            {loggedOutLabels.map(l => (
-              <Menu.Item
-                key={l}
-                name={l}
-                link={l}
+        <Container>
+          <Segment inverted
+            style={{ background: '#e0e1e2' }} >
+            <Menu secondary>
+              <Select
+                style={{ border: 'none', margin: '2px' }}
+                placeholder="Select country"
+                selection
+                id="country"
+                options={countryOptions}
               />
-            ))}
-            {loggedInLabels.map(l => (
-              <Menu.Item
-                key={l}
-                name={l}
-                link={l}
+              <Select
+                style={{ border: 'none', margin: '2px' }}
+                placeholder="Select city"
+                selection
+                id="city_header"
+                options={cityOptions}
               />
-            ))}
-          </Menu.Menu>
-        </Menu>
-        
-        </Segment>
-      </Container>
+              {mainLabels.map(m => (
+                <Menu.Item
+                  key={m.name}
+                  name={m.name}
+                  as={Link}
+                  to={m.link}
+                  id={m.id}
+                />
+              ))}
+              <Menu.Menu position='right'>
+                {labels}
+              </Menu.Menu>
+            </Menu>
+          </Segment>
+        </Container>
 
-      <Container>
-        <HeaderCategory />
-      </Container>
-    </>
-  )
+        <Container>
+          <HeaderCategory />
+        </Container>
+      </>
+    )
+  }
 }
-export default HeaderMain
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default withRouter(connect(
+  mapStateToProps,
+  { signOutUser },
+)(HeaderMain))

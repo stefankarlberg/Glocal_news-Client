@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
-import { COUNTRY_OPTIONS } from './countriesData.js'
+import { COUNTRY_OPTIONS } from '../Modules/countriesData.js'
 
 class WriteArticle extends Component {
   state = {
@@ -43,7 +43,6 @@ class WriteArticle extends Component {
           state: { success_message: true, review_form: false }
         })
 
-        //this.props.history.push(`/full-article/${response.data.article_id}`)
       })
       .catch(error => {
         this.setState({
@@ -91,30 +90,35 @@ class WriteArticle extends Component {
           <Form type="medium" id="write-article" onSubmit={this.onSubmit}>
             <Form.Input
               id="title"
+              required
               value={this.state.title}
               onChange={this.onChangeHandler}
               placeholder="Title"
             />
             <Form.TextArea
               id="ingress"
+              required
               value={this.state.ingress}
               onChange={this.onChangeHandler}
               placeholder="Ingress"
             />
             <Form.TextArea
               id="body"
+              required
               value={this.state.body}
               onChange={this.onChangeHandler}
               placeholder="Body"
             />
             <Form.Input
               id="written_by"
+              required
               value={this.state.written_by}
               onChange={this.onChangeHandler}
               placeholder="Written By"
             />
             <Form.Input
               id="image"
+              required
               value={this.state.image}
               onChange={this.onChangeHandler}
               placeholder="https://image.com"
@@ -143,6 +147,7 @@ class WriteArticle extends Component {
             <br></br>
             <Form.Input
               id="city"
+              required
               value={this.state.city}
               onChange={this.onChangeHandler}
               placeholder="City Name"
