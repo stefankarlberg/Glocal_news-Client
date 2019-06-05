@@ -61,7 +61,7 @@ class ArticlesByCategory extends Component {
             <Icon name='globe' style={{ color: color }} />
             {filteredArticles[0].title}</Card.Header>
             <p id={`ingress_${filteredArticles[0].id}`}>{filteredArticles[0].ingress}</p>
-            <h5 style={{ color: 'grey' }} id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>
+            <h5 id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>
           </Card.Content>
         </div>
       </Card>
@@ -127,7 +127,7 @@ class ArticlesByCategory extends Component {
     return (
       <>
         <Container>
-          <Header id="headline">
+          <Header as='h2' id="headline">
             {category}
           </Header>
 
@@ -143,7 +143,10 @@ class ArticlesByCategory extends Component {
               />
             </Grid.Column>
 
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
+              <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%', width: '100%' }}>
+                <p>Ads placeholder</p>
+              </Segment>
             </Grid.Column>
           </Grid>
         </Container>

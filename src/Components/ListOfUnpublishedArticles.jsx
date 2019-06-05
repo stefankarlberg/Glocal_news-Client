@@ -67,20 +67,11 @@ class ListOfUnpublishedArticles extends Component {
       </div>
     )
 
-    let message
-
-    if (this.state.review_success_message) {
-      message = (
-        <p>Review successfully created</p>
-      )
-    }
-
     return (
       <>
         <Container>
-          {message}
-          <Header>
-            Unpublished Articles (if you see nothing in this page, there are no articles up for review)
+          <Header as='h3'>
+            Review an article - help the Glocal News to become even better!
           </Header>
           <Grid centered columns={2}>
             <Grid.Column width={12}>
