@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { COUNTRY_OPTIONS } from '../Modules/countriesData'
 import { getCategories } from '../Modules/categoriesData'
@@ -14,11 +13,12 @@ class WriteArticle extends Component {
     image: '',
     written_by: '',
     category_id: '',
-    redirect: '',
     errors: '',
     categories: [],
     country: '',
-    city: ''
+    city: '',
+    success_message: false,
+    error_message: false
   }
 
   async componentDidMount() {
@@ -39,14 +39,16 @@ class WriteArticle extends Component {
     axios.post(path, payload)
       .then(response => {
         console.log(response)
-        this.setState({
-          redirect: true,
-          id: response.data.article_id
+        this.props.history.push({
+          pathname: '/full-article',
+          state: { success_message: true, review_form: false, id: response.data.article_id }
         })
+
+        //this.props.history.push(`/full-article/${response.data.article_id}`)
       })
       .catch(error => {
         this.setState({
-          redirect: false,
+          error_message: true,
           errors: error.response.data.error
         })
       })
@@ -67,15 +69,7 @@ class WriteArticle extends Component {
       return { key: category.id, text: category.name, value: category.id }
     })
 
-    if (this.state.redirect === true) {
-      return <Redirect to={{
-        pathname: '/full-article',
-        state: {
-          id: this.state.id,
-          message: true
-        }
-      }} />
-    } else if (this.state.redirect === false) {
+    if (this.state.error_message) {
       message = (
         <>
           <br />

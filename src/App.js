@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ListOfArticles from './Components/ListOfArticles';
 import HeaderMain from './Components/HeaderMain.jsx'
 import WriteArticle from './Components/WriteArticle'
 import ListOfUnpublishedArticles from './Components/ListOfUnpublishedArticles'

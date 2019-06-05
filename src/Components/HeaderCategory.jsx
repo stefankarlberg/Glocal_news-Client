@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import {getCategoryNames} from '../Modules/categoriesData'
+import { getCategoryNames } from '../Modules/categoriesData'
 import { Menu, Divider, Container } from 'semantic-ui-react'
 
 class HeaderCategory extends Component {
-  state = { 
+  state = {
     categories: []
   }
 
@@ -16,29 +16,28 @@ class HeaderCategory extends Component {
   }
 
   render() {
-    const { activeItem } = this.state 
-    
+
     return (
-    <>
-      <Container id="header_category">
+      <>
+        <Container id="header_category">
           <Menu pointing secondary >
             {this.state.categories.map(c => (
               <Menu.Item
-              style={{ margin: "auto" }}
-              id={c.name.toLowerCase()}
-              key={c.id}
-              name={c.name}
-              as={Link}
-              to={{pathname: `/${c.name.toLowerCase()}`, state: {categoryName: `${c.name}`} }}
-              color={c.color}
-              active={this.props.activeItem === c.name.toLowerCase()}
-              onClick={this.props.handleItemClick}
+                style={{ margin: "auto" }}
+                id={c.name.toLowerCase()}
+                key={c.id}
+                name={c.name}
+                as={Link}
+                to={{ pathname: `/${c.name.toLowerCase()}`, state: { categoryName: `${c.name}` } }}
+                color={c.color}
+                active={this.props.activeItem === c.name.toLowerCase()}
+                onClick={this.props.handleItemClick}
               />
             ))}
           </Menu>
-        <Divider hidden/>
-      </Container>
-    </>
+          <Divider hidden />
+        </Container>
+      </>
     )
   }
 }
