@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 class ListOfUnpublishedArticles extends Component {
   state = {
     articles: [],
+    review_success_message: false
   }
 
   componentDidMount() {
@@ -20,7 +21,7 @@ class ListOfUnpublishedArticles extends Component {
         {this.state.articles.map(article => {
           if (article.published === false) {
             return (
-              <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: article.id } }}>
+              <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { success_message: false, review_form: true, id: article.id } }}>
                 <div id={article.id} >
                   <img alt="article logo" id={`photo_${article.id}`} src={article.image} width="200" height="100" />
                   <h1 id={`title_${article.id}`}>{article.title}</h1>
@@ -34,9 +35,18 @@ class ListOfUnpublishedArticles extends Component {
       </div>
     )
 
+    let message
+
+    if(this.state.review_success_message){
+      message = (
+        <p>Review successfully created</p>
+      )
+    }
+
     return (
       <>
         <Container>
+          {message}
           <Header>
             Unpublished Articles (if you see nothing in this page, there are no articles up for review)
           </Header>

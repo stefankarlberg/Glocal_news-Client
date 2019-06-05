@@ -20,6 +20,9 @@ The GitHub repository for the API is [here](https://github.com/CraftAcademy/Gloc
 The API is deployed using Heroku on [this address](https://glocal-news.herokuapp.com/).
 
 The client, which is where everything happens, is deployed via Netlify [here](https://glocal-news.netlify.com/).
+If you do not wish to sign up, you can use the following test credentials:
+* Email: *user@mail.com*
+* Password: *password*
 
 # Tests, Test Coverage & CI
 

@@ -20,11 +20,6 @@ describe('Visitor can navigate the website', () => {
 
   it("by seeing login and logout information", () => {
     let loggedOutLabels = ['Sign Up', 'Log In']
-    let loggedInLabels = ['Welcome Member', 'Log Out']
-
-    loggedInLabels.forEach(function (label) {
-      cy.contains(label)
-    })
 
     loggedOutLabels.forEach(function (label) {
       cy.contains(label)
