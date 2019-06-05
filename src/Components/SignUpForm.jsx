@@ -27,15 +27,15 @@ class SignUpForm extends Component {
       password_confirmation,
     } = this.state
     registerUser({ email, password, password_confirmation })
-    .then(response => {
-      this.setState({ message: true })
-      setTimeout(function () { history.push('/') }, 3000)
-    }).catch(error => {
-      this.setState({
-        errors_signup: error.response.data.errors.full_messages,
-        message: false
+      .then(response => {
+        this.setState({ message: true })
+        setTimeout(function () { history.push('/') }, 3000)
+      }).catch(error => {
+        this.setState({
+          errors_signup: error.response.data.errors.full_messages,
+          message: false
+        })
       })
-    })
   }
 
   render() {
@@ -52,8 +52,7 @@ class SignUpForm extends Component {
           </Message>
         </>
       )
-    }
-    if (this.state.message === false ) {
+    } else if (this.state.message === false) {
       message = (
         <>
           <br />

@@ -50,9 +50,7 @@ class LoginForm extends Component {
           </Message>
         </>
       )
-    }
-
-    if (this.state.message === false) {
+    } else if (this.state.message === false) {
       message = (
         <>
           <br />
