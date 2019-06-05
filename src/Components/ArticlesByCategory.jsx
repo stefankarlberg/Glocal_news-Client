@@ -40,7 +40,7 @@ class ArticlesByCategory extends Component {
     })
 
     let articleList = filteredArticles.length ? (
-      <div>
+      <div id="filtered_articles">
         {filteredArticles.map(article => {
           return (
             <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >

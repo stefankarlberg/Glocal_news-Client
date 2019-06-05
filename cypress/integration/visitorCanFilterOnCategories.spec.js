@@ -29,7 +29,9 @@ describe('Visitor can view articles filtered by category', () => {
     ]
 
     cy.get('#politics').click()
-    cy.get('#38').should('not.exist')
+    cy.get('#filtered_articles').within(() => {
+      cy.get('#38').should('not.exist')
+    })
     politics.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
@@ -38,8 +40,10 @@ describe('Visitor can view articles filtered by category', () => {
     })
 
     cy.get('#arts').click()
-    cy.get('#36').should('not.exist')
-    cy.get('#37').should('not.exist')
+    cy.get('#filtered_articles').within(() => {
+      cy.get('#36').should('not.exist')
+      cy.get('#37').should('not.exist')
+    })
     arts.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
