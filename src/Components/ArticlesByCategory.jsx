@@ -54,10 +54,12 @@ class ArticlesByCategory extends Component {
 
     let firstArticle = filteredArticles.length ? (
       <Card fluid key={filteredArticles[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticles[0].id}` } }} >
-        <div id={filteredArticles[0].id} style={{ color: 'black', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`  }}>
+        <div id={filteredArticles[0].id} style={{  boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`  }}>
           <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
           <Card.Content style={{ padding: '2em' }}>
-            <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>{filteredArticles[0].title}</Card.Header>
+            <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>
+            <Icon name='globe' style={{ color: color }} />
+            {filteredArticles[0].title}</Card.Header>
             <p id={`ingress_${filteredArticles[0].id}`}>{filteredArticles[0].ingress}</p>
             <h5 style={{ color: 'grey' }} id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>
           </Card.Content>
@@ -81,7 +83,13 @@ class ArticlesByCategory extends Component {
 
           return (
             <>
-              <Card style={{ color: 'black', border: '2px', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
+              <Card style={{ 
+                color: 'black', 
+                border: '2px', 
+                boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`
+                 }} 
+                 fluid key={article.id} 
+                 as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={6} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
 
@@ -96,9 +104,11 @@ class ArticlesByCategory extends Component {
                     </Segment>
                   </Grid.Column>
                   <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={10}>
-                    <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
+                    <h2 id={`title_${article.id}`}>
+                    <Icon name='globe' style={{ color: color }} />
+                    {article.title}</h2>
                     <p id={`ingress_${article.id}`}>{ingress}</p>
-                    <p id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`} </p>
+                    <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city},  ${article.country}`} </p>
                   </Grid.Column>
                 </Grid>
               </Card>

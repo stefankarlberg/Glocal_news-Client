@@ -1,0 +1,19 @@
+.ui.card {
+  border-radius:0px !important;
+}
+
+a.ui.card:hover {
+  transform: none !important;
+}
+
+a.ui.fluid.card{
+color: black !important;
+}
+
+a.ui.fluid.card :hover{
+  color: grey !important;
+  }
+
+h2 {
+  font-size: 70px;
+}
