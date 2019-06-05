@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Header, Container, Grid, Card, Image, Icon, Message } from 'semantic-ui-react';
+import { Header, Container, Grid, Card, Image, Icon, Message, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import LatestNews from './LatestNews'
+import { getCategoryNames } from '../Modules/categoriesData'
 
 class ArticlesByCategory extends Component {
   state = {
     categoryName: '',
-    articles: []
+    articles: [],
+    categories: []
   }
 
-  componentDidMount() {
-    let categoryName= this.props.location.pathname.substring(1)
-    this.setState({categoryName: categoryName})
+  async componentDidMount() {
+    let categories = await getCategoryNames()
+    let categoryName = this.props.location.pathname.substring(1)
+    this.setState({
+      categoryName: categoryName,
+      categories: categories
+    })
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     })
   }
 
   componentDidUpdate(prevProps) {
-    let categoryName= this.props.location.pathname.substring(1)
-    if (prevProps.location.pathname.substring(1) !== categoryName ) {
-      this.setState({categoryName: categoryName})
+    let categoryName = this.props.location.pathname.substring(1)
+    if (prevProps.location.pathname.substring(1) !== categoryName) {
+      this.setState({ categoryName: categoryName })
     }
   }
 
@@ -39,33 +45,78 @@ class ArticlesByCategory extends Component {
       }
     })
 
+    let firstArticle = filteredArticles.length ? (
+      <Card fluid key={filteredArticles[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticles[0].id}` } }} >
+        <div id={filteredArticles[0].id} style={{ color: 'black' }}>
+          <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
+          <Card.Content style={{ padding: '2em' }}>
+            <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>{filteredArticles[0].title}</Card.Header>
+            <p id={`ingress_${filteredArticles[0].id}`}>{filteredArticles[0].ingress}</p>
+            <h5 style={{ color: 'grey' }} id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>
+          </Card.Content>
+        </div>
+      </Card>
+    ) : (
+        <Message>
+          <Message.Header>There are no {category} articles at the moment</Message.Header>
+        </Message>
+      )
+
     let articleList = filteredArticles.length ? (
+
+
       <div>
-        {filteredArticles.map(article => {
+        {filteredArticles.splice(1, filteredArticles.length).map(article => {
+
+          let color
+          if (this.state.categoryName === 'news') {
+            color = 'red'
+          } else {
+            for (let i = 0; i < this.state.categories.length; i++) {
+              if (article.category.name === this.state.categories[i].name) {
+                color = (
+                  this.state.categories[i].color
+                )
+              }
+            }
+          }
+
           return (
-            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
-              <div id={article.id} style={{ color: 'black' }}>
-                <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
-                <Card.Content style={{ padding: '2em' }}>
-                  <Card.Header as='h1' id={`title_${article.id}`}>{article.title}</Card.Header>
-                  <p id={`ingress_${article.id}`}>{article.ingress}</p>
-                  <h5 style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</h5>
-                </Card.Content>
-              </div>
-            </Card>
+            <>
+              <Card style={{ color: 'black', border: '2px', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
+                <Grid id={article.id} >
+                  <Grid.Column width={5} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
+
+                    <Segment style={{
+                      background: `url(${article.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      height: '100%',
+                      borderRadius: '0px',
+                      backgroundRepeat: 'no-repeat'
+                    }} >
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={11}>
+                    <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
+                    <p id={`ingress_${article.id}`}>{article.ingress}</p>
+                    <p id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`} </p>
+                  </Grid.Column>
+                </Grid>
+              </Card>
+            </>
           )
-        })}     
+        })}
       </div>
     ) : (
-      <Message>
-        <Message.Header>There are no {category} articles at the moment</Message.Header>
-        <p>
-          Be the first to post your own article and become a neighborhood journalist!
+        <Message>
+          <p>
+            Be the first to post your own article and become a neighborhood journalist!
         </p>
-      </Message>
-    )
+        </Message>
+      )
 
-    return(
+    return (
       <>
         <Container>
           <Header id="headline">
@@ -74,6 +125,7 @@ class ArticlesByCategory extends Component {
 
           <Grid fluid columns={3}>
             <Grid.Column width={8}>
+              {firstArticle}
               {articleList}
             </Grid.Column>
 

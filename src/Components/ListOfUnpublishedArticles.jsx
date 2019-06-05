@@ -1,39 +1,58 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Header, Container, Grid, Card, Segment } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import axios from 'axios'
+import { Header, Container, Grid, Card, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { getCategoryNames } from '../Modules/categoriesData'
 
 class ListOfUnpublishedArticles extends Component {
   state = {
     articles: [],
-    review_success_message: false
+    review_success_message: false,
+    categories: []
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    let categories = await getCategoryNames()
+    this.setState({
+      categories: categories,
+    })
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     });
   }
 
   render() {
+
+
+
     let articleList = (
       <div>
         {this.state.articles.map(article => {
+
+          let color
+          for (let i = 0; i < this.state.categories.length; i++) {
+            if (article.category.name === this.state.categories[i].name) {
+              color = (
+                this.state.categories[i].color
+              )
+            }
+          }
+
           if (article.published === false) {
             return (
-              <Card color='purple' style={{ color: 'black', border:'2px', boxShadow: '0 0 0 1px #d4d4d5, 0 4px 0 0 #a333c8, 0 1px 3px 0 #d4d4d5' }} fluid key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { success_message: false, review_form: true } }} >
+              <Card style={{ color: 'black', border: '2px', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={5} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
-                    {/* <Image alt="article logo" id={`photo_${article.id}`} src={article.image} /> */}
-                    <Segment style={{ 
+
+                    <Segment style={{
                       background: `url(${article.image})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       height: '100%',
                       borderRadius: '0px',
                       backgroundRepeat: 'no-repeat'
-                      }} >
-                     </Segment>
+                    }} >
+                    </Segment>
                   </Grid.Column>
                   <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={11}>
                     <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
