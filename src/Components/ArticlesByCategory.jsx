@@ -58,7 +58,7 @@ class ArticlesByCategory extends Component {
           <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
           <Card.Content style={{ padding: '2em' }}>
             <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>
-            <Icon name='globe' style={{ color: color }} />
+            <Icon name='globe' color={color} />
             {filteredArticles[0].title}</Card.Header>
             <p id={`ingress_${filteredArticles[0].id}`}>{filteredArticles[0].ingress}</p>
             <h5 id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>
@@ -104,11 +104,18 @@ class ArticlesByCategory extends Component {
                     </Segment>
                   </Grid.Column>
                   <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={10}>
-                    <h2 id={`title_${article.id}`}>
-                    <Icon name='globe' style={{ color: color }} />
-                    {article.title}</h2>
+                    <h2 id={`title_${article.id}`}>{article.title}</h2>
                     <p id={`ingress_${article.id}`}>{ingress}</p>
-                    <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city},  ${article.country}`} </p>
+                    
+                    <Grid.Row columns={2}>
+                      <Grid.Column floated='left' width={5}>
+                        <p id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`} </p>
+                      </Grid.Column>
+                      <Grid.Column floated='right' width={2}>
+                        <h4 style={{color: color}}>Read more<Icon name='angle right'/></h4>
+                      </Grid.Column>
+                    </Grid.Row>
+
                   </Grid.Column>
                 </Grid>
               </Card>

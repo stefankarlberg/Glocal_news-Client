@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Header, Container, Grid, Card, Segment } from 'semantic-ui-react'
+import { Header, Container, Grid, Card, Segment, Icon, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { getCategoryNames } from '../Modules/categoriesData'
 
@@ -40,7 +40,7 @@ class ListOfUnpublishedArticles extends Component {
 
           if (article.published === false) {
             return (
-              <Card style={{ color: 'black', border: '2px', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
+              <Card style={{ color: 'black', border: '2px', boxShadow: `0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={5} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
 
@@ -57,7 +57,16 @@ class ListOfUnpublishedArticles extends Component {
                   <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={11}>
                     <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
                     <p id={`ingress_${article.id}`}>{article.ingress}</p>
-                    <p id={`country_city_${article.id}`}>{`Country: ${article.country}, City: ${article.city}`} </p>
+                    <Grid.Row columns={2}>
+                      <Grid.Column floated='left' width={12}>
+                        <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city}, ${article.country} | ${article.category.name}`} </p>
+                      </Grid.Column>
+                      <Grid.Column floated='right'>
+                        <Label horizontal color={color}>
+                          {article.category.name}
+                        </Label>
+                      </Grid.Column>
+                    </Grid.Row>
                   </Grid.Column>
                 </Grid>
               </Card>
