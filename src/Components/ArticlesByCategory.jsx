@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Header, Container, Grid, Card, Image, Icon, Message } from 'semantic-ui-react';
+import { Header, Container, Grid, Card, Image, Icon, Message, Segment, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import LatestNews from './LatestNews'
 
@@ -40,8 +40,9 @@ class ArticlesByCategory extends Component {
     })
 
     let articleList = filteredArticles.length ? (
-      <div>
+      <div id="filtered_articles">
         {filteredArticles.map(article => {
+          if (article.published === true) {
           return (
             <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
               <div id={article.id} style={{ color: 'black' }}>
@@ -53,8 +54,8 @@ class ArticlesByCategory extends Component {
                 </Card.Content>
               </div>
             </Card>
-          )
-        })}     
+          )}
+        })}    
       </div>
     ) : (
       <Message>
@@ -68,9 +69,10 @@ class ArticlesByCategory extends Component {
     return(
       <>
         <Container>
-          <Header id="headline">
+          <Header as="h2" id="headline">
             {category}
           </Header>
+          <Divider></Divider>
 
           <Grid fluid columns={3}>
             <Grid.Column width={8}>
@@ -83,7 +85,10 @@ class ArticlesByCategory extends Component {
               />
             </Grid.Column>
 
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
+            <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%' }}>
+                <p>Ads placeholder</p>
+              </Segment>
             </Grid.Column>
           </Grid>
         </Container>

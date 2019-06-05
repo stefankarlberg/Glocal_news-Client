@@ -27,6 +27,7 @@ class LatestNews extends Component {
     let articleList = (
       <>
         {sortedArticles.map(article => {
+          if (article.published === true) {
           
           let dateString = article.created_at
           let dateObj = new Date(dateString);
@@ -50,9 +51,11 @@ class LatestNews extends Component {
               <p style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</p>
             </Segment>
           )
-        })}
+        }})
+      }
       </>
     )
+    
 
     return (
       <Container id="latest_news">
