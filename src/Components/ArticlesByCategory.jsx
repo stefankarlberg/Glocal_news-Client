@@ -89,7 +89,7 @@ class ArticlesByCategory extends Component {
                 boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`
                  }} 
                  fluid key={article.id} 
-                 as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
+                 as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: false, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={6} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
 
