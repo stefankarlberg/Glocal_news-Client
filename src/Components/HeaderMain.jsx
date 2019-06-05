@@ -6,64 +6,6 @@ import { connect } from 'react-redux';
 import { signOutUser } from '../reduxTokenAuthConfig';
 import { withRouter } from 'react-router-dom';
 
-// const countryOptions = [
-//   {
-//     key: "Sweden",
-//     text: "Sweden",
-//     value: "Sweden",
-//   },
-// ]
-
-// const cityOptions = [
-//   {
-//     key: "Stockholm",
-//     text: "Stockholm",
-//     value: "Stockholm",
-//   },
-// ]
-
-// const mainLabels = [
-//   {
-//     name: 'Write An Article',
-//     link: '/write-article',
-//     id: 'write_article'
-//   }, {
-//     name: 'Review Articles',
-//     link: '/review-articles',
-//     id: 'review_articles'
-//   }
-// ]
-// const loggedOutLabels = ['Sign Up', 'Log In']
-// const loggedInLabels = ['Welcome Member', 'Log Out']
-
-
-// class HeaderMain extends Component {
-//   state = {
-//     activeItem: 'news',
-//   }
-
-// handleItemClick = (e) => {
-//   const category = e.target.id[0].toLowerCase() + e.target.id.slice(1);
-//   this.setState({ activeItem: category })
-// }
-
-// render() {
-//   return (
-//     <>
-{/* <Container textAlign="center" id="header"
-        >
-          <Divider hidden />
-          <Header
-            id='news'
-            name='logo'
-            as={Link}
-            to={{ pathname: '/news', state: { activeItem: this.state.activeItem } }}
-            style={{ fontSize: "2em" }}
-            onClick={this.handleItemClick}
-          >
-            GLOCAL NEWS
-            </Header> */}
-
 class HeaderMain extends Component {
   state = {
     activeItem: 'news',
