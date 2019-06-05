@@ -44,12 +44,10 @@ class LatestNews extends Component {
           }
 
           return (
-            <Segment color={color}>
-            <div id={article.id} key={article.id} >
+            <Segment id={article.id} color={color} key={article.id}>
               <p>{momentDate} | {momentTime}</p>
               <Header id={`title_${article.id}`} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>{article.title}</Header>
               <p style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`}</p>
-            </div>
             </Segment>
           )
         })}
