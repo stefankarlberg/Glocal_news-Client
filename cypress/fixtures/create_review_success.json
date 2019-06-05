@@ -1,4 +1,6 @@
 {
   "message": "Successfully created",
-  "article_id": 1
+  "review_id": 2,
+  "score": 1,
+  "comment": "Great article!"
 }

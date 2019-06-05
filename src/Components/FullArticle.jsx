@@ -24,6 +24,7 @@ class FullArticle extends Component {
     let mainPath = '/api/v1/articles/'
     let articlePath = (this.props.location.state.id)
     axios.get(mainPath + articlePath).then(response => {
+      console.log(response.data)
       this.setState({
         id: response.data.id,
         title: response.data.title,
@@ -37,13 +38,11 @@ class FullArticle extends Component {
         city: response.data.city
       });
     });
-
     this.setState({
       success_message: this.props.location.state.success_message,
       review_form: this.props.location.state.review_form
     })
   }
-
 
   render() {
 

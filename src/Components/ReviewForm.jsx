@@ -104,6 +104,7 @@ class ReviewForm extends Component {
 
             <Form.TextArea
               id="comment"
+              required
               value={this.state.comment}
               onChange={this.onChangeHandler}
               placeholder="Comment"
