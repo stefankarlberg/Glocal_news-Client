@@ -24,7 +24,7 @@ class ArticlesByCategory extends Component {
     })
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     let categoryName = this.props.location.pathname.substring(1)
     if (prevProps.location.pathname.substring(1) !== categoryName) {
       this.setState({ categoryName: categoryName })
@@ -34,6 +34,7 @@ class ArticlesByCategory extends Component {
   render() {
     let category = this.state.categoryName.charAt(0).toUpperCase() + this.state.categoryName.slice(1);
     let filteredArticles = []
+    let color
 
     this.state.articles.forEach(article => {
       if (this.state.categoryName === 'news') {
@@ -45,9 +46,15 @@ class ArticlesByCategory extends Component {
       }
     })
 
+    this.state.categories.forEach(category => {
+      if (category.name.toLowerCase() === this.state.categoryName) {
+        color = category.color
+      }
+    })
+
     let firstArticle = filteredArticles.length ? (
       <Card fluid key={filteredArticles[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticles[0].id}` } }} >
-        <div id={filteredArticles[0].id} style={{ color: 'black' }}>
+        <div id={filteredArticles[0].id} style={{ color: 'black', boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`  }}>
           <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
           <Card.Content style={{ padding: '2em' }}>
             <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>{filteredArticles[0].title}</Card.Header>
@@ -64,22 +71,8 @@ class ArticlesByCategory extends Component {
 
     let articleList = filteredArticles.length ? (
 
-
       <div>
         {filteredArticles.splice(1, filteredArticles.length).map(article => {
-
-          let color
-          if (this.state.categoryName === 'news') {
-            color = 'red'
-          } else {
-            for (let i = 0; i < this.state.categories.length; i++) {
-              if (article.category.name === this.state.categories[i].name) {
-                color = (
-                  this.state.categories[i].color
-                )
-              }
-            }
-          }
 
           return (
             <>
