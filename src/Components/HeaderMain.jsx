@@ -162,7 +162,7 @@ class HeaderMain extends Component {
 
     return (
       <>
-        <Container textAlign="center">
+        <Container id="header" textAlign="center">
           <Divider hidden />
           <Header
             id='news'
