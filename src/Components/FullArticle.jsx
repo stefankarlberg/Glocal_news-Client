@@ -22,7 +22,7 @@ class FullArticle extends Component {
 
   componentDidMount() {
     let mainPath = '/api/v1/articles/'
-    let articlePath = this.props.match ? this.props.match.params.id : this.props.id
+    let articlePath = (this.props.location.state.id)
     axios.get(mainPath + articlePath).then(response => {
       this.setState({
         id: response.data.id,
@@ -43,6 +43,7 @@ class FullArticle extends Component {
       review_form: this.props.location.state.review_form
     })
   }
+
 
   render() {
 
