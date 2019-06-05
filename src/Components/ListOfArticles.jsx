@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Grid, Container, Card, Image, Icon, Segment } from 'semantic-ui-react'
+import { Grid, Container, Card, Image, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class ListOfArticles extends Component {
@@ -20,7 +20,7 @@ class ListOfArticles extends Component {
       <div>
         {this.state.articles.map(article => {
           return (
-            <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
+            <Card fluid key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { id: `${article.id}` } }} >
               <div id={article.id} style={{ color: 'black' }}>
                 <Image fluid alt="article logo" id={`photo_${article.id}`} src={article.image} />
                 <Card.Content style={{ padding: '2em' }}>

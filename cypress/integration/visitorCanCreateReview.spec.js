@@ -9,21 +9,39 @@ describe('Visitor can', () => {
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles/1/reviews',
-      response: 'fixture:create_review_success.json'
+      url: 'http://localhost:3002/api/v1/articles/1/reviews',
+      response: 'fixture:create_review_success.json',
+      status: 200
     })
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3002/api/v1/auth/sign_in',
+      status: 200,
+      response: 'fixture:successful_login.json',
+      headers: {
+        "uid": "boa@mail.com"
+      }
+    })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/articles/1',
+      response: 'fixture:one_unpublished_article.json',
+      status: 200
+    })
+    
     cy.visit('http://localhost:3001')
+    cy.get('#review_articles').click()
+    cy.get('#login-form').within(() => {
+      cy.get('#email').type('boa@mail.com')
+      cy.get('#password').type('password')
+    })
+    cy.get('#login_form_button').click()
     cy.get('#review_articles').click()
     cy.get("#1").click()
   })
 
   it('see unpublished article when clicked on', () => {
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3002/api/v1/articles/1/reviews',
-      response: 'fixture:one_unpublished_article.json',
-      status: 200
-    })
+    
 
     let article = ["#title_1", "#ingress_1", "#body_1", "#photo_1", "#written_1", "#date_1"]
 
