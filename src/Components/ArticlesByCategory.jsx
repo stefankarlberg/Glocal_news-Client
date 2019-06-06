@@ -91,7 +91,7 @@ class ArticlesByCategory extends Component {
                  fluid key={article.id} 
                  as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: false, id: article.id } }} >
                 <Grid id={article.id} >
-                  <Grid.Column width={6} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
+                  <Grid.Column width={6} style={{ paddingBottom: '12px', paddingTop: '13px' }}>
 
                     <Segment style={{
                       background: `url(${article.image})`,
