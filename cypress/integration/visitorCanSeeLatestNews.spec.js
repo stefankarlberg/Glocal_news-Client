@@ -13,8 +13,8 @@ describe('Visitor can view latest news', () => {
 
   it('as a smaller second column on each category tab', () => {
     let articles = [
-      ["#39", "#title_39", "#created_at_39", "#country_39", "city_39" ],
-      ["#38", "#title_38", "#created_at_38", "#country_38", "city_38" ]
+      ["#39", "#title_39", "#created_at_39", "#country_39", "city_39"],
+      ["#38", "#title_38", "#created_at_38", "#country_38", "city_38"]
     ]
     cy.get('#news').click()
     cy.get('#latest_news').within(() => {
@@ -33,7 +33,6 @@ describe('Visitor can view latest news', () => {
         })
       })
     })
-    
   })
 
   it('sorted by the published date', () => {

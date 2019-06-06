@@ -19,7 +19,7 @@ class ListOfUnpublishedArticles extends Component {
     let articleList = (
       <div>
         {this.state.articles.map(article => {
-          if (article.published === false && article.reviews.length < 3 ) {
+          if (article.published === false && article.reviews.length < 3) {
             return (
               <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { success_message: false, review_form: true, id: article.id } }}>
                 <div id={article.id} >
@@ -37,7 +37,7 @@ class ListOfUnpublishedArticles extends Component {
 
     let message
 
-    if(this.state.review_success_message){
+    if (this.state.review_success_message) {
       message = (
         <p>Review successfully created</p>
       )

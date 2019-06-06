@@ -12,6 +12,7 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [],
     "published": false
   },
   {
@@ -26,6 +27,23 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [
+      {
+        "id": 1,
+        "score": 4,
+        "comment": "Go back to school!"
+      },
+      {
+        "id": 2,
+        "score": 3,
+        "comment": "Go back to school!"
+      },
+      {
+        "id": 3,
+        "score": 2,
+        "comment": "Go back to school!"
+      }
+    ],
     "published": false
   },
   {
@@ -40,6 +58,7 @@
       "id": 3,
       "name": "Arts"
     },
+    "reviews": [],
     "published": true
   },
   {
@@ -54,6 +73,7 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [],
     "published": true
   }
 ]

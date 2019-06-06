@@ -34,7 +34,6 @@ describe('Visitor can', () => {
       response: 'fixture:one_unpublished_article.json',
       status: 200
     })
-    
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
     cy.get('#login-form').within(() => {
@@ -48,7 +47,7 @@ describe('Visitor can', () => {
   })
 
   it('see unpublished article when clicked on', () => {
-    
+
 
     let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36"]
 

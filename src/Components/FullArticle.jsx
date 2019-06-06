@@ -93,7 +93,7 @@ class FullArticle extends Component {
               {review_form}
             </Grid.Column>
             <Grid.Column width={4}>
-            <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%' }}>
+              <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%' }}>
                 <p>Ads placeholder</p>
               </Segment>
             </Grid.Column>
