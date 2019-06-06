@@ -19,7 +19,7 @@ class ListOfUnpublishedArticles extends Component {
     let articleList = (
       <div>
         {this.state.articles.map(article => {
-          if (article.published === false) {
+          if (article.published === false && article.reviews.length < 3 ) {
             return (
               <Container key={article.id} as={Link} to={{ pathname: '/full-article', state: { success_message: false, review_form: true, id: article.id } }}>
                 <div id={article.id} >
