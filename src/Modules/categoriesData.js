@@ -41,8 +41,8 @@ const getCategoryNames = async () => {
       '#1b1c1d', //black
       '#a333c8', //purple
       '#a5673f', //brown
-      '#f2711c', //orange
       '#6435c9', //violet
+      '#f2711c', //orange
       '#21ba45', //green
       '#fbbd08' //yellow
     ]
@@ -51,6 +51,31 @@ const getCategoryNames = async () => {
       response.data.forEach((category, categoryIndex) => {
         if (index === categoryIndex) {
           category["color"] = color	
+        }
+      })
+    })
+    
+
+    let semanticIndex = [
+      'red',
+      'blue',
+      'pink',
+      'teal',
+      'grey',
+      'olive',
+      'black',
+      'purple',
+      'brown',
+      'violet',
+      'orange',
+      'green',
+      'yellow'
+    ]
+
+    semanticIndex.forEach((semantic, index) => {
+      response.data.forEach((category, categoryIndex) => {
+        if (index === categoryIndex) {
+          category["semantic"] = semantic	
         }
       })
     })

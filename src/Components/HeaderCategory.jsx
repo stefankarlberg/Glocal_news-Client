@@ -23,13 +23,13 @@ class HeaderCategory extends Component {
           <Menu pointing secondary >
             {this.state.categories.map(c => (
               <Menu.Item
-                style={{ margin: "auto" }}
+                style={{ margin: "auto"}}
+                color={`${c.semantic}`}  
                 id={c.name.toLowerCase()}
                 key={c.id}
                 name={c.name}
                 as={Link}
                 to={{ pathname: `/${c.name.toLowerCase()}`, state: { categoryName: `${c.name}` } }}
-                color={c.color}
                 active={this.props.activeItem === c.name.toLowerCase()}
                 onClick={this.props.handleItemClick}
               />
