@@ -51,7 +51,7 @@ class LatestNews extends Component {
                     <p>{momentDate} | {momentTime} </p>
                   </Grid.Column>
                   <Grid.Column floated='right' width={5}>
-                    <Label tag color={color}>
+                    <Label tag style={{backgroundColor: `${color}`, color: 'white' }}>
                       {article.category.name}
                    </Label>
                   </Grid.Column>

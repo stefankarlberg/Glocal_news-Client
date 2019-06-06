@@ -58,7 +58,7 @@ class ArticlesByCategory extends Component {
           <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
           <Card.Content style={{ padding: '2em' }}>
             <Card.Header as='h1' id={`title_${filteredArticles[0].id}`}>
-            <Icon name='globe' color={color} />
+            <Icon name='globe' style={{color: `${color}`}} />
             {filteredArticles[0].title}</Card.Header>
             <p id={`ingress_${filteredArticles[0].id}`}>{filteredArticles[0].ingress}</p>
             <h5 id={`country_city_${filteredArticles[0].id}`}><Icon name='map marker alternate' />{`${filteredArticles[0].city}, ${filteredArticles[0].country}`}</h5>

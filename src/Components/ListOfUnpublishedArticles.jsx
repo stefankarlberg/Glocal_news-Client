@@ -62,7 +62,7 @@ class ListOfUnpublishedArticles extends Component {
                         <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city}, ${article.country} | ${article.category.name}`} </p>
                       </Grid.Column>
                       <Grid.Column floated='right'>
-                        <Label horizontal color={color}>
+                        <Label horizontal style={{backgroundColor: `${color}`, color: 'white' }}>
                           {article.category.name}
                         </Label>
                       </Grid.Column>
