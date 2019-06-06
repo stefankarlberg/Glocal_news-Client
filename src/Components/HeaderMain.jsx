@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
+import { Menu, Header, Select, Container, Divider, Segment, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { signOutUser } from '../reduxTokenAuthConfig';
 import { withRouter } from 'react-router-dom';
+import { COUNTRY_OPTIONS } from '../Modules/countriesData'
 
 class HeaderMain extends Component {
   state = {
     activeItem: 'news',
+    country: ''
   }
 
   handleItemClick = (e) => {
@@ -25,15 +27,19 @@ class HeaderMain extends Component {
       })
   }
 
+  handleChangeCountry = (e, { value }) => {
+    this.setState({ country: value })
+  }
+
   render() {
 
-    const countryOptions = [
-      {
-        key: "Sweden",
-        text: "Sweden",
-        value: "Sweden",
-      },
-    ]
+    // const countryOptions = [
+    //   {
+    //     key: "Sweden",
+    //     text: "Sweden",
+    //     value: "Sweden",
+    //   },
+    // ]
 
     const cityOptions = [
       {
@@ -124,13 +130,18 @@ class HeaderMain extends Component {
             style={{ background: '#e0e1e2' }}
           >
             <Menu secondary>
-              <Select
-                style={{ border: 'none', margin: '2px' }}
-                placeholder="Select country"
+
+              <Dropdown
+                clearable
+                search
                 selection
+                style={{ border: 'none', margin: '2px' }}
+                placeholder="Select Country"
+                options={COUNTRY_OPTIONS}
                 id="country"
-                options={countryOptions}
+                onChange={this.handleChangeCountry}
               />
+
               <Select
                 style={{ border: 'none', margin: '2px' }}
                 placeholder="Select city"

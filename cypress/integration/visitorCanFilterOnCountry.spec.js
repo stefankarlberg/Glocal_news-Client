@@ -24,41 +24,48 @@ describe('Visitor can view articles filtered by country', () => {
     ]
 
     countries.forEach(country => {
-      cy.get('div[id="country"]').click().get('div[role="option"]');
-      cy.contains(country);
+      // cy.get('div[id="country"]').within(() => {
+        // cy.get('div[role="option"]').contains(country).click()
+
+
+        cy.get('#country > .search').click()
+        cy.get('#country > div.text').type('Sweden').click()
+        
+      })
+    })
+  // })
+
+
+it('by seeing correct filtered articles', () => {
+
+  let greece = [
+    ["#39", "#title_39", "#ingress_39", "#photo_39"],
+  ]
+
+  let italy = [
+    ["#38", "#title_38", "#ingress_38", "#photo_38"],
+  ]
+
+  cy.get('div[id="country"]').click().get('div[role="option"]').select('Greece');
+  cy.get('#filtered_articles').within(() => {
+    cy.get('#38').should('not.exist')
+  })
+  greece.forEach(article => {
+    cy.get(article[0]).within(() => {
+      cy.get(article[1]), (article[2])
+      cy.get(article[3]).should('have.attr', 'src')
     })
   })
 
-  it('by seeing correct filtered articles', () => {
-
-    let greece = [
-      ["#39", "#title_39", "#ingress_39", "#photo_39"],
-    ]
-
-    let italy = [
-      ["#38", "#title_38", "#ingress_38", "#photo_38"],
-    ]
-
-    cy.get('div[id="country"]').click().get('div[role="option"]').select('Greece');
-    cy.get('#filtered_articles').within(() => {
-      cy.get('#38').should('not.exist')
-    })
-    greece.forEach(article => {
-      cy.get(article[0]).within(() => {
-        cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
-      })
-    })
-
-    cy.get('div[id="country"]').click().get('div[role="option"]').select('Italy');
-    cy.get('#filtered_articles').within(() => {
-      cy.get('#39').should('not.exist')
-    })
-    italy.forEach(article => {
-      cy.get(article[0]).within(() => {
-        cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
-      })
+  cy.get('div[id="country"]').click().get('div[role="option"]').select('Italy');
+  cy.get('#filtered_articles').within(() => {
+    cy.get('#39').should('not.exist')
+  })
+  italy.forEach(article => {
+    cy.get(article[0]).within(() => {
+      cy.get(article[1]), (article[2])
+      cy.get(article[3]).should('have.attr', 'src')
     })
   })
+})
 })
