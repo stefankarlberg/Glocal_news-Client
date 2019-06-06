@@ -23,7 +23,8 @@ class HeaderCategory extends Component {
           <Menu pointing secondary >
             {this.state.categories.map(c => (
               <Menu.Item
-                style={{ margin: "auto", borderColor: (c.name.toLowerCase() === this.props.activeItem) ? `${c.color}` : "none" }}  
+                style={{ margin: "auto"}}
+                color={`${c.semantic}`}  
                 id={c.name.toLowerCase()}
                 key={c.id}
                 name={c.name}
