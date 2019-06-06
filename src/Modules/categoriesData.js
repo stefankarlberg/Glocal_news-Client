@@ -41,8 +41,8 @@ const getCategoryNames = async () => {
       '#1b1c1d', //black
       '#a333c8', //purple
       '#a5673f', //brown
-      '#f2711c', //orange
       '#6435c9', //violet
+      '#f2711c', //orange
       '#21ba45', //green
       '#fbbd08' //yellow
     ]
@@ -66,8 +66,8 @@ const getCategoryNames = async () => {
       'black',
       'purple',
       'brown',
-      'orange',
       'violet',
+      'orange',
       'green',
       'yellow'
     ]
