@@ -12,7 +12,8 @@
       "id": 1,
       "name": "Politics"
     },
-    "published": false
+    "published": false,
+    "country": "Sweden"
   },
   {
     "id": 37,
@@ -26,7 +27,8 @@
       "id": 1,
       "name": "Politics"
     },
-    "published": false
+    "published": false,
+    "country": "France"
   },
   {
     "id": 38,
@@ -40,7 +42,8 @@
       "id": 3,
       "name": "Arts"
     },
-    "published": true
+    "published": true,
+    "country": "Italy"
   },
   {
     "id": 39,
@@ -54,6 +57,7 @@
       "id": 1,
       "name": "Politics"
     },
-    "published": true
+    "published": true,
+    "country": "Greece"
   }
 ]
