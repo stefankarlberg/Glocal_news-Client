@@ -15,25 +15,16 @@ describe('Visitor can view articles filtered by country', () => {
 
   it('by being able to select any country in drop-down', () => {
 
-    let countries = [
-      "Algeria",
-      "Sweden",
-      "United States",
-      "Greece",
-      "Italy"
-    ]
+    let countryNumbers = [ 86, 111 ]
+   
 
-    countries.forEach(country => {
-      // cy.get('div[id="country"]').within(() => {
-        // cy.get('div[role="option"]').contains(country).click()
+countryNumbers.forEach(country => {
+    cy.get('#country > .dropdown').click()
+    cy.get(`#country > .visible > .item:nth-child(${country}) > .text`).click()
+    cy.get('#country > .dropdown').click()
+ })
 
-
-        cy.get('#country > .search').click()
-        cy.get('#country > div.text').type('Sweden').click()
-        
-      })
-    })
-  // })
+  })
 
 
 it('by seeing correct filtered articles', () => {
@@ -46,7 +37,8 @@ it('by seeing correct filtered articles', () => {
     ["#38", "#title_38", "#ingress_38", "#photo_38"],
   ]
 
-  cy.get('div[id="country"]').click().get('div[role="option"]').select('Greece');
+  cy.get('#country > .dropdown').click()
+  cy.get('#country > .visible > .item:nth-child(86) > .text').click()
   cy.get('#filtered_articles').within(() => {
     cy.get('#38').should('not.exist')
   })
@@ -56,8 +48,10 @@ it('by seeing correct filtered articles', () => {
       cy.get(article[3]).should('have.attr', 'src')
     })
   })
-
-  cy.get('div[id="country"]').click().get('div[role="option"]').select('Italy');
+  cy.get('#country > .dropdown').click()
+  
+  cy.get('#country > .dropdown').click()
+  cy.get('#country > .visible > .item:nth-child(111) > .text').click()
   cy.get('#filtered_articles').within(() => {
     cy.get('#39').should('not.exist')
   })
