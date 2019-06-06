@@ -27,9 +27,7 @@ class HeaderMain extends Component {
       })
   }
 
-  handleChangeCountry = (e, { value }) => {
-    this.setState({ country: value })
-  }
+  
 
   render() {
 
@@ -139,7 +137,7 @@ class HeaderMain extends Component {
                 placeholder="Select Country"
                 options={COUNTRY_OPTIONS}
                 id="country"
-                onChange={this.handleChangeCountry}
+                onChange={this.props.handleChangeCountry}
               />
 
               <Select

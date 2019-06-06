@@ -17,20 +17,27 @@ const requireSignIn = generateRequireSignInWrapper({
 
 class App extends Component {
   state = {
-    paths: []
+    paths: [],
+    country: 'italy'
   }
 
   async componentWillMount() {
     let categoryPaths = await getCategoryPaths()
     this.setState({paths: categoryPaths})
   }
+
+  handleChangeCountry = (e, { value }) => {
+    this.setState({ country: value })
+  }
+
   render() {
     return (
       <>
-        <HeaderMain />
+        <HeaderMain
+          handleChangeCountry={this.handleChangeCountry} />
           <Switch>
             <Route exact path='/' render={() => (<Redirect to="/news" component={ArticlesByCategory} activeItem={'news'}/>)}></Route>
-            <Route exact path={this.state.paths} component={ArticlesByCategory}></Route>
+            <Route exact path={this.state.paths} render={(props) => (<ArticlesByCategory {...props} country={this.state.country}/>)}></Route>
             <Route exact path='/write-article' component={requireSignIn(WriteArticle)}></Route>
             <Route exact path='/review-articles' component={requireSignIn(ListOfUnpublishedArticles)}></Route>
             <Route exact path='/full-article' component={requireSignIn(FullArticle)}></Route>
