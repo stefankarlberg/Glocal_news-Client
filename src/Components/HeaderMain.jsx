@@ -3,6 +3,7 @@ import HeaderCategory from './HeaderCategory'
 import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import '../CSS/Header.css'
 import { signOutUser } from '../reduxTokenAuthConfig';
 import { withRouter } from 'react-router-dom';
 
@@ -120,19 +121,16 @@ class HeaderMain extends Component {
         </Container>
 
         <Container>
-          <Segment inverted
-            style={{ background: '#e0e1e2' }}
+          <Segment className= 'header_segment' inverted
           >
             <Menu secondary>
-              <Select
-                style={{ border: 'none', margin: '2px' }}
+              <Select className='header_selector'
                 placeholder="Select country"
                 selection
                 id="country"
                 options={countryOptions}
               />
-              <Select
-                style={{ border: 'none', margin: '2px' }}
+              <Select className='header_selector'
                 placeholder="Select city"
                 selection
                 id="city_header"
