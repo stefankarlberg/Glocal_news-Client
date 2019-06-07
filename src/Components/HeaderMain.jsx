@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider, Segment, Dropdown } from 'semantic-ui-react'
+import { Menu, Header, Container, Divider, Segment, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { signOutUser } from '../reduxTokenAuthConfig';
@@ -34,13 +34,6 @@ class HeaderMain extends Component {
   }
 
   render() {
-    const cityOptions = [
-      {
-        key: "Stockholm",
-        text: "Stockholm",
-        value: "Stockholm",
-      },
-    ]
 
     const mainLabels = [
       {
@@ -135,13 +128,6 @@ class HeaderMain extends Component {
                 onChange={this.handleCountryChange}
               />
 
-              <Select
-                style={{ border: 'none', margin: '2px' }}
-                placeholder="Select city"
-                selection
-                id="city_header"
-                options={cityOptions}
-              />
               {mainLabels.map(m => (
                 <Menu.Item
                   key={m.name}
