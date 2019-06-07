@@ -31,8 +31,6 @@ class ArticlesByCategory extends Component {
     let filteredArticlesByCategory = []
     let filteredArticlesByCountry = []
 
-
-    //Filter articles on Category
     this.state.articles.forEach(article => {
       if (this.state.categoryName === 'news') {
         return filteredArticlesByCategory.push(article)
@@ -43,14 +41,12 @@ class ArticlesByCategory extends Component {
       }
     })
 
-    //Filter articles on Country
     filteredArticlesByCategory.forEach(article => {
       if (this.props.state.locationReducer.country === '') {
-        //debugger
         filteredArticlesByCountry = filteredArticlesByCategory
       } else if (article.country === this.props.state.locationReducer.country) {
         return filteredArticlesByCountry.push(article)
-      } 
+      }
     })
 
     let articleList = filteredArticlesByCountry.length ? (
@@ -120,5 +116,4 @@ const mapStateToProps = (state) => {
 }
 
 export default (connect(
-  mapStateToProps)
-  (ArticlesByCategory))
+  mapStateToProps)(ArticlesByCategory))

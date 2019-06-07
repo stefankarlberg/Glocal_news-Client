@@ -182,7 +182,4 @@ const mapDispatchToProps = {
   signOutUser
 }
 
-export default withRouter(connect
-  (mapStateToProps,
-    mapDispatchToProps)
-  (HeaderMain))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderMain))

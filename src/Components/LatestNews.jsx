@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Container, Segment, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { getCategoryNames } from '../Modules/categoriesData'
 import moment from 'moment'
 
 class LatestNews extends Component {
-
   state = {
     categories: []
   }
@@ -19,14 +19,24 @@ class LatestNews extends Component {
 
   render() {
 
-    const sortedArticles = this.props.articles.sort(function (a, b) {
+    let filteredArticlesByCountry = []
+
+    this.props.articles.forEach(article => {
+      if (this.props.state.locationReducer.country === '') {
+        filteredArticlesByCountry = this.props.articles
+      } else if (article.country === this.props.state.locationReducer.country) {
+        return filteredArticlesByCountry.push(article)
+      }
+    })
+
+    const sortedArticlesByTime = filteredArticlesByCountry.sort(function (a, b) {
       let dateA = new Date(a.created_at), dateB = new Date(b.created_at);
       return dateB - dateA;
     })
 
     let articleList = (
       <>
-        {sortedArticles.map(article => {
+        {sortedArticlesByTime.map(article => {
           if (article.published === true) {
 
             let dateString = article.created_at
@@ -57,7 +67,6 @@ class LatestNews extends Component {
       </>
     )
 
-
     return (
       <Container id="latest_news">
         <Header>Latest News</Header>
@@ -68,4 +77,10 @@ class LatestNews extends Component {
   }
 }
 
-export default LatestNews
+const mapStateToProps = (state) => {
+  return {
+    state: state
+  }
+}
+
+export default (connect(mapStateToProps)(LatestNews))
