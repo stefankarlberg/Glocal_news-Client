@@ -15,6 +15,12 @@ describe('Visitor can view unpublished articles', () => {
         "uid": "boa@mail.com"
       }
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
     cy.get('#review_articles').click()
     cy.get('#login-form').within(() => {
@@ -29,12 +35,12 @@ describe('Visitor can view unpublished articles', () => {
     cy.get('#review_articles').click()
     cy.contains('Unpublished Articles')
   })
+
   it('by seeing a list of unpublished articles on Reviews page', () => {
     cy.get('#review_articles').click()
 
     let articles = [
-      ["#36", "#title_36", "#ingress_36", "#photo_36"],
-      ["#37", "#title_37", "#ingress_37", "#photo_37"],
+      ["#36", "#title_36", "#ingress_36", "#photo_36"]
     ]
 
     articles.forEach(article => {
@@ -43,6 +49,11 @@ describe('Visitor can view unpublished articles', () => {
         cy.get(article[3]).should('have.attr', 'src')
       })
     })
+  })
+
+  it('cannot see articles that are reviewed 3 times with low average score and still unpublished state', () => {
+    cy.get('#review_articles').click()
+    cy.contains('A Day in Paris').should('not.exist')
   })
 
   it('by showing full article when clicked on', () => {

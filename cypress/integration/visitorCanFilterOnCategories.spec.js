@@ -1,5 +1,5 @@
 describe('Visitor can view articles filtered by category', () => {
-  beforeEach(function (){
+  beforeEach(function () {
     cy.server();
     cy.route({
       method: 'GET',
@@ -37,11 +37,11 @@ describe('Visitor can view articles filtered by category', () => {
         cy.get(article[3]).should('have.attr', 'src')
       })
     })
-
     cy.get('#arts').click()
     cy.get('#filtered_articles').within(() => {
       cy.get('#39').should('not.exist')
     })
+    
     arts.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
@@ -49,7 +49,7 @@ describe('Visitor can view articles filtered by category', () => {
       })
     })
   })
-  
+
   it('by seeing all articles under News tab of published', () => {
 
     let news = [
@@ -65,20 +65,21 @@ describe('Visitor can view articles filtered by category', () => {
       })
     })
   })
-    
+
   it('by being redirected to News tab when clicking on GLOCAL NEWS in header', () => {
 
     let news = [
       ["#38", "#title_38", "#ingress_38", "#photo_38"],
       ["#39", "#title_39", "#ingress_39", "#photo_39"]
     ]
-    
+
     cy.get('#header').within(() => {
       cy.get('#news').click()
     })
     cy.get('#header_category').within(() => {
       cy.get('#news').should('have.class', 'red active item')
     })
+
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
@@ -86,5 +87,4 @@ describe('Visitor can view articles filtered by category', () => {
       })
     })
   })
-
 })

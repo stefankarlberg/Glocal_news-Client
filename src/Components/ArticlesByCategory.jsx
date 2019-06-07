@@ -97,4 +97,4 @@ class ArticlesByCategory extends Component {
   }
 }
 
-export default ArticlesByCategory 
+export default ArticlesByCategory

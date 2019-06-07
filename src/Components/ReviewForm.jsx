@@ -33,19 +33,19 @@ class ReviewForm extends Component {
       comment: this.state.comment,
     }
     axios.post(path, payload)
-    .then(() =>
-      this.setState({
-        review_success_message: true,
-        review_error_message: false,
-        review_form: false
+      .then(() =>
+        this.setState({
+          review_success_message: true,
+          review_error_message: false,
+          review_form: false
+        })
+      )
+      .catch(error => {
+        this.setState({
+          review_error_message: true,
+          errors: error.response.data.error
+        })
       })
-    )
-    .catch(error => {
-      this.setState({
-        review_error_message: true,
-        errors: error.response.data.error
-      })
-    })
   }
 
   render() {
@@ -66,7 +66,7 @@ class ReviewForm extends Component {
     let success_message
     let review_form
 
-    if(this.state.review_error_message) {
+    if (this.state.review_error_message) {
       review_error_message = (
         <Message color="red">
           <p>Your review could not be created because of following error(s):</p>
@@ -79,7 +79,7 @@ class ReviewForm extends Component {
       )
     }
 
-    if(this.state.review_success_message) {
+    if (this.state.review_success_message) {
       success_message = (
         <Message color="green">
           <p>Thank you! Your review has been succesfully saved!</p>
@@ -87,7 +87,7 @@ class ReviewForm extends Component {
       )
     }
 
-    if(this.state.review_form) {
+    if (this.state.review_form) {
       review_form = (
         <Segment>
           <Form onSubmit={this.onSubmit}>
@@ -115,7 +115,7 @@ class ReviewForm extends Component {
         </Segment>
       )
     }
-    
+
     return (
       <>
         {review_error_message}

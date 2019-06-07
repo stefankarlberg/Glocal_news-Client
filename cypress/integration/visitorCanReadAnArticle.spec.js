@@ -26,7 +26,7 @@ describe('Visitor can read an article', () => {
   })
 
   it('shows full article when clicked', () => {
-    
+
     cy.get("#38").click()
     cy.get('#login-form').within(() => {
       cy.get('#email').type('boa@mail.com')
