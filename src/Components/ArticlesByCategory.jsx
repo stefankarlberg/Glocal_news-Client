@@ -13,8 +13,7 @@ class ArticlesByCategory extends Component {
 
   componentDidMount() {
     let categoryName = this.props.location.pathname.substring(1)
-    let country = this.props.country
-    this.setState({ categoryName: categoryName, country: country })
+    this.setState({ categoryName: categoryName })
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     })
@@ -22,12 +21,8 @@ class ArticlesByCategory extends Component {
 
   componentDidUpdate(prevProps) {
     let categoryName = this.props.location.pathname.substring(1)
-    let country = this.props.country
     if (prevProps.location.pathname.substring(1) !== categoryName) {
       this.setState({ categoryName: categoryName })
-    }
-    if (prevProps.country !== country) {
-      this.setState({ country: country })
     }
   }
 
@@ -50,18 +45,17 @@ class ArticlesByCategory extends Component {
 
     //Filter articles on Country
     filteredArticlesByCategory.forEach(article => {
-      if (this.state.country === '') {
+      if (this.props.state.locationReducer.country === '') {
+        //debugger
         filteredArticlesByCountry = filteredArticlesByCategory
-      } else if (article.country === this.state.country) {
+      } else if (article.country === this.props.state.locationReducer.country) {
         return filteredArticlesByCountry.push(article)
-      } else {
-        return filteredArticlesByCountry
-      }
+      } 
     })
 
-    let articleList = filteredArticlesByCategory.length ? (
+    let articleList = filteredArticlesByCountry.length ? (
       <div id="filtered_articles">
-        {filteredArticlesByCategory.map(article => {
+        {filteredArticlesByCountry.map(article => {
           if (article.published === true) {
             return (
               <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
