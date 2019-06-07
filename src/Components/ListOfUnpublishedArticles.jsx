@@ -21,7 +21,7 @@ class ListOfUnpublishedArticles extends Component {
         {this.state.articles.map(article => {
           if (article.published === false && article.reviews.length < 3) {
             return (
-              <Card color='purple' style={{ color: 'black' }} fluid key={article.id} as={Link} to={{ pathname: `/full-article/${article.id}`, state: { success_message: false, review_form: true } }} >
+              <Card color='purple' style={{ color: 'black' }} fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { success_message: false, review_form: true, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={5} >
                     <Image alt="article logo" id={`photo_${article.id}`} src={article.image} />
