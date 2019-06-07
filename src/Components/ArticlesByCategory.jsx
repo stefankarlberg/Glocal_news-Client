@@ -7,12 +7,14 @@ import LatestNews from './LatestNews'
 class ArticlesByCategory extends Component {
   state = {
     categoryName: '',
-    articles: []
+    articles: [],
+    country: ''
   }
 
   componentDidMount() {
     let categoryName= this.props.location.pathname.substring(1)
-    this.setState({categoryName: categoryName})
+    let country = this.props.country
+    this.setState({categoryName: categoryName, country: country})
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
     })
@@ -20,29 +22,47 @@ class ArticlesByCategory extends Component {
 
   componentDidUpdate(prevProps) {
     let categoryName= this.props.location.pathname.substring(1)
+    let country= this.props.country
     if (prevProps.location.pathname.substring(1) !== categoryName ) {
       this.setState({categoryName: categoryName})
+    }
+    if (prevProps.country !== country) {
+      this.setState({country: country})
     }
   }
 
   render() {
     let category = this.state.categoryName.charAt(0).toUpperCase() + this.state.categoryName.slice(1);
-    let filteredArticles = []
+    let filteredArticlesByCategory = []
+    let filteredArticlesByCountry = []
 
+
+    //Filter articles on Category
     this.state.articles.forEach(article => {
       if (this.state.categoryName === 'news') {
-        return filteredArticles.push(article)
+        return filteredArticlesByCategory.push(article)
       } else if (article.category.name === category) {
-        return filteredArticles.push(article)
+        return filteredArticlesByCategory.push(article)
       } else {
-        return filteredArticles
+        return filteredArticlesByCategory
       }
     })
 
-    let articleList = filteredArticles.length ? (
+    //Filter articles on Country
+    filteredArticlesByCategory.forEach(article => {
+      if (this.state.country === '') {
+        filteredArticlesByCountry = filteredArticlesByCategory
+      } else if (article.country === this.state.country) {
+        return filteredArticlesByCountry.push(article)
+      } else {
+        return filteredArticlesByCountry
+      }
+    })
+
+    let articleList = filteredArticlesByCountry.length ? (
       <div id="filtered_articles">
-        {filteredArticles.map(article => {
-          if (article.published === true) {
+        {filteredArticlesByCountry.map(article => {
+          // if (article.published === true) {
           return (
             <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
               <div id={article.id} style={{ color: 'black' }}>
@@ -55,7 +75,8 @@ class ArticlesByCategory extends Component {
               </div>
             </Card>
           )}
-        })}    
+        // }
+        )}    
       </div>
     ) : (
       <Message>

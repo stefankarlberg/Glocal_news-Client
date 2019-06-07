@@ -13,7 +13,8 @@
       "name": "Politics"
     },
     "reviews": [],
-    "published": false
+    "published": false,
+    "country": "Sweden"
   },
   {
     "id": 37,
@@ -44,7 +45,8 @@
         "comment": "Go back to school!"
       }
     ],
-    "published": false
+    "published": false,
+    "country": "France"
   },
   {
     "id": 38,
@@ -59,7 +61,8 @@
       "name": "Arts"
     },
     "reviews": [],
-    "published": true
+    "published": true,
+    "country": "Italy"
   },
   {
     "id": 39,
@@ -74,6 +77,7 @@
       "name": "Politics"
     },
     "reviews": [],
-    "published": true
+    "published": true,
+    "country": "Greece"
   }
 ]
