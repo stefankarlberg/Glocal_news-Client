@@ -23,9 +23,7 @@ class ListOfUnpublishedArticles extends Component {
   }
 
   render() {
-
-
-
+    
     let articleList = (
       <div>
         {this.state.articles.map(article => {

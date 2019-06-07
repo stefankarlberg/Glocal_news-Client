@@ -7,6 +7,12 @@ describe('Visitor can view articles filtered by category', () => {
       response: 'fixture:list_of_articles.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
   })
 
@@ -54,8 +60,9 @@ describe('Visitor can view articles filtered by category', () => {
       ["#38", "#title_38", "#ingress_38"],
       ["#39", "#title_39", "#ingress_39"]
     ]
-
-    cy.get('#news').click()
+    cy.get('#header_category').within(() => {
+      cy.get('#news').click()
+    })
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
@@ -71,12 +78,9 @@ describe('Visitor can view articles filtered by category', () => {
     ]
     
     cy.get('#header').within(() => {
-      cy.get('#news').click()
+      cy.get('#news_logo').click()
     })
-    cy.get('#header_category').within(() => {
-      cy.get('#news').should('have.class', 'red active item')
-    })
-
+    
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])

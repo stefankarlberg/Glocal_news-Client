@@ -4,7 +4,7 @@ describe('Visitor can', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3002/api/v1/articles',
-      response: 'fixture:list_of_articles_with_published.json',
+      response: 'fixture:list_of_articles.json',
       status: 200
     })
     cy.route({
@@ -47,7 +47,6 @@ describe('Visitor can', () => {
   })
 
   it('see unpublished article when clicked on', () => {
-
 
     let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36"]
 

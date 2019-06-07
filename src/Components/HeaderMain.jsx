@@ -119,7 +119,7 @@ class HeaderMain extends Component {
              color='#2C4138'
              size='large'
           >
-            <h1 style={{ color: '#2C4138', fontSize: "3em" }}>
+            <h1 id="news_logo" style={{ color: '#2C4138', fontSize: "3em" }}>
                 GL
               <Icon fitted name='globe' size='large'
                   style={{ color: '#86A499' }}
@@ -131,7 +131,7 @@ class HeaderMain extends Component {
           <Divider hidden />
         </Container>
 
-        <Sticky fixed top>
+        {/* <Sticky fixed top> */}
         <Container>
           <Segment className= 'header_segment' inverted
           >
@@ -168,7 +168,7 @@ class HeaderMain extends Component {
           <HeaderCategory
             handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
         </Container>
-        </Sticky>
+        {/* </Sticky> */}
       </>
     )
   }

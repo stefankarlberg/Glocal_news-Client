@@ -16,7 +16,7 @@ describe('Visitor can view latest news', () => {
       ["#39", "#title_39", "#created_at_39", "#country_39", "city_39"],
       ["#38", "#title_38", "#created_at_38", "#country_38", "city_38"]
     ]
-    cy.get('#news').click()
+
     cy.get('#latest_news').within(() => {
       articles.forEach(article => {
         cy.get(article[0]).within(() => {
