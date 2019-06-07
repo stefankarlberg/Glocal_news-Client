@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Select, Container, Divider, Segment } from 'semantic-ui-react'
+import { Menu, Header, Select, Container, Divider, Segment, Icon, Sticky } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import '../CSS/Header.css'
@@ -115,11 +115,23 @@ class HeaderMain extends Component {
             style={{ fontSize: "2em" }}
             onClick={this.handleItemClick}
           >
-            GLOCAL NEWS
+          <Divider horizontal
+             color='#2C4138'
+             size='large'
+          >
+            <h1 style={{ color: '#2C4138', fontSize: "3em" }}>
+                GL
+              <Icon fitted name='globe' size='large'
+                  style={{ color: '#86A499' }}
+                />
+                CAL NEWS
+            </h1>
+            </Divider>
           </Header>
           <Divider hidden />
         </Container>
 
+        <Sticky fixed top>
         <Container>
           <Segment className= 'header_segment' inverted
           >
@@ -156,6 +168,7 @@ class HeaderMain extends Component {
           <HeaderCategory
             handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
         </Container>
+        </Sticky>
       </>
     )
   }
