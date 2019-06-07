@@ -106,7 +106,7 @@ class SignUpForm extends Component {
             </Form>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%' }}>
+            <Segment vertical textAlign='center' className='ads_placeholder'>
               <p>Ads placeholder</p>
             </Segment>
           </Grid.Column>
