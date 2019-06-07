@@ -20,11 +20,11 @@ describe('Visitor can view articles filtered by category', () => {
   it('by seeing correct filtered articles', () => {
 
     let politics = [
-      ["#39", "#title_39", "#ingress_39", "#photo_39"],
+      ["#39", "#title_39", "#ingress_39"],
     ]
 
     let arts = [
-      ["#38", "#title_38", "#ingress_38", "#photo_38"],
+      ["#38", "#title_38", "#ingress_38"],
     ]
 
     cy.get('#politics').click()
@@ -34,7 +34,6 @@ describe('Visitor can view articles filtered by category', () => {
     politics.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
     cy.get('#arts').click()
@@ -45,7 +44,6 @@ describe('Visitor can view articles filtered by category', () => {
     arts.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
   })
@@ -53,15 +51,14 @@ describe('Visitor can view articles filtered by category', () => {
   it('by seeing all articles under News tab of published', () => {
 
     let news = [
-      ["#38", "#title_38", "#ingress_38", "#photo_38"],
-      ["#39", "#title_39", "#ingress_39", "#photo_39"]
+      ["#38", "#title_38", "#ingress_38"],
+      ["#39", "#title_39", "#ingress_39"]
     ]
 
     cy.get('#news').click()
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
   })
@@ -69,10 +66,10 @@ describe('Visitor can view articles filtered by category', () => {
   it('by being redirected to News tab when clicking on GLOCAL NEWS in header', () => {
 
     let news = [
-      ["#38", "#title_38", "#ingress_38", "#photo_38"],
-      ["#39", "#title_39", "#ingress_39", "#photo_39"]
+      ["#38", "#title_38", "#ingress_38"],
+      ["#39", "#title_39", "#ingress_39"]
     ]
-
+    
     cy.get('#header').within(() => {
       cy.get('#news').click()
     })
@@ -83,7 +80,6 @@ describe('Visitor can view articles filtered by category', () => {
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
   })

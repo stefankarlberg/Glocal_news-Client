@@ -130,7 +130,7 @@ class ArticlesByCategory extends Component {
           </Header>
 
           <Grid fluid columns={3}>
-            <Grid.Column width={8}>
+            <Grid.Column id="filtered_articles" width={8}>
               {firstArticle}
               {articleList}
             </Grid.Column>
