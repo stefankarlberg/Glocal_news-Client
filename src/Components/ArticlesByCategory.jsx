@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Header, Container, Grid, Card, Image, Icon, Message, Segment } from 'semantic-ui-react';
+import '../CSS/ArticlesByCategory.css'
 import { Link } from 'react-router-dom'
 import LatestNews from './LatestNews'
 import { getCategoryNames } from '../Modules/categoriesData'

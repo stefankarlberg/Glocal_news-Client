@@ -1,0 +1,13 @@
+a.ui.card:hover {
+  transform: none;
+}
+
+a.ui.fluid.card{
+color: black;
+}
+
+a.ui.fluid.card :hover{
+  color: grey;
+}
+
+
