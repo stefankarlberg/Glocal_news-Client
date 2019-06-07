@@ -18,7 +18,7 @@ const requireSignIn = generateRequireSignInWrapper({
 class App extends Component {
   state = {
     paths: [],
-    country: 'italy'
+    country: ''
   }
 
   async componentWillMount() {
@@ -26,7 +26,8 @@ class App extends Component {
     this.setState({paths: categoryPaths})
   }
 
-  handleChangeCountry = (e, { value }) => {
+  handleChangeCountry = (e) => {
+    const value = e.target.value
     this.setState({ country: value })
   }
 

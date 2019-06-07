@@ -13,7 +13,7 @@ class ArticlesByCategory extends Component {
 
   componentDidMount() {
     let categoryName= this.props.location.pathname.substring(1)
-    let country = this.props.state.country
+    let country = this.props.country
     this.setState({categoryName: categoryName, country: country})
     axios.get('/api/v1/articles').then(response => {
       this.setState({ articles: response.data });
@@ -22,8 +22,12 @@ class ArticlesByCategory extends Component {
 
   componentDidUpdate(prevProps) {
     let categoryName= this.props.location.pathname.substring(1)
+    let country= this.props.country
     if (prevProps.location.pathname.substring(1) !== categoryName ) {
       this.setState({categoryName: categoryName})
+    }
+    if (prevProps.country !== country) {
+      this.setState({country: country})
     }
   }
 
@@ -58,7 +62,7 @@ class ArticlesByCategory extends Component {
     let articleList = filteredArticlesByCountry.length ? (
       <div id="filtered_articles">
         {filteredArticlesByCountry.map(article => {
-          if (article.published === true) {
+          // if (article.published === true) {
           return (
             <Card fluid key={article.id} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }} >
               <div id={article.id} style={{ color: 'black' }}>
@@ -71,7 +75,8 @@ class ArticlesByCategory extends Component {
               </div>
             </Card>
           )}
-        })}    
+        // }
+        )}    
       </div>
     ) : (
       <Message>
