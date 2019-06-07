@@ -29,11 +29,9 @@ class HeaderMain extends Component {
       })
   }
 
-  handleCountryChange = (e) => {
-    this.props.countryChangedHandler(e.target.innerText)
+  handleCountryChange = (e, { value }) => {
+    this.props.countryChangedHandler(value)
   }
-
-
 
   render() {
     const cityOptions = [
@@ -185,8 +183,6 @@ const mapDispatchToProps = {
 }
 
 export default withRouter(connect
-  (
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  (mapStateToProps,
+    mapDispatchToProps)
   (HeaderMain))
