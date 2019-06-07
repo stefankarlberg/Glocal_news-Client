@@ -54,7 +54,7 @@ class ArticlesByCategory extends Component {
     })
 
     let firstArticle = filteredArticles.length ? (
-      <Card fluid key={filteredArticles[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticles[0].id}` } }} >
+      <Card className='article_card' fluid key={filteredArticles[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticles[0].id}` } }} >
         <div id={filteredArticles[0].id} style={{  boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`  }}>
           <Image fluid alt="article logo" id={`photo_${filteredArticles[0].id}`} src={filteredArticles[0].image} />
           <Card.Content style={{ padding: '2em' }}>
@@ -84,27 +84,17 @@ class ArticlesByCategory extends Component {
 
           return (
             <>
-              <Card style={{ 
-                color: 'black', 
-                border: '2px', 
+              <Card className='article_card' style={{ 
                 boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`
                  }} 
                  fluid key={article.id} 
                  as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: false, id: article.id } }} >
                 <Grid id={article.id} >
-                  <Grid.Column width={6} style={{ paddingBottom: '12px', paddingTop: '13px' }}>
-
-                    <Segment style={{
-                      background: `url(${article.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      height: '100%',
-                      borderRadius: '0px',
-                      backgroundRepeat: 'no-repeat'
-                    }} >
+                  <Grid.Column width={6} className='article_image'>
+                    <Segment className='small_card' style={{ background: `url(${article.image})`}} >
                     </Segment>
                   </Grid.Column>
-                  <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={10}>
+                  <Grid.Column className='card_content' width={10}>
                     <h2 id={`title_${article.id}`}>{article.title}</h2>
                     <p id={`ingress_${article.id}`}>{ingress}</p>
                     
@@ -152,7 +142,7 @@ class ArticlesByCategory extends Component {
             </Grid.Column>
 
             <Grid.Column width={4}>
-              <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%', width: '100%' }}>
+              <Segment vertical textAlign='center' className='ads_placeholder'>
                 <p>Ads placeholder</p>
               </Segment>
             </Grid.Column>
