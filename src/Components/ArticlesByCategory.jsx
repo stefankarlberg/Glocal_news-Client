@@ -39,12 +39,14 @@ class ArticlesByCategory extends Component {
     let color
 
     this.state.articles.forEach(article => {
-      if (this.state.categoryName === 'news') {
-        return filteredArticles.push(article)
-      } else if (article.category.name === category) {
-        return filteredArticles.push(article)
-      } else {
-        return filteredArticles
+      if (article.published === true) {
+        if (this.state.categoryName === 'news') {
+          return filteredArticles.push(article)
+        } else if (article.category.name === category) {
+          return filteredArticles.push(article)
+        } else {
+          return filteredArticles
+        }
       }
     })
 
@@ -75,11 +77,8 @@ class ArticlesByCategory extends Component {
 
     let articleList = filteredArticles.length ? (
 
-          
-     
       <div>
         {filteredArticles.splice(1, filteredArticles.length).map(article => {
-          
           let trimmed_article_ingress = article.ingress.substr(0, 75);
           let ingress = trimmed_article_ingress.substr(0, Math.min(trimmed_article_ingress.length, trimmed_article_ingress.lastIndexOf(" "))) + ' ....'
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Header, Container, Grid, Card, Segment, Icon, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import '../CSS/ListOfUnpublishedArticles.css'
 import { getCategoryNames } from '../Modules/categoriesData'
 
 class ListOfUnpublishedArticles extends Component {
@@ -40,21 +41,16 @@ class ListOfUnpublishedArticles extends Component {
             }
 
             return (
-              <Card style={{ color: 'black', border: '2px', boxShadow: `0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
+              <Card className='article_card_unpublished' style={{ boxShadow: `0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }} fluid key={article.id} as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: true, id: article.id } }} >
                 <Grid id={article.id} >
-                  <Grid.Column width={5} style={{ paddingBottom: '0.8em', paddingTop: '0.9em' }}>
+                  <Grid.Column width={5} className='article_image_unpublished'>
 
-                    <Segment style={{
-                      background: `url(${article.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      height: '100%',
-                      borderRadius: '0px',
-                      backgroundRepeat: 'no-repeat'
+                    <Segment className='small_card_unpublished' style={{
+                      background: `url(${article.image})`
                     }} >
                     </Segment>
                   </Grid.Column>
-                  <Grid.Column style={{ padding: '30px 30px 30px 10px' }} width={11}>
+                  <Grid.Column className='card_content_unpublished' width={11}>
                     <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
                     <p id={`ingress_${article.id}`}>{article.ingress}</p>
                     <Grid.Row columns={2}>
@@ -76,17 +72,10 @@ class ListOfUnpublishedArticles extends Component {
       </div>
     )
 
-    let message
-
-    if (this.state.review_success_message) {
-      message = (
-        <p>Review successfully created</p>
-      )
-    }
-
     return (
       <>
         <Container>
+          
           <Header as='h3'>
             Review an article - help the Glocal News to become even better!
           </Header>
