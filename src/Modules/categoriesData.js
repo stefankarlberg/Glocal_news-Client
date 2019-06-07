@@ -32,6 +32,31 @@ const getCategoryNames = async () => {
     let news = {id: null, name: 'News'}
     response.data.unshift(news)
     let colorIndex = [
+      '#db2828',//red
+      '#2185d0', //blue
+      '#e03997', //pink
+      '#00b5ad', //teal
+      '#767676', //grey
+      '#b5cc18', //olive
+      '#1b1c1d', //black
+      '#a333c8', //purple
+      '#a5673f', //brown
+      '#6435c9', //violet
+      '#f2711c', //orange
+      '#21ba45', //green
+      '#fbbd08' //yellow
+    ]
+
+    colorIndex.forEach((color, index) => {
+      response.data.forEach((category, categoryIndex) => {
+        if (index === categoryIndex) {
+          category["color"] = color	
+        }
+      })
+    })
+    
+
+    let semanticIndex = [
       'red',
       'blue',
       'pink',
@@ -41,16 +66,16 @@ const getCategoryNames = async () => {
       'black',
       'purple',
       'brown',
-      'orange',
       'violet',
+      'orange',
       'green',
       'yellow'
     ]
 
-    colorIndex.forEach((color, index) => {
+    semanticIndex.forEach((semantic, index) => {
       response.data.forEach((category, categoryIndex) => {
         if (index === categoryIndex) {
-          category["color"] = color	
+          category["semantic"] = semantic	
         }
       })
     })
