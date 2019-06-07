@@ -23,5 +23,3 @@ export {
   signOutUser,
   verifyCredentials,
 }
-
-// "https://glocal-news.herokuapp.com/api/v1/auth"

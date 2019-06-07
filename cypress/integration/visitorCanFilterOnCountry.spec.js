@@ -7,6 +7,12 @@ describe('Visitor can view articles filtered by country', () => {
       response: 'fixture:list_of_articles.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
     cy.get('#header').within(() => {
       cy.get('#news').click()
@@ -30,7 +36,7 @@ describe('Visitor can view articles filtered by country', () => {
       ["#39", "#title_39", "#ingress_39", "#photo_39"],
     ]
 
-    let italy = [
+    let jamaica = [
       ["#38", "#title_38", "#ingress_38", "#photo_38"],
     ]
 
@@ -52,7 +58,7 @@ describe('Visitor can view articles filtered by country', () => {
     cy.get('#filtered_articles').within(() => {
       cy.get('#39').should('not.exist')
     })
-    italy.forEach(article => {
+    jamaica.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
         cy.get(article[3]).should('have.attr', 'src')
