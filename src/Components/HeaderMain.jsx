@@ -103,14 +103,10 @@ class HeaderMain extends Component {
             id='news'
             name='logo'
             as={Link}
-            to={{ pathname: '/news', state: { activeItem: this.state.activeItem } }}
-            style={{ fontSize: "2em" }}
+            to={{ pathname: '/', state: { activeItem: this.state.activeItem } }}
+            style={{ fontSize: "1em" }}
             onClick={this.handleItemClick}
           >
-            <Divider horizontal
-              color='#2C4138'
-              size='large'
-            >
               <h1 id="news_logo" style={{ color: '#2C4138', fontSize: "3em" }}>
                 GL
               <Icon fitted name='globe' size='large'
@@ -118,7 +114,6 @@ class HeaderMain extends Component {
                 />
                 CAL NEWS
             </h1>
-            </Divider>
           </Header>
           <Divider hidden />
         </Container>
