@@ -131,7 +131,7 @@ class HeaderMain extends Component {
           <Divider hidden />
         </Container>
 
-        {/* <Sticky fixed top> */}
+      <Sticky fixed top>
         <Container>
           <Segment className= 'header_segment' inverted
           >
@@ -168,7 +168,7 @@ class HeaderMain extends Component {
           <HeaderCategory
             handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
         </Container>
-        {/* </Sticky> */}
+        </Sticky>
       </>
     )
   }
