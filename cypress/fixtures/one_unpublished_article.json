@@ -10,7 +10,8 @@
   "city": "Thessaloniki",
   "category": {
     "id": 1,
-    "name": "Politics",
-    "published": false
-  }
+    "name": "Politics"
+  },
+  "published": false,
+  "reviews": []
 }

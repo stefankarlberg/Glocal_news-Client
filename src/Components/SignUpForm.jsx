@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Message, Grid, Segment } from 'semantic-ui-react'
+import { Form, Button, Container, Message, Grid, Segment, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { registerUser } from '../reduxTokenAuthConfig'
 
@@ -72,6 +72,9 @@ class SignUpForm extends Component {
       <Container>
         <Grid centered columns={2}>
           <Grid.Column width={12}>
+            <Header as='h3'>
+              Sign up to enjoy the Glocal News! 
+            </Header>
             {message}
             <Form id="signup-form" onSubmit={this.onSubmit}>
               <Form.Input
@@ -103,7 +106,7 @@ class SignUpForm extends Component {
             </Form>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Segment vertical textAlign='center' style={{ background: 'grey', height: '100%' }}>
+            <Segment vertical textAlign='center' className='ads_placeholder'>
               <p>Ads placeholder</p>
             </Segment>
           </Grid.Column>

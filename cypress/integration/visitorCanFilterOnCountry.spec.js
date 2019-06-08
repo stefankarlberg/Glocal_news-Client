@@ -14,9 +14,6 @@ describe('Visitor can view articles filtered by country', () => {
       status: 200
     })
     cy.visit('http://localhost:3001')
-    cy.get('#header').within(() => {
-      cy.get('#news').click()
-    })
   })
 
   it('by being able to select any country in drop-down', () => {

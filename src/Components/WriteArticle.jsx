@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Container, Button, Message, Dropdown } from 'semantic-ui-react'
+import { Form, Container, Button, Message, Dropdown, Header } from 'semantic-ui-react'
 import axios from 'axios'
 import { COUNTRY_OPTIONS } from '../Modules/countriesData'
 import { getCategories } from '../Modules/categoriesData'
@@ -87,6 +87,9 @@ class WriteArticle extends Component {
     return (
       <>
         <Container>
+          <Header as='h3'>
+            Write an article and share your story glocally! 
+          </Header>
           <p>{message}</p>
           <Form type="medium" id="write-article" onSubmit={this.onSubmit}>
             <Form.Input

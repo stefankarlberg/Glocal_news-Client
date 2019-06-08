@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from 'axios'
 import { setupInterceptors } from './Modules/axiosInterceptor';
 
-axios.defaults.baseURL = 'https://glocal-news.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:3002'
 
 const store = configureStore()
 verifyCredentials(store)

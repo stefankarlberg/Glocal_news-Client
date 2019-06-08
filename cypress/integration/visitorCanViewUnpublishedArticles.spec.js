@@ -33,20 +33,19 @@ describe('Visitor can view unpublished articles', () => {
 
   it('by seeing a correct page headline', () => {
     cy.get('#review_articles').click()
-    cy.contains('Unpublished Articles')
+    cy.contains('Review an article')
   })
 
   it('by seeing a list of unpublished articles on Reviews page', () => {
     cy.get('#review_articles').click()
 
     let articles = [
-      ["#36", "#title_36", "#ingress_36", "#photo_36"]
+      ["#36", "#title_36", "#ingress_36"]
     ]
 
     articles.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
   })
@@ -66,7 +65,7 @@ describe('Visitor can view unpublished articles', () => {
     cy.get('#review_articles').click()
     cy.get("#36").click()
 
-    let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36",]
+    let article = ["#title_36", "#ingress_36", "#body_36","#photo_36","#written_36", "#date_36",]
 
     article.forEach(element => {
       cy.get(element)
