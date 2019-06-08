@@ -65,7 +65,7 @@ describe('Visitor can view unpublished articles', () => {
     cy.get('#review_articles').click()
     cy.get("#36").click()
 
-    let article = ["#title_36", "#ingress_36", "#body_36","#photo_36","#written_36", "#date_36",]
+    let article = ["#title_36", "#ingress_36", "#body_36", "#photo_36", "#written_36", "#date_36",]
 
     article.forEach(element => {
       cy.get(element)

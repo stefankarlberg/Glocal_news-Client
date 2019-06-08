@@ -66,7 +66,7 @@ class LoginForm extends Component {
         <Grid centered columns={2}>
           <Grid.Column width={12}>
             <Header as='h3'>
-              Login to enjoy the Glocal News! 
+              Login to enjoy the Glocal News!
             </Header>
             <p>{message}</p>
             <Form id="login-form" onSubmit={this.onSubmit}>

@@ -23,7 +23,7 @@ class ListOfUnpublishedArticles extends Component {
   }
 
   render() {
-    
+
     let articleList = (
       <div>
         {this.state.articles.map(article => {
@@ -73,7 +73,7 @@ class ListOfUnpublishedArticles extends Component {
     return (
       <>
         <Container>
-          
+
           <Header as='h3'>
             Review an article - help the Glocal News to become even better!
           </Header>

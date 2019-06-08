@@ -76,11 +76,11 @@ describe('Visitor can view articles filtered by category', () => {
       ["#38", "#title_38", "#ingress_38"],
       ["#39", "#title_39", "#ingress_39"]
     ]
-    
+
     cy.get('#header').within(() => {
       cy.get('#news_logo').click()
     })
-    
+
     news.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])

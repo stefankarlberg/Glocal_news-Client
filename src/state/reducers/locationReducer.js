@@ -8,8 +8,8 @@ const locationReducer = (state = initialState, action) => {
       return {
         country: action.country
       }
-      default:
-        return state
+    default:
+      return state
   }
 }
 

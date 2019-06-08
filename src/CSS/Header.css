@@ -1,20 +1,8 @@
-.header_segment{
+.header_segment {
   background-color: #e0e1e2 !important;
 }
 
-.header_selector{
+.header_selector {
   border: none !important;
   margin: 2px !important;
-}
-
-.ui.sticky.fixed.top {
-  top: 200 !important;
-  bottom: auto;
-  position: fixed !important;
-}
-
-.ui.sticky.bound.bottom {
-  top: 0px!important;
-  bottom: auto;
-  position: fixed !important;
 }

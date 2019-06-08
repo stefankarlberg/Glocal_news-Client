@@ -1,10 +1,10 @@
-.article_card :hover{
+.article_card :hover {
   color: grey !important;
 }
 
-.article_card{
-color: black !important;
-border: 2px !important;
+.article_card {
+  color: black !important;
+  border: 2px !important;
 }
 
 .article_image {
@@ -20,6 +20,6 @@ border: 2px !important;
   background-repeat: no-repeat !important;
 }
 
-.card_content{
+.card_content {
   padding: 30px 30px 30px 10px !important;
 }

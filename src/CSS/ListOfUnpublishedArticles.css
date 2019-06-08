@@ -1,10 +1,10 @@
-.article_card_unpublished :hover{
+.article_card_unpublished :hover {
   color: grey !important;
 }
 
-.article_card_unpublished{
-color: black !important;
-border: 2px !important;
+.article_card_unpublished {
+  color: black !important;
+  border: 2px !important;
 }
 
 .article_image_unpublished {
@@ -20,6 +20,6 @@ border: 2px !important;
   background-repeat: no-repeat !important;
 }
 
-.card_content_unpublished{
+.card_content_unpublished {
   padding: 30px 30px 30px 10px !important;
 }

@@ -21,11 +21,11 @@ class HeaderCategory extends Component {
     return (
       <>
         <Container id="header_category" >
-          <Menu pointing secondary style={{ backgroundColor: "white"}}>
+          <Menu pointing secondary style={{ backgroundColor: "white" }}>
             {this.state.categories.map(c => (
               <Menu.Item
                 style={{ margin: "auto" }}
-                color={`${c.semantic}`}  
+                color={`${c.semantic}`}
                 id={c.name.toLowerCase()}
                 key={c.id}
                 name={c.name}

@@ -88,7 +88,7 @@ class WriteArticle extends Component {
       <>
         <Container>
           <Header as='h3'>
-            Write an article and share your story glocally! 
+            Write an article and share your story glocally!
           </Header>
           <p>{message}</p>
           <Form type="medium" id="write-article" onSubmit={this.onSubmit}>

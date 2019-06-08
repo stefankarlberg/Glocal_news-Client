@@ -73,7 +73,7 @@ class SignUpForm extends Component {
         <Grid centered columns={2}>
           <Grid.Column width={12}>
             <Header as='h3'>
-              Sign up to enjoy the Glocal News! 
+              Sign up to enjoy the Glocal News!
             </Header>
             {message}
             <Form id="signup-form" onSubmit={this.onSubmit}>

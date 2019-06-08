@@ -68,12 +68,12 @@ class ArticlesByCategory extends Component {
 
     let firstArticle = filteredArticlesByCountry.length ? (
       <Card className='article_card' fluid key={filteredArticlesByCountry[0].id} as={Link} to={{ pathname: '/full-article', state: { id: `${filteredArticlesByCountry[0].id}` } }} >
-        <div id={filteredArticlesByCountry[0].id} style={{  boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`  }}>
+        <div id={filteredArticlesByCountry[0].id} style={{ boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5` }}>
           <Image fluid alt="article logo" id={`photo_${filteredArticlesByCountry[0].id}`} src={filteredArticlesByCountry[0].image} />
           <Card.Content style={{ padding: '2em' }}>
             <Card.Header as='h1' id={`title_${filteredArticlesByCountry[0].id}`}>
-            <Icon name='globe' style={{color: `${color}`}} />
-            {filteredArticlesByCountry[0].title}</Card.Header>
+              <Icon name='globe' style={{ color: `${color}` }} />
+              {filteredArticlesByCountry[0].title}</Card.Header>
             <p id={`ingress_${filteredArticlesByCountry[0].id}`}>{filteredArticlesByCountry[0].ingress}</p>
             <h5 id={`country_city_${filteredArticlesByCountry[0].id}`}><Icon name='map marker alternate' />{`${filteredArticlesByCountry[0].city}, ${filteredArticlesByCountry[0].country}`}</h5>
           </Card.Content>
@@ -121,26 +121,26 @@ class ArticlesByCategory extends Component {
 
           return (
             <>
-              <Card className='article_card' style={{ 
+              <Card className='article_card' style={{
                 boxShadow: `0 0 0 1px #d4d4d5, 0 4px 0 0 ${color}, 0 1px 3px 0 #d4d4d5`
-                 }} 
-                 fluid key={article.id} 
-                 as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: false, id: article.id } }} >
+              }}
+                fluid key={article.id}
+                as={Link} to={{ pathname: '/full-article/', state: { success_message: false, review_form: false, id: article.id } }} >
                 <Grid id={article.id} >
                   <Grid.Column width={6} className='article_image'>
-                    <Segment className='small_card' style={{ background: `url(${article.image})`}} >
+                    <Segment className='small_card' style={{ background: `url(${article.image})` }} >
                     </Segment>
                   </Grid.Column>
                   <Grid.Column className='card_content' width={10}>
                     <h2 id={`title_${article.id}`}>{article.title}</h2>
                     <p id={`ingress_${article.id}`}>{ingress}</p>
-                    
+
                     <Grid.Row columns={2}>
                       <Grid.Column floated='left' width={5}>
-                        <p id={`country_city_${article.id}`}><Icon name='map marker alternate'/>{`${article.city}, ${article.country}`} </p>
+                        <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city}, ${article.country}`} </p>
                       </Grid.Column>
                       <Grid.Column floated='right' width={2}>
-                        <h4 style={{color: color}}>Read more<Icon name='angle right'/></h4>
+                        <h4 style={{ color: color }}>Read more<Icon name='angle right' /></h4>
                       </Grid.Column>
                     </Grid.Row>
 
