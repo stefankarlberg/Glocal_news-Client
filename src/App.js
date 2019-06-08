@@ -17,13 +17,15 @@ const requireSignIn = generateRequireSignInWrapper({
 
 class App extends Component {
   state = {
-    paths: []
+    paths: [],
+    country: ''
   }
 
   async componentWillMount() {
     let categoryPaths = await getCategoryPaths()
     this.setState({ paths: categoryPaths })
   }
+
   render() {
     return (
       <>

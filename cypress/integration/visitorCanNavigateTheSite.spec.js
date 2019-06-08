@@ -38,6 +38,5 @@ describe('Visitor can navigate the website', () => {
 
   it("by seeing correct selection options in dropdown", () => {
     cy.get('div[id="country"]').click().get('div[role="option"]').contains('Sweden');
-    cy.get('div[id="city_header"]').click().get('div[role="option"]').contains('Stockholm')
   })
 })

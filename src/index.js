@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import configureStore from './state/store/configureStore'
 import { verifyCredentials } from './reduxTokenAuthConfig'
 import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import { setupInterceptors } from './Modules/axiosInterceptor';
 

@@ -8,6 +8,12 @@ describe('Visitor can view on the landing page', () => {
       response: 'fixture:list_of_articles.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
     cy.visit('http://localhost:3001')
 
     let articles = [
@@ -28,6 +34,12 @@ describe('Visitor can view on the landing page', () => {
       method: 'GET',
       url: 'http://localhost:3002/api/v1/articles',
       response: 'fixture:no_list_of_articles.json',
+      status: 200
+    })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
       status: 200
     })
     cy.visit('http://localhost:3001')

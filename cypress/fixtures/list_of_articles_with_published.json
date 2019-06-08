@@ -13,6 +13,7 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [],
     "city": "Stockholm"
   },
   {
@@ -29,6 +30,7 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [],
     "city": "Paris"
   },
   {
@@ -45,6 +47,7 @@
       "id": 3,
       "name": "Arts"
     },
+    "reviews": [],
     "city": "Rome"
   },
   {
@@ -61,6 +64,7 @@
       "id": 1,
       "name": "Politics"
     },
+    "reviews": [],
     "published": false
   }
 ]

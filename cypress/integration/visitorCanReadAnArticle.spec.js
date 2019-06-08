@@ -9,6 +9,12 @@ describe('Visitor can read an article', () => {
       status: 200
     })
     cy.route({
+      method: 'GET',
+      url: 'http://localhost:3002/api/v1/categories',
+      response: 'fixture:categories_list.json',
+      status: 200
+    })
+    cy.route({
       method: 'POST',
       url: 'http://localhost:3002/api/v1/auth/sign_in',
       response: 'fixture:successful_login.json',
