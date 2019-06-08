@@ -29,17 +29,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <HeaderMain
-          handleChangeCountry={this.handleChangeCountry} />
-          <Switch>
-            <Route exact path='/' render={() => (<Redirect to="/news" component={ArticlesByCategory} activeItem={'news'}/>)}></Route>
-            <Route exact path={this.state.paths} render={(props) => (<ArticlesByCategory {...props}/>)}></Route>
-            <Route exact path='/write-article' component={requireSignIn(WriteArticle)}></Route>
-            <Route exact path='/review-articles' component={requireSignIn(ListOfUnpublishedArticles)}></Route>
-            <Route exact path='/full-article' component={requireSignIn(FullArticle)}></Route>
-            <Route exact path='/login' component={LoginForm}></Route>
-            <Route exact path='/signup' component={SignUpForm}></Route>
-          </Switch>
+        <HeaderMain />
+        <Switch>
+          <Route exact path='/' render={() => (<Redirect to="/news" component={ArticlesByCategory} activeItem={'news'} />)}></Route>
+          <Route exact path={this.state.paths} component={ArticlesByCategory}></Route>
+          <Route exact path='/write-article' component={requireSignIn(WriteArticle)}></Route>
+          <Route exact path='/review-articles' component={requireSignIn(ListOfUnpublishedArticles)}></Route>
+          <Route exact path='/full-article' component={requireSignIn(FullArticle)}></Route>
+          <Route exact path='/login' component={LoginForm}></Route>
+          <Route exact path='/signup' component={SignUpForm}></Route>
+        </Switch>
       </>
     );
   }
