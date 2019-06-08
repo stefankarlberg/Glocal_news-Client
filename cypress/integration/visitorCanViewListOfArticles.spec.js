@@ -17,13 +17,12 @@ describe('Visitor can view on the landing page', () => {
     cy.visit('http://localhost:3001')
 
     let articles = [
-      ["#38", "#title_38", "#ingress_38", "#photo_38"]
+      ["#38", "#title_38", "#ingress_38"]
     ]
 
     articles.forEach(article => {
       cy.get(article[0]).within(() => {
         cy.get(article[1]), (article[2])
-        cy.get(article[3]).should('have.attr', 'src')
       })
     })
   })

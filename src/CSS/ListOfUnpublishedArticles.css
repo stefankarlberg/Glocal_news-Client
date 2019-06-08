@@ -1,0 +1,25 @@
+.article_card_unpublished :hover {
+  color: grey !important;
+}
+
+.article_card_unpublished {
+  color: black !important;
+  border: 2px !important;
+}
+
+.article_image_unpublished {
+  padding-bottom: 12px !important;
+  padding-top: 13px !important;
+}
+
+.small_card_unpublished {
+  background-size: cover !important;
+  background-position: center center !important;
+  height: 100% !important;
+  border-radius: 0px !important;
+  background-repeat: no-repeat !important;
+}
+
+.card_content_unpublished {
+  padding: 30px 30px 30px 10px !important;
+}

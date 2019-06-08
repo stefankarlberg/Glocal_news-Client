@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Container, Segment, Icon, Header } from 'semantic-ui-react'
+import { Container, Segment, Icon, Header, Grid, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { getCategoryNames } from '../Modules/categoriesData'
 import moment from 'moment'
@@ -56,9 +56,19 @@ class LatestNews extends Component {
 
             return (
               <Segment id={article.id} color={color} key={article.id}>
-                <p>{momentDate} | {momentTime}</p>
+                <Grid columns={2}>
+                  <Grid.Column floated='left' width={11}>
+                    <p>{momentDate} | {momentTime} </p>
+                  </Grid.Column>
+                  <Grid.Column floated='right' width={5}>
+                    <Label tag style={{ backgroundColor: `${color}`, color: 'white' }}>
+                      {article.category.name}
+                    </Label>
+                  </Grid.Column>
+                </Grid>
+
                 <Header id={`title_${article.id}`} as={Link} to={{ pathname: '/full-article', state: { id: `${article.id}` } }}>{article.title}</Header>
-                <p style={{ color: 'grey' }} id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city}, ${article.country}`}</p>
+                <p id={`country_city_${article.id}`}><Icon name='map marker alternate' />{`${article.city}, ${article.country}`}</p>
               </Segment>
             )
           }

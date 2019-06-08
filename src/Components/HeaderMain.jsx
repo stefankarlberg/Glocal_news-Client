@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import HeaderCategory from './HeaderCategory'
-import { Menu, Header, Container, Divider, Segment, Dropdown } from 'semantic-ui-react'
+import { Menu, Header, Container, Divider, Segment, Icon, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import '../CSS/Header.css'
 import { signOutUser } from '../reduxTokenAuthConfig';
 import { withRouter } from 'react-router-dom';
 import { COUNTRY_OPTIONS } from '../Modules/countriesData'
@@ -106,15 +107,24 @@ class HeaderMain extends Component {
             style={{ fontSize: "2em" }}
             onClick={this.handleItemClick}
           >
-            GLOCAL NEWS
+            <Divider horizontal
+              color='#2C4138'
+              size='large'
+            >
+              <h1 id="news_logo" style={{ color: '#2C4138', fontSize: "3em" }}>
+                GL
+              <Icon fitted name='globe' size='large'
+                  style={{ color: '#86A499' }}
+                />
+                CAL NEWS
+            </h1>
+            </Divider>
           </Header>
           <Divider hidden />
         </Container>
 
         <Container>
-          <Segment inverted
-            style={{ background: '#e0e1e2' }}
-          >
+          <Segment className='header_segment' inverted>
             <Menu secondary>
 
               <Dropdown

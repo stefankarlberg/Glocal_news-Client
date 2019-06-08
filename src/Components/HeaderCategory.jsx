@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getCategoryNames } from '../Modules/categoriesData'
 import { Menu, Divider, Container } from 'semantic-ui-react'
+import '../CSS/Header.css'
 
 class HeaderCategory extends Component {
   state = {
@@ -19,17 +20,17 @@ class HeaderCategory extends Component {
 
     return (
       <>
-        <Container id="header_category">
-          <Menu pointing secondary >
+        <Container id="header_category" >
+          <Menu pointing secondary style={{ backgroundColor: "white" }}>
             {this.state.categories.map(c => (
               <Menu.Item
                 style={{ margin: "auto" }}
+                color={`${c.semantic}`}
                 id={c.name.toLowerCase()}
                 key={c.id}
                 name={c.name}
                 as={Link}
                 to={{ pathname: `/${c.name.toLowerCase()}`, state: { categoryName: `${c.name}` } }}
-                color={c.color}
                 active={this.props.activeItem === c.name.toLowerCase()}
                 onClick={this.props.handleItemClick}
               />
