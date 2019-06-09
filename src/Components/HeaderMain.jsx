@@ -44,9 +44,9 @@ class HeaderMain extends Component {
 
     let headerSticky = () => {
       if (window.pageYOffset > sticky) {
-        header.classList.add("stickyClass");
+        header.classList.add("sticky_class");
       } else {
-        header.classList.remove("stickyClass");
+        header.classList.remove("sticky_class");
       }
     }
 

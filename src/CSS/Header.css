@@ -7,7 +7,7 @@
   margin: 2px !important;
 }
 
-.stickyClass {
+.sticky_class {
   position: fixed;
   top: 0;
   z-index: 100;
