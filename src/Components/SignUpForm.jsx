@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Message, Grid, Segment, Header } from 'semantic-ui-react'
+import { Form, Button, Container, Message, Grid, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { registerUser } from '../reduxTokenAuthConfig'
 
