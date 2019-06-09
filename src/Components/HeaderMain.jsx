@@ -37,19 +37,19 @@ class HeaderMain extends Component {
   render() {
 
 
-    window.onscroll = function() {headerSticky()};
+    window.onscroll = function () { headerSticky() };
 
     let header = document.getElementById("sticky_header");
     let sticky = 5;
-  
-    let headerSticky = () =>  {
+
+    let headerSticky = () => {
       if (window.pageYOffset > sticky) {
         header.classList.add("stickyClass");
       } else {
         header.classList.remove("stickyClass");
       }
     }
-  
+
 
     const mainLabels = [
       {
@@ -122,55 +122,55 @@ class HeaderMain extends Component {
             style={{ fontSize: "1em" }}
             onClick={this.handleItemClick}
           >
-              <h1 id="news_logo" style={{ color: '#2C4138', fontSize: "3em" }}>
-                GL
+            <h1 id="news_logo" style={{ color: '#2C4138', fontSize: "3em" }}>
+              GL
               <Icon fitted name='globe' size='large'
-                  style={{ color: '#86A499' }}
-                />
-                CAL NEWS
+                style={{ color: '#86A499' }}
+              />
+              CAL NEWS
             </h1>
           </Header>
           <Divider hidden />
         </Container>
 
         <Container>
-        <Container id="sticky_header">
-          <Container>
-          <Segment className='header_segment' inverted>
-            <Menu secondary>
+          <Container id="sticky_header">
+            <Container>
+              <Segment className='header_segment' inverted>
+                <Menu secondary>
 
-              <Dropdown
-                clearable
-                search
-                selection
-                style={{ border: 'none', margin: '2px' }}
-                placeholder="Select Country"
-                options={COUNTRY_OPTIONS}
-                id="country"
-                onChange={this.handleCountryChange}
-              />
+                  <Dropdown
+                    clearable
+                    search
+                    selection
+                    style={{ border: 'none', margin: '2px' }}
+                    placeholder="Select Country"
+                    options={COUNTRY_OPTIONS}
+                    id="country"
+                    onChange={this.handleCountryChange}
+                  />
 
-              {mainLabels.map(m => (
-                <Menu.Item
-                  key={m.name}
-                  name={m.name}
-                  as={Link}
-                  to={m.link}
-                  id={m.id}
-                />
-              ))}
-              <Menu.Menu position='right'>
-                {labels}
-              </Menu.Menu>
-            </Menu>
-          </Segment>
-        </Container>
+                  {mainLabels.map(m => (
+                    <Menu.Item
+                      key={m.name}
+                      name={m.name}
+                      as={Link}
+                      to={m.link}
+                      id={m.id}
+                    />
+                  ))}
+                  <Menu.Menu position='right'>
+                    {labels}
+                  </Menu.Menu>
+                </Menu>
+              </Segment>
+            </Container>
 
-        <Container>
-          <HeaderCategory
-            handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
-        </Container>
-        </Container>
+            <Container>
+              <HeaderCategory
+                handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
+            </Container>
+          </Container>
         </Container>
       </>
     )
