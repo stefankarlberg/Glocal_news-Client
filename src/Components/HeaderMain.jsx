@@ -36,6 +36,21 @@ class HeaderMain extends Component {
 
   render() {
 
+
+    window.onscroll = function() {headerSticky()};
+
+    let header = document.getElementById("sticky_header");
+    let sticky = 5;
+  
+    let headerSticky = () =>  {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("stickyClass");
+      } else {
+        header.classList.remove("stickyClass");
+      }
+    }
+  
+
     const mainLabels = [
       {
         name: 'Write An Article',
@@ -119,6 +134,8 @@ class HeaderMain extends Component {
         </Container>
 
         <Container>
+        <Container id="sticky_header">
+          <Container>
           <Segment className='header_segment' inverted>
             <Menu secondary>
 
@@ -152,6 +169,8 @@ class HeaderMain extends Component {
         <Container>
           <HeaderCategory
             handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
+        </Container>
+        </Container>
         </Container>
       </>
     )
