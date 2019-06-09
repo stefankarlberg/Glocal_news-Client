@@ -168,7 +168,7 @@ class HeaderMain extends Component {
 
             <Container>
               <HeaderCategory
-                handleItemClick={this.handleItemClick} activeItem={this.state.activeItem} />
+                handleItemClick={this.handleItemClick, window.scrollTo(0, 0)} activeItem={this.state.activeItem} />
             </Container>
           </Container>
         </Container>

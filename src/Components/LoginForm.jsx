@@ -18,6 +18,7 @@ class LoginForm extends Component {
   }
 
   onSubmit = (e) => {
+    window.scrollTo(0, 0);
     e.preventDefault();
     const { history, signInUser } = this.props
     const {
@@ -90,10 +91,22 @@ class LoginForm extends Component {
             </Form>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Segment vertical textAlign='center' className='ads_placeholder'>
-              <p>Ads placeholder</p>
-            </Segment>
-          </Grid.Column>
+              <div>
+                <a href="https://www.craftacademy.se/">
+                  <img className="ad" src="ad_craft.png" />
+                </a>
+              </div>
+              <div>
+                <a href="https://www.craftacademy.se/">
+                  <img className="ad" src="ad_placeholder.png" />
+                </a>
+              </div>
+              <div>
+                <a href="https://www.craftacademy.se/">
+                  <img className="ad" src="ad_placeholder.png" />
+                </a>
+              </div>
+            </Grid.Column>
         </Grid>
       </Container>
     )
