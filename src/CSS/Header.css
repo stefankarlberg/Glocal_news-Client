@@ -6,3 +6,9 @@
   border: none !important;
   margin: 2px !important;
 }
+
+.sticky_class {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
